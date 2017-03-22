@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'xsdicomoon';
+  src:  url('fonts/xsdicomoon.eot?y0nree');
+  src:  url('fonts/xsdicomoon.eot?y0nree#iefix') format('embedded-opentype'),
+    url('fonts/xsdicomoon.ttf?y0nree') format('truetype'),
+    url('fonts/xsdicomoon.woff?y0nree') format('woff'),
+    url('fonts/xsdicomoon.svg?y0nree#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="xsd-icon-"], [class*="xsd-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'xsdicomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 1.2rem;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.xsd-icon-qjjd:before {
+  content: "\e903";
+}
+.xsd-icon-qjfz:before {
+  content: "\e904";
+}
+.xsd-icon-jg:before {
+  content: "\e905";
+}
+.xsd-icon-inc:before {
+  content: "\e906";
+}
+.xsd-icon-qjtxz:before {
+  content: "\e907";
+}
+.xsd-icon-qjmxz:before {
+  content: "\e908";
+}
+.xsd-icon-qjtx:before {
+  content: "\e909";
+}
+.xsd-icon-qjmx3:before {
+  content: "\e900";
+}
+.xsd-icon-qjmx2:before {
+  content: "\e901";
+}
+.xsd-icon-qjmx1:before {
+  content: "\e902";
+}
+

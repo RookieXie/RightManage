@@ -1,0 +1,360 @@
+﻿@import "skin/_Tbskin.scss";
+@import "ataw_common/_login.scss";
+$h: 5rem;
+/*2016年11月15日 11:41:14*/
+.ACT-HEADER-BODY {
+    padding: 0 !important;
+    background: #fff !important;    
+    .ACT-HEADER-LOGO {
+        display: inline-block;
+        position: relative;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+        padding: .8rem 0 0 0;
+        width: 16.66%;
+        height: $h;
+        background: #34353c;
+
+        img {
+            margin-left: 2.4rem !important;
+        }
+
+        &:after {
+            content: "浙江统保";
+            position: absolute;
+            left: 6rem;
+            top: 2.2rem;
+            color: #fff;
+            font-size: 26px;
+
+            @media screen and (max-width: 75rem) {
+                content: " ";
+            }
+        }
+    }
+
+    .Hm-navbar {
+        width: 83.34%;
+        padding: 0 !important;
+        margin-left: 16.66%;
+        box-shadow: .125rem .125rem .3125rem #ccc;
+        .bg-inverse {
+            top: $h !important;
+            background: $white !important;
+
+            li:first-child {
+                margin-top: 0 !important;
+            }
+
+            a {
+                height: 1.875rem;
+                line-height: 1.875rem;
+            }
+        }
+        .hidden-md-down.change{
+             top: 5rem;
+             background: $white;
+            .nav-item{
+                padding-left:0;
+                padding-right:0;
+            }
+        }
+    }
+}
+
+.Hf-menu-scroll .inner .nav-item:first-child, .navbar-nav .nav-item + .nav-item {
+    margin-left: 0 !important;
+}
+.Hf-menu {
+    & > div.Hu-icon {
+        height: 5rem;
+        line-height: 5rem;
+        i{ color: #666;}
+    }
+}
+
+.navbar-dark .navbar-nav .nav-link,.ACT-HEADER-ICON {
+    height: $h;
+    line-height: $h;
+    padding: 0 15px;
+    color: #666 !important;
+    text-shadow: none !important;
+
+    &:hover {
+        background: #eee !important;
+    }
+
+    &.active {
+        background: #eee !important;
+    }
+}
+
+.Hg-content {
+    top: $h !important;
+}
+.submit .btn{
+    margin-bottom:1.5rem;
+}
+
+/** 修复表格中地址、时间等输入框大小问题 */
+.table {
+    span[act_ds] {
+        input,textarea {
+            min-width: 10rem !important;
+        }
+    }
+    th[acol="D_Notes"] {
+        span {
+            display: inline-block;
+            width: 12rem;
+        }
+    }
+}
+
+$ml: 1.25rem;
+@mixin margin(){
+    margin: {
+        top: 1.45rem;
+        left: .8rem;
+        right: 1.25rem;
+    }
+}
+.hzTB-chitnum{
+.hzTB-chit{
+    margin-top:$ml;
+    padding-top: 18px;
+    padding-left: 18px;
+    background: white;
+    border-radius:2px;
+    .hzTB-chit-circle{
+        float:left;
+        padding:22.5px 14.5px;  
+        border: 2px solid rgba(43,43,43,.2);
+        border-radius: 50%;
+        color: white;
+        font-size: 1rem;
+    }
+     .hzTB-chit-num{
+          display: inline-block;
+          padding-left: $ml;
+          margin-top:.5rem;
+          a{ 
+              display:block;
+              margin-top:.875rem;
+              font-size:1.375rem;
+          }
+    }
+     
+}
+  div:nth-child(1){
+        .hzTB-chit-circle{ background: #0086cf;}
+         .hzTB-chit-num > a{color:#0086cf;}
+     }
+  div:nth-child(2){
+         .hzTB-chit-circle{ background: #13b5b1;}
+         .hzTB-chit-num >a{color:#13b5b1;}         
+     }
+  div:nth-child(3){
+          .hzTB-chit-circle{ background: #80c269;}
+         .hzTB-chit-num >a{color:#80c269;}   
+     }
+  div:nth-child(4){
+          .hzTB-chit-circle{ background: #b3d465;}
+         .hzTB-chit-num >a{color:#b3d465;}   
+     }
+}
+
+
+.hzTB-apply {
+    padding: 1rem;
+    padding-bottom: 2.625rem;
+    @include margin();
+    background: #fff;   
+    .hzTB-apply-list {
+        li { 
+            margin-top: 2rem;
+            margin-left: 0 !important;
+            text-align: center;
+            &:hover {
+                cursor: pointer;
+                p{ color: #008ce4;}
+            }
+        }
+        img {
+            width: 3.125rem;
+            height: 3.125rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+}
+.hzTB-title {
+        margin-bottom: 1.125rem;
+        color: #999;
+        i{ margin-right: .625rem;}
+    }
+.hzTB-chit-info {
+    padding: 1rem;
+    margin-top: 1.45rem;
+    background: #fff;
+    border-radius: 3px;
+}
+.hzTB-chit-ratio,.hzTB-message {
+    padding: 1rem;
+    margin-top: 1.45rem;
+    background: #fff;
+    border-radius: 3px;
+}
+.hzTB-message {
+    margin: {
+        top: 1.45rem;
+        left: .8rem;
+        right: 1.25rem;
+    }
+    .table {
+        border: 1px solid #ddd;
+        tr:nth-child(even) {
+            background: #fffaee;
+        }
+        tr td {
+            padding: {
+                top: .875rem;
+                bottom: .875rem;
+                left: 1.25rem;
+            }
+            border-right: 1px solid #ddd;
+            a{ color: #666;}
+            &:nth-child(2) {
+                width: 16.625rem;
+            }
+        }
+    }
+}
+
+/** 修复双滚动条（谷歌），火狐待解决 */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { border-radius: 5px; }
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: transparent;
+}
+.ask-form::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #eee;
+}
+.ACT-PAGE-NAVI .panel::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #eee;
+}
+.Hm-grids ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #eee;
+}
+/*树形问题*/
+ul.ztree li span.button.switch{
+    width:1.2rem !important;
+    height:1.5rem !important;
+}
+/*快捷*/
+.backend .quick-entry ul{
+    padding:2.5rem 0 0 0!important;
+     li{
+         padding: 0 0 1.875rem 0!important;
+     }
+}
+
+//左侧菜单
+.Hc-tree-naiv {
+   .Hu-title .fa{
+       display:inline !important;
+       margin-right:.2rem !important;}
+   .Hu-east{ 
+    .nav-1 { 
+        fa{ margin-right:.5rem;}
+            & > li > a {
+                text-indent: 2rem !important;
+            }
+            .nav-1 {
+                li > a {
+                    text-indent: 3.5rem !important;
+                }
+                .nav-1 {
+                    li > a {
+                        text-indent: 5rem !important;
+                    }
+                }
+            }
+        }
+    }
+}
+ /*.nav-1 {
+    .nav-1 {
+       & > li { margin-left: 2rem;}
+    }
+}*/
+/*新闻信息详情图片*/
+.Hm-modals .panel-body .atawNormalRow .col-md-12 img{
+    max-width:50rem;
+}
+/*搜索区域缩短*/
+.Hm-content {
+    & > .p-a { padding-top: 0 !important; }
+        .ACT-PAGE-MAIN { margin-top: 0 !important;
+            .panel { padding-top: 0 !important; }
+            .ConditionDiv { margin-bottom: 0 !important; 
+                  .ask-search{ padding:0 !important; }
+                  .searchCriteriaUl{ margin:0 !important;}
+                  .search_Module_row{ padding:2px !important;}
+            }
+        }
+    
+}
+/*图片删除保存按钮*/
+
+.upload-result a{
+    font-size:1rem !important; 
+}
+.upload-result .ACT_SET_MAIN_ITEM{
+    bottom: 0rem !important;
+    left: 2.2rem !important;
+}
+
+.ask-multi{
+    height:10rem;
+}
+
+//表格没数据时
+.Hu-table-nodata {
+    $b: 1px solid #eee;
+    height: 10rem;
+    line-height: 10rem;
+}
+
+/*验证提示位置*/
+.ask-form .table td{
+    position:relative;
+}
+/*搜索区域排版*/
+.tabbable {
+         .ask-search {
+             .Hu-search-label{
+                   line-height:2rem;
+             }
+             .Hu-search-content{
+                 padding-left:.9375rem !important;
+                 padding-right:.9375rem !important;
+             }
+
+         }
+}
+/*报表搜索区域排版*/
+.ask-search{
+    .Hu-label{line-height:2;}
+}
+/*子表操作按钮隐藏*/
+th[acol="databutton"],td[acol="databutton"]{ display:none;}
+
+/*必填星号*/
+.formRedFonts{
+    left:0 !important;
+}

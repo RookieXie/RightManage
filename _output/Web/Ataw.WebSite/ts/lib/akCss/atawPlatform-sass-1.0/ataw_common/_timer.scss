@@ -1,0 +1,230 @@
+﻿
+.container {
+ text-align: center;
+}
+
+.Hc-timer {
+     display: inline-block;
+     position: relative;
+     padding: 10px;
+     overflow: hidden;
+     border: 4px solid #efefef;
+     border-radius: 5px;	
+}
+
+.Hm-cell {
+     position: relative;
+     float: left;
+     width: 1.2rem;
+     height: 2.5rem;
+     font-size: 2rem;
+     overflow: hidden;
+
+}
+.Hu-numbers {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width:1.2rem;
+     line-height: 2.5rem;
+     text-align: center;
+     color: #000;
+}
+/*秒表控制器样式*/
+.Hm-controls {
+ margin-top: -5px;
+    label{
+        cursor: pointer;
+        padding: 2px 8px;
+        background: #efefef;
+        font-size: .75rem;
+        border-radius: 0 0 3px 3px;
+
+   }
+}
+input[name="controls"] {display: none;}
+
+/*Control code*/
+/*秒表暂停运转*/
+.Hu-stop {
+ -webkit-animation-play-state: paused !important;
+ -moz-animation-play-state: paused !important;
+ -o-animation-play-state: paused !important;
+ -ms-animation-play-state: paused !important;
+ animation-play-state: paused !important;
+}
+/*秒表开始运转*/
+.Hu-start{
+  -webkit-animation-play-state: running !important;
+  -moz-animation-play-state: running !important;
+  -o-animation-play-state: running !important;
+  -ms-animation-play-state: running !important;
+  animation-play-state: running !important;
+}
+/*重置秒表*/
+.Hu-reset {
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
+}
+.Hu-playstate{
+     -webkit-animation-play-state: paused;
+     -moz-animation-play-state: paused;
+     -o-animation-play-state: paused;
+    -ms-animation-play-state: paused;
+    animation-play-state: paused;
+
+}
+.Hu-moveten {
+ /*使用分步骤来移动数字，10个数字等于10步*/
+ -webkit-animation: moveten 1s steps(10, end) infinite;
+ -moz-animation: moveten 1s steps(10, end) infinite;
+ -o-animation: moveten 1s steps(10, end) infinite;
+ -ms-animation: moveten 1s steps(10, end) infinite;
+ animation: moveten 1s steps(10, end) infinite;
+}
+.Hu-movesix {
+ -webkit-animation: movesix 1s steps(6, end) infinite;
+ -moz-animation: movesix 1s steps(6, end) infinite;
+ -o-animation: movesix 1s steps(6, end) infinite;
+ -ms-animation: movesix 1s steps(6, end) infinite;
+ animation: movesix 1s steps(6, end) infinite;
+}
+
+/*同步时间的速率*/
+/*每秒十个数字，因此也需要十步*/
+.Hu-second {
+ -webkit-animation-duration: 10s;
+ -moz-animation-duration: 10s;
+ -o-animation-duration: 10s;
+ -ms-animation-duration: 10s;
+ animation-duration: 10s;
+}
+.Hu-tensecond {
+  /*60 times .second*/
+  -webkit-animation-duration: 60s;
+  -moz-animation-duration: 60s;
+  -o-animation-duration: 60s;
+  -ms-animation-duration: 60s;
+  animation-duration: 60s;
+} 
+
+.Hu-milisecond {
+  /*1/10th of .second*/
+  -webkit-animation-duration: 1s;
+ -moz-animation-duration: 1s;
+ -o-animation-duration: 1s;
+ -ms-animation-duration: 1s;
+ animation-duration: 1s;
+} 
+.Hu-tenmilisecond {
+  -webkit-animation-duration: 0.1s;
+  -moz-animation-duration: 0.1s;
+  -ms-animation-duration: 0.1s;
+  -o-animation-duration: 0.1s;
+  animation-duration: 0.1s;
+}
+.Hu-hundredmilisecond {
+  -webkit-animation-duration: 0.01s;
+  -moz-animation-duration: 0.01s;
+  -o-animation-duration: 0.01s;
+  -ms-animation-duration: 0.01s;
+  animation-duration: 0.01s;
+}
+
+.Hu-minute {
+  /*60 times .second*/
+  -webkit-animation-duration: 600s;
+ -moz-animation-duration: 600s;
+ -o-animation-duration: 600s;
+ -ms-animation-duration: 600s;
+ animation-duration: 600s;
+} 
+.Hu-tenminute {
+  /*60 times .minute*/
+  -webkit-animation-duration: 3600s;
+ -moz-animation-duration: 3600s;
+ -ms-animation-duration: 3600s;
+ -o-animation-duration: 3600s;
+ animation-duration: 3600s;
+} 
+
+.Hu-hour {
+  /*60 times .minute*/
+  -webkit-animation-duration: 36000s;
+ -moz-animation-duration: 36000s;
+ -ms-animation-duration: 36000s;
+ -o-animation-duration: 36000s;
+ animation-duration: 36000s;
+} 
+.Hu-tenhour {
+  /*10 times .hour*/
+  -webkit-animation-duration: 360000s;
+ -moz-animation-duration: 360000s;
+ -o-animation-duration: 360000s;
+ -ms-animation-duration: 360000s;
+ animation-duration: 360000s;
+} 
+/*------------------------------------------------------------*
+1、动画的逻辑就是给数字使用了绝对定位，改变“top”的属性值；
+2、分 和 秒 应该是 '60' 而不是 '100'，因此需要创建两个动画；
+3、十步十个数字
+4、六步六个数字
+*-------------------------------------------------------------*/
+@-webkit-keyframes moveten {
+ 0% {top: 0;}
+ 100% {top: -400px;} 
+ /*height = 40. digits = 10. hence -400 to move it completely to the top*/
+}
+
+@-webkit-keyframes movesix {
+ 0% {top: 0;}
+ 100% {top: -240px;} 
+ /*height = 40. digits = 6. hence -240 to move it completely to the top*/
+}
+
+@-moz-keyframes moveten {
+ 0% {top: 0;}
+ 100% {top: -400px;} 
+ /*height = 40. digits = 10. hence -400 to move it completely to the top*/
+}
+
+@-moz-keyframes movesix {
+ 0% {top: 0;}
+ 100% {top: -240px;} 
+ /*height = 40. digits = 6. hence -240 to move it completely to the top*/
+}
+@-o-keyframes moveten {
+ 0% {top: 0;}
+ 100% {top: -400px;} 
+ /*height = 40. digits = 10. hence -400 to move it completely to the top*/
+}
+@-o-keyframes movesix {
+ 0% {top: 0;}
+ 100% {top: -240px;} 
+/*height = 40. digits = 6. hence -240 to move it completely to the top*/
+}
+@-ms-keyframes moveten {
+ 0% {top: 0;}
+ 100% {top: -400px;} 
+ /*height = 40. digits = 10. hence -400 to move it completely to the top*/
+}
+
+@-ms-keyframes Hu-movesix {
+ 0% {top: 0;}
+ 100% {top: -240px;} 
+ /*height = 40. digits = 6. hence -240 to move it completely to the top*/
+}
+@keyframes Hu-moveten {
+ 0% {top: 0;}
+ 100% {top: -400px;} 
+ /*height = 40. digits = 10. hence -400 to move it completely to the top*/
+}
+
+@keyframes Hu-movesix {
+ 0% {top: 0;}
+ 100% {top: -240px;} 
+ /*height = 40. digits = 6. hence -240 to move it completely to the top*/
+}

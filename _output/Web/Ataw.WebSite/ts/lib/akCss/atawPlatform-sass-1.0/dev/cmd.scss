@@ -1,0 +1,83 @@
+﻿.Hm-cmd {
+    input { border-radius: .125rem;}
+    .btn {
+        padding: .5rem 1.4375rem;
+        font-size: .8125rem;
+    }
+    .btn-primary,.input-group-addon  {
+        background-color: #0079fa;
+        color: #fff;
+        border-radius: .1875rem;
+    }
+    i.btn-primary { border-radius: 0;}
+    .btn-secondary {
+        background-color: #eee;
+        border-color: #ccc;
+        color: #666;
+        border-radius: .1875rem;
+    }
+    .form-control {
+        height: 2.375rem !important;
+        border-color: #ddd !important;
+    }
+    .Hm-input-group {
+        margin-bottom: 1.25rem;
+    }
+    .Hu-cmd-label {
+        display: inline-block;
+        height: 2.375rem !important;
+        line-height: 2.375rem;
+        color: #333;
+    }
+    .Hu-cmd-delete {
+        &:hover {
+            -webkit-animation: shake 100ms ease infinite;
+            -moz-animation: shake 100ms ease infinite;
+            animation: shake 100ms ease infinite;
+        }
+    }
+}
+.Hm-cmd-list{
+    $h: 2.5rem;
+    .Hm-cmd-item {
+        margin: {
+            bottom: .625rem;
+        }
+    }
+    .panel-heading {
+        height: $h;
+        line-height: $h;
+        padding: {
+            top: 0;
+            bottom: 0;
+        }
+        background: #f6f6f6;
+        border: 1px solid #ddd;
+        border-radius: .1875rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .panel-body{
+        border: 1px solid #ddd;
+        border-top: none;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-radius: .1875rem;
+        & > div {
+            margin-bottom: .3rem;
+        }
+    }
+    .Hm-label {
+        width: 8%;
+    }
+    .Hm-input {
+        width: 92%;
+    }
+}
+.Hm-cmd-errorlog {
+    .Hm-content {
+        background: #f2f2f2;
+        border: 1px solid #ddd;
+        border-radius: .1875rem;
+    }
+}

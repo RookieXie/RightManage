@@ -1,0 +1,32 @@
+/*遮罩层*/
+.panel {
+	position: fixed;
+	height:100%; 
+	width:100%;
+	min-width: 320px;
+	z-index: 2000;
+	background-color: rgba(167, 160, 161, 0.31); 
+	
+}
+.slider {
+	position: fixed;
+    overflow-y: auto;
+    min-height: 500px;   
+    /* 最小高度 */    
+    height: 100%;   
+    width: 60%; 
+    margin-left: 40%;
+	display:block;
+	float:right;
+	background: #fff;
+	z-index: 2001;
+	border:2px solid #4dc8f7;
+}   
+.slider.closed {   
+    max-height: 0;   
+}  
+.panelTile{
+border-top: 4px solid #4dc8f7;
+margin-top:0px;
+padding-top:0px;
+}

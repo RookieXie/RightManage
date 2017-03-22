@@ -1,0 +1,25 @@
+﻿.Hm-pro-configuration {
+    .Hm-list {
+        padding: 0;
+        background: #f2f3f3;
+    }
+    ul {
+        li {
+            padding: .2rem;
+            padding-left: 1rem;
+          //  margin: .5rem 0;
+            &.active { 
+                
+                padding-left: 1rem;
+                background: #fff;
+                color: #464646;
+            }
+        }
+    }
+    .table {
+
+        th:first-child,td:first-child {
+            text-align: left !important;
+        }
+    }
+}

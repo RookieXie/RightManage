@@ -1,0 +1,118 @@
+﻿.Hm-websocket{
+    $h4:2.5rem;
+    $h6:3.75rem;
+    $f:0.875rem;
+    $blue:#6298f9;
+    $white:white;
+    font-size:$f;
+    label{ font-size:$f;}
+    .Hu-time{
+        line-height:1;
+        margin-bottom:.5rem;
+        div{ padding:0;}
+        label{ 
+            padding:.25rem .75rem .25rem 0;
+            color:#5f6166;
+        }
+         span{color: $blue;}
+    }
+    .Hu-refresh{
+        textarea{ 
+            padding:.5rem 1rem;
+            width:90%;
+            height:$h4;
+            border-color: #dee0df;
+        }
+        a{
+            width:8%;
+            padding: .5625rem;
+            color: $white;
+            border-radius:2px;
+            background: $blue;
+           &:hover{ background:#4c89f5;}
+       }
+    }
+       .Hu-online{ 
+           padding: 0 1.25rem;
+           height:$h4;
+           line-height: $h4;
+           color:$white;
+           background-color: #6eb973;
+           span{ font-weight: 600;}
+    
+       }
+       li:first-child .Hm-user{ margin-top:.5rem;}
+       .Hm-user{ 
+           position:relative;
+           padding:.375rem 0 .375rem 1.5rem;
+           height: $h6;
+           background-color: #f2f2f2;
+           img{ 
+               float:left;
+               width:3rem;
+               height:3rem;
+               border-radius:50%;
+           }
+           p{ 
+               display: inline-block;
+               margin:0;
+               width:90%;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+    
+                  &:first-child{
+                      font-size:1rem;
+                      color:#2b2c2e;
+                  }  
+                  color:#5f6166;      
+           }
+          .Hu-myself{
+              display: inline-block;
+              position: absolute;
+              left: .5rem;
+              top: 1.5rem;
+              width:.625rem;
+              height:.625rem;
+              border-radius:50%;
+              background:$blue;
+          }
+          div{ padding-right:0;}
+          .Hu-bar{
+              position: absolute;
+              right: 1rem;
+              top: .8rem;
+              padding:1rem 0 ;
+
+               em{  
+              float: left;
+              margin-right: .2rem;
+              width: .25rem;
+              height: .25rem;
+              border-radius: 50%;
+              background: #969799;
+           }
+          }
+         
+       }
+       .Hu-sender{         
+           width:50%;
+           padding:0;
+            textarea{ 
+                margin-bottom:0;
+                padding:.5rem .625rem;
+                width:85%;
+                height:$h6 !important;
+                border-color:#f2f2f2;
+            }
+            a{
+                padding:1.157rem 0;
+                width:15%;
+                font-size:$f;
+                border:1px solid #dee0df;
+                background-color:#f2f2f2;
+                color:#5f6166;
+            }
+           }
+
+}

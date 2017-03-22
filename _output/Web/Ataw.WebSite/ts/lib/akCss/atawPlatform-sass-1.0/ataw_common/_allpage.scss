@@ -1,0 +1,49 @@
+﻿.Hm-allpage{     
+    .Hm-regname-list{
+        /*max-height:25rem;*/
+        overflow-y:auto;
+        &::-webkit-scrollbar { width: 5px; }
+        &::-webkit-scrollbar-track { border-radius: 5px; }
+        &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: transparent;
+        }
+         >.nav-item{ 
+         float:none !important;
+         padding: .3rem .2rem .1rem;
+         margin-bottom:.5rem;
+         border: 1px solid #818a91;
+         border-radius: 3px;
+         i{ margin-right:.5rem;}
+         &:hover{
+             background:#eee;
+         }
+         &:active{
+            >span{
+                 background: #72c3f5;
+                 color: $white;
+            }
+         }
+         >span{
+                display: inline-block;
+                padding: 0 .5rem;
+                width: 99%;
+                border-radius: 3px;  
+         }
+       }
+    } 
+    .Hu-search-close{
+         position: absolute;
+         top: .35rem;
+         right: 3rem;
+         color: #bbb;
+         z-index: 3; 
+    }
+    .Hu-browser{
+        min-height:23rem;
+        border:1px solid #818a91;
+    }
+    .Hu-browser-btn{ padding:.15rem .55rem !important;}
+    .ACT-BROWSER-BTN{ height:2rem;}
+    .ACT-BROWSER-SELECT{height:1.8rem;}
+}

@@ -1,0 +1,51 @@
+﻿// Core variables and mixins
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/custom-veriables";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/custom-mixins";
+
+// // Reset and dependencies
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/normalize";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/print";
+
+// Core CSS
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/reboot";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/type";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/images";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/code";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/grid";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/tables";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/forms";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/buttons";
+
+// // Components
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/animation";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/dropdown";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/button-group";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/input-group";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/custom-forms";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/nav";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/navbar";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/card";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/breadcrumb";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/pagination";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/pager";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/labels";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/jumbotron";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/alert";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/progress";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/media";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/list-group";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/responsive-embed";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/panels";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/close";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/tags";
+
+// Components w/ JavaScript
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/modal";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/tooltip";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/popover";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/carousel";
+
+// Utility classes
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/utilities";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/utilities-spacing";
+@import "Ataw.Platform/src/modules/TsCss/ts/lib/akCss/atawPlatform-sass-1.0/scss/utilities-responsive";

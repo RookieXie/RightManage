@@ -1,0 +1,32 @@
+﻿.Hm-xml{
+    .panel{
+        padding:0 !important;
+        .panel-body{
+            padding:.9375rem 0 !important;
+            > div{
+                line-height:2.25rem;
+            }
+        }
+        p{ margin-bottom:0;}
+    }
+    .Hu-solid-line{ 
+        border:1px solid;
+    }
+    .Hu-dashed-line{
+        padding-top:.5rem;
+        > div{
+            line-height:2.25rem;
+        label{
+            font-size:14px;
+        }
+        }
+    }
+    .Hc-radio-list{
+        display:inline-block;
+        line-height:1rem;
+    }
+    .Hc-edit-span{
+        width:80% !important;
+        input{ width:90% !important;}
+    }
+}

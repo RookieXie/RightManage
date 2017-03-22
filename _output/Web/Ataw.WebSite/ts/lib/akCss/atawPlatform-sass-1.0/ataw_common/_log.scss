@@ -1,0 +1,55 @@
+﻿.Hm-plug-timeline {
+    position: relative;
+    height: .5rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    em {
+        $h: .5rem;
+        display: inline-block;
+        position: absolute;
+        top: .8rem;
+        width: $h;
+        height: $h;
+        border-radius: 50%;
+        background: #828282;
+    }
+    .Hu-main-timelime {
+        z-index: 0;
+        position: absolute;
+        top: 3rem;      
+        width: 100%;
+        height: 2px;
+        border: none;
+        border-top: 3px solid #bbb;
+        p{ margin-right: -2rem;}
+    }
+    .Hu-vertical-timelime {
+    z-index: 1;
+    position: absolute;
+    top: 2rem;
+    width: .5rem;
+    height: 1rem;
+    border-left: 2px solid #bbb;
+    clear: both;
+    p {
+        margin-top: 1rem;
+    }
+}
+}
+.Hm-plug-table {
+    width: 100%;
+    margin-top: 1rem;
+    overflow: auto;
+    /*tr {
+        margin-bottom: .5rem;
+        td:last-child {
+            position: relative;
+            width: 8.5rem;
+        }
+        th:first-child { width: 65%;}
+    }*/
+    tr{
+        th,td { border: 1px solid #ccc;}
+    }
+}

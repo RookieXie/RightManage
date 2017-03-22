@@ -1,0 +1,71 @@
+﻿$num3: .1875rem;
+$num10: .625rem;
+$num12: .75rem;
+$num20:1.25rem;
+$num30:1.875rem;
+$num50: 3.125rem;
+$num160: 10rem;
+$num210: 13.125rem;
+$white: #fff;
+$tsp: transparent;
+
+
+@mixin display($display: inline-block) {
+    display: $display;
+}
+@mixin float($f) {
+    float: $f;
+}
+@mixin radius($r){
+    border-radius: $r;
+}
+@mixin pos($a,$b,$c,$d,$e){
+    position: $a;
+    top: $b;
+    right: $c;
+    bottom: $d;
+    left: $e;
+}
+@mixin box-shadow($shadow: 1px 2px 5px #eee inset) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+@mixin scroll {
+    &::-webkit-scrollbar {
+    width: 0px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track     {
+        background:#ddd;
+    }
+  &::-webkit-scrollbar-thumb{
+        background:#eee;
+        border-radius:4px;
+    }
+    &::-webkit-scrollbar-corner {
+        background:#eee;
+    }
+    &:hover::-webkit-scrollbar { width: 5px;}
+}
+
+.top-bar-section {
+    li {
+        span {color: $white;}
+        i { margin-left: .5rem;}
+    }
+    .more-listmenu {
+        z-index: 88888;
+        li {
+            float: none;
+        }
+    }
+}
+@media screen and (max-width: 40em) {
+    .top-bar-section {
+        .more-listmenu {
+            display: block;
+        }
+        .more-text { display: none;}
+    }
+}

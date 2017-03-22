@@ -1,0 +1,39 @@
+﻿.Hm-areas {
+    .Hm-list {
+        padding: 0;
+        background: #f2f3f3;
+    }
+    ul {
+        padding-top: 4rem;
+        li {
+            margin: .5rem 0;
+            padding-left: 1rem;
+            i{ 
+                margin-right: .5rem;
+                color: #c7c7c7;
+
+            }
+            &.active {               
+                padding: .2rem;
+                padding-left: 1rem;
+                background: #fff;
+                color: #464646;
+                font-weight: bold;
+                i{ color: #72c3f5;}
+            }
+            p{ text-align: center;}
+        }
+    }
+    .Hu-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: .5rem;
+    }
+    .table {
+        th:first-child,td:first-child { text-align: left !important;}
+    }
+}
+.Hm-areas-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

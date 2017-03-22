@@ -1,0 +1,122 @@
+/* General styles for the modal */
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+
+
+.md-modal {
+	position: fixed;
+	height:100%; 
+	width:100%;
+	min-width: 320px;
+	z-index: 2000;
+	background-color: rgba(167, 160, 161, 0.31); 
+	-moz-opacity: 0.7;  
+	opacity:.70;  
+	filter: alpha(opacity=70);
+	
+}
+
+.md-show {
+	visibility: visible;
+}
+
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+	height:100%; 
+	width:100%;
+	color: #000;
+	z-index: 2001;
+	display:block;
+	background: #fff;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+	margin-top:30px;
+}
+
+.md-content h3 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: rgba(0,0,0,0.1);
+	border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	padding: 15px 40px 30px;
+	margin: 0;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.md-content > div ul {
+	margin: 0;
+	padding: 0 0 30px 20px;
+}
+
+.md-content > div ul li {
+	padding: 5px 0;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+/* Individual modal styles with animations/transitions */
+
+
+/* Effect 10: 3D sign */
+.md-effect-10.md-modal {
+	-webkit-perspective: 1300px;
+	-moz-perspective: 1300px;
+	perspective: 1300px;
+}
+
+.md-effect-10  {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: rotateX(-60deg);
+	-moz-transform: rotateX(-60deg);
+	-ms-transform: rotateX(-60deg);
+	transform: rotateX(-60deg);
+	-webkit-transform-origin: 50% 0;
+	-moz-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show.md-effect-10  {
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	-ms-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	opacity: 1;
+}
+.md-nav{
+	
+}
+/* Effect 11: Super scaled */

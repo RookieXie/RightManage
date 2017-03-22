@@ -1,0 +1,78 @@
+@charset "UTF-8";
+.Hg-login-o.Hs-login-bg {
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-color: #b7bbc6; }
+  .Hg-login-o.Hs-login-bg .Hm-container {
+    top: 10rem; }
+
+.Hm-login-body {
+  background-color: rgba(255, 255, 255, 0.67) !important; }
+  .Hm-login-body .logo img {
+    z-index: 555;
+    position: absolute;
+    top: -1.6rem;
+    left: 50%;
+    width: 4.375rem;
+    height: 3.75rem;
+    margin-left: -2.5rem; }
+  .Hm-login-body .circle {
+    position: absolute !important;
+    top: -3.5rem;
+    left: 50%;
+    width: 7.5rem;
+    height: 7.5rem;
+    margin-left: -3.75rem;
+    background: #fff;
+    border-radius: 50%; }
+  .Hm-login-body .light-circle {
+    position: absolute !important;
+    top: -2.95rem;
+    left: 50%;
+    width: 6.25rem;
+    height: 6.25rem;
+    margin-left: -3.125rem;
+    border-radius: 50%;
+    background: url(/Areas/T9eng/Content/images/circle-bg.png) no-repeat center center;
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear; }
+  .Hm-login-body .title {
+    margin: 0;
+    margin-top: 1.5625rem;
+    color: #333;
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap; }
+  .Hm-login-body .form-control {
+    background: rgba(255, 255, 255, 0.67) !important; }
+
+.ACT-HEADER-BODY {
+  line-height: 4.5rem;
+  background: #fff !important; }
+  .ACT-HEADER-BODY .ACT-HEADER-LOGO {
+    display: inline-block;
+    position: relative;
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+    padding: .8rem 0 0 0;
+    width: 16.66%;
+    height: 5rem;
+    background: #34353c; }
+    .ACT-HEADER-BODY .ACT-HEADER-LOGO img {
+      width: 3.125rem !important; }
+    .ACT-HEADER-BODY .ACT-HEADER-LOGO:after {
+      content: "九腾汽修";
+      position: absolute;
+      left: 6rem;
+      top: .2rem;
+      color: #fff;
+      font-size: 26px; }
+  .ACT-HEADER-BODY .Hm-navbar {
+    width: 83.34%;
+    padding: 0 !important;
+    margin-left: 16.66%;
+    box-shadow: .125rem .125rem .3125rem #ccc; }
+
+.ACT-HEADER-MENU {
+  margin-left: 1rem; }

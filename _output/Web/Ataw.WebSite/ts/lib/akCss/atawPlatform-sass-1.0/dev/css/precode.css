@@ -1,0 +1,17 @@
+.Hm-precode {
+  background: #000;
+  font-size: .95rem;
+  color: #a4a4a4; }
+  .Hm-precode li {
+    margin-bottom: .5rem; }
+
+.Hu-precode-icon {
+  display: inline-block;
+  float: left;
+  width: 2.5rem; }
+
+.Hu-precode-content {
+  display: inline-block;
+  width: -webkit-calc(100% - 2.5rem);
+  width: -moz-calc(100% - 2.5rem);
+  width: calc(100% - 2.5rem); }

@@ -1,0 +1,234 @@
+﻿body { 
+    background: #fff;
+    font-family: 'Microsoft YaHei'!important;
+    font-size: .85rem;
+}
+$loading-bg:                                    #72c3f5;
+
+$login-bg:                                      #fff !default;
+$login-height:                                  inherit !default;
+$login-mb:                                      1.5625rem !default;
+$login-float:                                   left;
+$login-text-color:                              #2a2a2a !default;
+$login-text-shadow:                             none !default;
+$login-text-align:                              center !default;
+$login-form-top:                                0 !default;
+
+$white:                                         #fff;
+$main-content-text:                             #76838f;
+$workflow-tab-bottom-color:                     #c0c5ce;
+$workflow-tab-active-bottom-color:              #fff;
+$apply-text-color:                              #333;
+
+$left-menu-bg:                                  #eee !default;
+
+$table-th-text-color:                           #37474f !default;
+
+$workflow-tab-li-width:                         auto;
+$workflow-tab-mr:                               0;
+
+$table-btngroup-m:                              .625rem !default;
+$radio-radio-ml:                                1.125rem !default;
+$modal-body-padding-x:                          1.25rem !default;
+
+$workbench-line-width:                          1.6875rem !default;
+$workbench-line-height:                         .125rem !default;
+$workbench-line-red:                            #eb8b8b !default;
+$workbench-line-blue:                           #adeaf7 !default;
+
+$modals-title-color:                            #fff !default;
+$modals-content-top:                            8rem !default;
+$modals-content-width:                          77%;
+$modals-close-top:                              6.225rem !default;
+$modals-close-right:                            15%;
+$modals-tab-content-padding-top:                1.5rem !default;
+$pagination-span-margin-tb:                     0 !default;
+
+$input-height:                                  1.75rem;
+$input-border-color:                            #aab2bd !default;
+
+$picker-padding-y:                              .2rem !default;
+$picker-padding-x:                              .7rem !default;
+$picker-margin-bottom:                          .5rem !default;
+$picker-item-bg:                                #e4eaec !default;
+$picker-color:                                  #76838f !default;
+
+$table-border-color:                            #dde0e5 !default; 
+$table-tr-checked:                              #fcf8e3 !default;
+$table-td-checked:                              #e3e7fc !default;
+
+$input-focus-border:                            #006ef5 !default;
+$input-focus-box-shadow:                        none !default;
+
+$naiv-bg:                                       #d9413a !default;
+$naiv-color:                                    #fff !default;
+
+$tree-naiv-child-checked:                       #d9413a !default;
+
+$grid-column-pl:                                .2rem;
+
+$Hc-multi-selector-i:                           #76838f !default;
+$Hc-multi-selector-i-right:                     .1rem !default;
+$Hc-multi-selector-border:                      #e4eaec !default;
+$Hc-multi-selector-border-checked:              0 !default;
+$Hc-multi-selector-border-color-checked:        transparent  !default; 
+
+$workflow-tab-bg:                               transparent !default;
+$Hc-listbox-title:                              #eee !default;
+
+$east-padding-y:                                0 !default;
+$east-padding-x:                                2rem !default;
+$east-padding-top:                              .55rem  !default; 
+$east-padding-right:                             0  !default; 
+$east-padding-bottom:                           .55rem  !default; 
+$east-padding-left:                              0 !default; 
+$east-margin-top:                               .1rem !default;
+$east-margin-right:                             0 !default;
+$east-margin-bottom:                            .1rem !default;
+$east-margin-left:                              0 !default;
+$east-border:                                   transparent !default;
+$east-border-hover:                             #488bff !default;
+$east-li-bg:                                    rgba(72,139,255,.1) !default;
+$east-checked-color:                            #222 !default;
+$east-li-color:                                 #222 !default;
+$east-disabled-color:                           #222 !default;
+
+$search-label-width:                            8rem!default;
+$label-text-align:                              right !default;
+$search-content-padding:                        .2rem !default;
+$left-or-none:                                  left !default;
+$left-or-right:                                 right !default;
+$right-or-none:                                 right!default;
+
+$btn-disabled-bg:                               #fff;
+$btn-disabled-border-color:                     #338fff;
+$btn-disabled-color:                            #338fff;
+
+$btn-trash-bg:                                 #d9413a;
+$btn-trash-bg-hover:                           #bc2b24;
+$btn-trash-border-color:                       transparent;
+$btn-trash-color:                              #fff;
+
+$btn-insert-bg:                                 #338fff;
+$btn-insert-bg-hover:                           #0073ff;
+$btn-insert-border-color:                       transparent;
+$btn-insert-color:                              #fff;
+
+$btn-out-bg:                                    transparent;
+$btn-out-color:                                 #338fff;
+$btn-out-bg-hover:                              transparent;
+$btn-out-color-hover:                           #0073ff;
+
+$line-width:                                    60rem;
+$line-padding-top:                              1.5rem;
+$line-ul-margin-left:                           5rem;
+
+$line-title-margin-left:                        4rem;
+$line-title-margin-bottom:                      1rem;
+$line-title-span-margin-left:                   1rem;
+$line-title-span-font-size:                     .875rem;
+$line-title-span-color:                         #333;
+
+$line-year-margin-top:                          2rem;
+$line-year-margin-left:                         7rem;
+$line-year-width:                               3rem;
+$line-year-font-size:                           .875rem;
+$line-year-color:                               $white;
+$line-year-bg:                                  #a3abbe;
+
+$line-date-pos:                                 absolute;
+$line-date-top:                                 3.2rem; 
+$line-date-right:                               null;
+$line-date-bottom:                              null;
+$line-date-left:                                -5.8rem;
+$line-date-color:                                #666;
+$line-date-width:                               4.8rem;
+$line-date-font-size:                           0.8125rem;
+$line-first-date-color:                         #78bcfd;
+
+$line-li-padding-top:                           1.875rem;
+$line-li-padding-right:                         0;
+$line-li-padding-bottom:                        0;
+$line-li-padding-left:                          1.875rem;
+$line-border-color:                             #eee;
+
+$line-item-box-h-shadow:                        0;
+$line-item-box-v-shadow:                        2px;
+$line-item-box-blur:                            4px;
+$line-item-box-spread:                          0;
+$line-item-box-color:                           #ddd;                          
+$line-item-border-color:                        #ddd;
+$line-first-item-border-color:                  #9adaff;
+
+$line-div-padding-top:                          1rem;
+$line-div-padding-right:                        1.25rem;
+$line-div-padding-bottom:                       0;
+$line-div-padding-left:                         2.5rem;
+$line-div-margin-left:                         .625rem;
+
+$line-li-padding-bottom:                      .8rem;
+$line-padding-left:                             1rem;
+$line-a-width:                                  100%;
+$line-a-min-height:                             2.35rem;
+$line-a-font-size:                              .8125rem;
+
+$line-circle-bg:                                #eee;
+$line-circle-width:                             1.25rem;
+$line-circle-height:                            1.25rem;
+$line-circle-border:                            .25rem;
+$line-circle-border-color:                      $white;
+$line-circle-border-radius:                     50%;
+$line-circle-pos:                               absolute;
+$line-circle-top:                               3.2rem; 
+$line-circle-right:                             null;
+$line-circle-bottom:                            null;
+$line-circle-left:                              -.7rem;
+$line-first-circle-bg:                          #78bcfd;
+
+$line-font-color:                               #37474f;
+$line-first-color:                              #78bcfd;
+$line-first-border-color:                       #9adaff;
+
+$line-triangle-pos:                             absolute;
+$line-triangle-left:                            .65rem;
+$line-triangle-top:                             3.2rem;
+$line-triangle-width:                           0;
+$line-triangle-height:                          0;
+$line-triangle-border-width:                    .625rem;
+$line-triangle-border-color:                    #ddd;
+$line-triangle-border-top-color:                transparent;
+$line-triangle-border-left-color:               transparent;
+$line-triangle-border-bottom-color:             transparent;
+
+$line-triangle-after-border-color:              $white;
+$line-triangle-after-right:                     -.75rem;
+$line-triangle-after-top:                       -.625rem;
+
+$pagination-makeup-margin-top:                  0;
+
+//comment
+$com-color:                                     #03A9F4;
+$com-detail-a-color:                            #428bca;
+$circle-top:                                    .3rem;
+$circle-right:                                  -1rem;
+
+$header-menu-h:                                  3.625rem;
+$header-menu-line-h:                             3.625;
+$header-menu-sys-mr:                             1rem;
+
+//breadcrumb
+$breadcrumb-color:                              #0078a0;
+
+$shortcut-link-color:                           #666;
+$shortcut-link-hover--color:                    #428bca;
+$shortcut-news-top:                             .5rem;
+$shortcut-news-right:                           28%;
+$shortcut-news-width:                           1.8rem;
+$shortcut-news-height:                          1.8rem;
+$shortcut-news-bg:                              #f36e5d;
+
+//applink
+$applink-icon-bg:                                #d9413a ;
+
+//treemenu
+$tree-menu-animation:                           fadeInDown 0 ease-in-out;

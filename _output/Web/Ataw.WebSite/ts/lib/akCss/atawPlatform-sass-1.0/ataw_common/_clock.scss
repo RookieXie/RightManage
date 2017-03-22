@@ -1,0 +1,84 @@
+﻿
+.Hm-clock{
+    position: relative;
+    display: inline-block;
+    top: 0;
+    .Hu-single-panel{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:12.5rem;
+            height:12.5rem;
+            background:url("../images/platform/panel.png");
+    }    .Hu-double-panel{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:62.5rem;
+            height:62.5rem;
+            background:url("../images/platform/big-panel.png");
+
+    }
+}
+.Hu-single-animation{
+    width:12.5rem;
+    height:12.5rem;
+    background:url("../images/platform/number.png");
+    -moz-animation-name: arrow;    
+    -moz-animation-timing-function: steps(10, end);
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-name: arrow;    
+    -webkit-animation-timing-function: steps(10, end);
+    -webkit-animation-iteration-count: infinite;
+    animation-name: arrow;    
+    animation-timing-function: steps(10, end);
+    animation-iteration-count: infinite;
+
+}
+.Hu-double-animation{
+    width:62.5rem;
+    height:62.5rem;
+    background:url("../images/platform/00-99.png");
+    -moz-animation-name: arrow;    
+    -moz-animation-timing-function: steps(100, end);
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-name: arrow;    
+    -webkit-animation-timing-function: steps(100, end);
+    -webkit-animation-iteration-count: infinite;
+    animation-name: arrow;    
+    animation-timing-function: steps(100, end);
+    animation-iteration-count: infinite;
+
+
+}
+@-webkit-keyframes arrow {
+     from  { -webkit-transform: rotateZ(-0deg);
+             -moz-transform: rotateZ(-0deg);
+             transform: rotateZ(-0deg);
+     }
+     to{-webkit-transform: rotateZ(-360deg);
+        -moz-transform: rotateZ(-360deg);
+        transform: rotateZ(-360deg);
+     }}
+
+
+.Hu-circle {
+    width: 0;
+    height: 0;
+    border-right: 31rem solid $white;
+    border-top: 31rem solid transparent;
+    border-left: 31rem solid $white;
+    border-bottom: 31rem solid $white;
+    border-radius: 31rem;
+
+}
+.Hu-position-left{
+    position: absolute;
+    top: 0;
+    transform:rotate(-42.5deg);
+}
+.Hu-position-right{
+    position: absolute;
+    top: 0;
+    transform:rotate(43.5deg);
+}

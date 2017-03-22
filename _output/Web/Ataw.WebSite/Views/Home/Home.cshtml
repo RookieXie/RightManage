@@ -1,0 +1,62 @@
+﻿
+<script src="/ts/lib/jquery/jquery.js"></script>
+<script src="/ts/lib/jquery/jquery-migrate-1.2.1.js"></script>
+<script src="/ts/lib/jquery/json.js"></script>
+<script src="/ts/lib/EventEmitter2/eventemitter2.js"></script>
+<script src="/ts/lib/require/require.js" data-main="./../Hull"></script>
+<link href="/ts/lib/bootstrap/TreeMenu.css" rel="stylesheet">
+<link href="/ts/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="/ts/lib/bootstrap/component.css" rel="stylesheet">
+<link href="/ts/lib/bootstrap/Panel.css" rel="stylesheet">
+<link href="/ts/lib/bootstrap/dashboard.css" rel="stylesheet">
+
+<script src="/ts/lib/bootstrap/bootstrap.min.js"></script>
+
+<script src="/ts/lib/require/css.js"></script>
+<script src="/ts/lib/jquery/jquery.jsonp.js"></script>
+<!--<script src="lib/Classical/classical.js"></script>-->
+<script src="/ts/lib/finch/finch.min.js"></script>
+@*@Html.Partial("_RequireJs");*@
+<script>
+    requirejs.config({
+        paths: {
+            react: '../ts/lib/react/react',
+            "react-dom": '../ts/lib/react/react-dom',
+            classnames: '../ts/lib/classname/classnames',
+            lodash:'../ts/lib/lodash/lodash.min',
+            antd: '../ts/lib/antd/antd.min',
+            "rc-table": '../ts/lib/rc-table/rc-table'
+        }
+    })
+	    window.RMSysObj = {};
+    window.RMSysObj.NickName = "@ViewBag.NickName";
+</script>
+@*<script src="/ts/lib/akCss/rocket.js"></script>*@
+<script src="/ts/lib/akCss/returnTop.js"></script>
+
+<body>
+    @*<div class="Hm-loading" id="ACT-Loading">
+        <div class="Hc-loading">
+            <div class="Hu-pacman">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>*@
+
+    @*返回顶部*@
+    @*<div style="display:none;" id="rocket-to-top">
+            <div style="opacity: 0;display:block;" class="level-2"></div>
+            <div class="level-3"></div>
+        @*</div>*@
+    @*<a href="#0" class="cd-top">Top</a>*@
+
+
+    <div id="ACT-DIV-SHELL">
+
+    </div>
+
+</body>

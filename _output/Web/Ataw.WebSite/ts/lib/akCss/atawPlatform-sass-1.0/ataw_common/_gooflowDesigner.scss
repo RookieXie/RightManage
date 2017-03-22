@@ -1,0 +1,52 @@
+﻿.Hm-gooflow {
+    position:absolute;
+    right:0;
+    background:$white;
+    overflow-y:auto;
+   .nav-pills .nav-item{
+        margin-bottom:.5rem;
+    }
+}
+   .Hm-popup{
+      margin-top:1rem;
+        .Hc-radio-list{
+            display:inline-block;
+        }
+        .panel{
+             padding:0 !important;
+             border-color:#b7c0ef;
+        } 
+        .panel-heading{
+            padding:0 .5rem !important; 
+            background:#b7c0ef;
+            border-color:#b7c0ef;
+        }
+        label{
+             padding: .5rem;
+             width: 5rem;
+             text-align: right;
+        }
+        select{ display:inline-block;}
+        .btn-sm{ padding:2px 8px !important;}   
+         
+    }
+   
+  .Hm-callout{
+        padding: 1rem 0;
+        margin: 0 0 1.25rem 0;
+        background:#f7f7f7;
+        border: 1px solid #eee;
+        border-left-color:#0078a0;
+        border-left-width: 5px;
+        border-radius: 3px;
+
+        label{
+            font-size:0.875rem;
+            font-weight: bold;
+            color:#444;
+        }
+        select{ width:auto !important;}
+    }
+.Hu-gooflow{
+    display:inline-block;
+}

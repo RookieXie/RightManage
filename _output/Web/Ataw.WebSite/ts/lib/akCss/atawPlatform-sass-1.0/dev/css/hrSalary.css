@@ -1,0 +1,112 @@
+/** 2017.2.15 hdz */
+.rc-table {
+  color: #555 !important;
+  font-size: .85rem; }
+
+.rc-table th {
+  background: #fff !important;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  text-align: center;
+  font-weight: normal !important; }
+
+.rc-table td {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  text-align: center; }
+
+.rc-table-header {
+  overflow-y: hidden;
+  border-right: 1px solid; }
+
+.rc-table-scroll .rc-table-fixed tr:nth-child(1) th:nth-child(5), .rc-table-scroll .rc-table-fixed tr:nth-child(1) th:nth-child(8), .rc-table-scroll .rc-table-fixed tr:nth-child(1) th:nth-child(10), .rc-table-scroll .rc-table-fixed tr:nth-child(1) th:nth-child(12) {
+  background: #dbeef4 !important; }
+
+.rc-table-scroll .rc-table-fixed tr:nth-child(2) th:nth-child(5), .rc-table-scroll .rc-table-fixed tr:nth-child(2) th:nth-child(11), .rc-table-scroll .rc-table-fixed tr:nth-child(2) th:nth-child(21) {
+  background: #cefffc !important; }
+
+.rc-table-scroll .rc-table-fixed td:nth-child(14), .rc-table-scroll .rc-table-fixed td:nth-child(19), .rc-table-scroll .rc-table-fixed td:nth-child(26), .rc-table-scroll .rc-table-fixed td:nth-child(29) {
+  background: #dbeef4 !important; }
+
+.rc-table-scroll .rc-table-fixed td:nth-child(7), .rc-table-scroll .rc-table-fixed td:nth-child(13), .rc-table-scroll .rc-table-fixed td:nth-child(25) {
+  background: #cefffc !important; }
+
+.panel {
+  padding: 0 !important; }
+
+.Hm-hr-salary ul li {
+  line-height: 2; }
+
+.Hm-hr-editpage .panel-body span {
+  float: left;
+  width: 35%;
+  text-align: center;
+  margin-right: .5rem; }
+
+.Hm-hr-editpage .panel-body span + div {
+  float: left;
+  width: 60%; }
+
+@media (max-width: 85.375rem) {
+  .Hm-modals-shape {
+    width: 100% !important; }
+  .Hm-hr-editpage .panel-body span + div {
+    width: 50%; } }
+
+.panel-footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd; }
+
+.Hu-tpl-text {
+  color: #72C3F5; }
+
+.Hu-warning {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+  background: rgba(255, 29, 29, 0.5);
+  z-index: 9999;
+  color: #fff; }
+
+.Hu-warning-animated {
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: .5s;
+  -moz-animation-duration: .5s;
+  -ms-animation-duration: .5s;
+  -o-animation-duration: .5s;
+  animation-duration: .5s; }
+
+@-webkit-keyframes moveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px); }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateY(0); }
+  100% {
+    opacity: 0; } }
+
+.Ha-move-top {
+  -webkit-animation: moveTop 1s ease both;
+  animation: moveTop 1s ease both; }
+
+.datetimepicker table tr td span.active:hover, .datetimepicker table tr td span.active:hover:hover, .datetimepicker table tr td span.active.disabled:hover, .datetimepicker table tr td span.active.disabled:hover:hover, .datetimepicker table tr td span.active:active, .datetimepicker table tr td span.active:hover:active, .datetimepicker table tr td span.active.disabled:active, .datetimepicker table tr td span.active.disabled:hover:active, .datetimepicker table tr td span.active.active, .datetimepicker table tr td span.active:hover.active, .datetimepicker table tr td span.active.disabled.active, .datetimepicker table tr td span.active.disabled:hover.active, .datetimepicker table tr td span.active.disabled, .datetimepicker table tr td span.active:hover.disabled, .datetimepicker table tr td span.active.disabled.disabled, .datetimepicker table tr td span.active.disabled:hover.disabled, .datetimepicker table tr td span.active[disabled], .datetimepicker table tr td span.active:hover[disabled], .datetimepicker table tr td span.active.disabled[disabled], .datetimepicker table tr td span.active.disabled:hover[disabled] {
+  /*background-color: #72C3F5 !important;
+    background-image: none !important;*/ }
+
+.Hu-inline, .Hu-inline > div {
+  display: inline; }
+
+.Hu-nodata {
+  width: 244.5px;
+  height: 251.5px;
+  margin: 0 auto;
+  background: url("../../../images/hr/nodata.png") 50% 50%;
+  background-size: 80% 80%;
+  background-repeat: no-repeat; }

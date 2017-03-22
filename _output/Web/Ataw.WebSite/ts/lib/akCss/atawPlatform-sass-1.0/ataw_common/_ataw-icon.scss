@@ -1,0 +1,33 @@
+﻿.Hm-ataw-icon{
+    .Hu-pd-0{ 
+        padding-left:0;
+        padding-right:0;
+    }
+    .Hu-logo{
+        margin-bottom:1rem;
+        text-align:center;
+        span{ 
+            margin-left:1rem;
+            vertical-align:middle;
+            font:bold 1.75rem Keep Calm Regular;
+        }
+
+    }
+    .Hu-icon-item{ 
+        padding:.5rem;       
+        line-height:3;
+        border-bottom: 1px dashed #ddd;       
+        i{
+            display:inline-block;
+            margin-right: .875rem;
+            width:2rem;
+            text-align: right;
+            vertical-align:middle;
+        }
+        &:hover{
+            background:#7294f5;
+            color: white;
+            i{ font-size:2rem;}
+        }
+    }
+}

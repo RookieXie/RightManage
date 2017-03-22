@@ -1,0 +1,47 @@
+.Hm-desk-report > div:nth-child(1) .panel-heading {
+  background: #88abda; }
+.Hm-desk-report > div:nth-child(2) .panel-heading {
+  background: #8c97cb; }
+.Hm-desk-report > div:nth-child(3) .panel-heading {
+  background: #f6b37f; }
+.Hm-desk-report > div:nth-child(4) .panel-heading {
+  background: #88abda; }
+.Hm-desk-report > div:nth-child(5) .panel-heading {
+  background: #80c269; }
+.Hm-desk-report > div:nth-child(6) .panel-heading {
+  background: #00b7ee; }
+.Hm-desk-report > div:nth-child(7) .panel-heading {
+  background: #13b5b1; }
+.Hm-desk-report > div:nth-child(8) .panel-heading {
+  background: #448aca; }
+
+.Hm-report-panel {
+  margin-bottom: 2.25rem;
+  background: #eee;
+  border-radius: .125rem; }
+  .Hm-report-panel .panel-heading {
+    padding: .525rem .9375rem !important;
+    color: white !important;
+    border-radius: .125rem; }
+    .Hm-report-panel .panel-heading .panel-title {
+      margin-bottom: 0; }
+      .Hm-report-panel .panel-heading .panel-title i:nth-child(1) {
+        transform: rotate(135deg); }
+  .Hm-report-panel .panel-body {
+    padding: 1.375rem .625rem 1rem;
+    margin: .625rem;
+    background: white;
+    overflow: auto; }
+    .Hm-report-panel .panel-body table thead {
+      background: #eee; }
+    .Hm-report-panel .panel-body table tbody {
+      background: #f8f8f8; }
+      .Hm-report-panel .panel-body table tbody tr:last-child {
+        background: #fffde2; }
+    .Hm-report-panel .panel-body table tr {
+      border-bottom: 1px solid #fff; }
+    .Hm-report-panel .panel-body table th, .Hm-report-panel .panel-body table td {
+      border: none !important;
+      padding: .65rem 1.25rem; }
+    .Hm-report-panel .panel-body.Hu-height {
+      max-height: 16.82rem; }
