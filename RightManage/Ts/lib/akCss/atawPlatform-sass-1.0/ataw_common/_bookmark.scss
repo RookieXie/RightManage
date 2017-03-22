@@ -1,0 +1,52 @@
+﻿.Hm-mark{
+    display: inline-block;
+    position: absolute;
+    right: 15rem;
+    top: 3.6rem;
+    padding: .5rem .5rem 2rem;
+    width: 20rem;
+    line-height: 2;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: $white;
+    color: #666;
+    z-index:22;
+    h5{
+        padding-bottom: .5rem;
+        padding-left: 1rem;
+        border-bottom: 1px solid #ebebeb;
+    }
+    .btn{
+       padding: .1rem 1rem !important;
+    }
+}
+.Hm-collect-panel{ 
+    position:absolute;
+    top: 5rem;
+    left: 50%;
+    margin-left: -13rem;
+    padding:1rem 1.2rem;
+    width: 26rem;
+    border: 1px solid #ccc;
+    background: $white;
+    box-shadow: 0 0 1px 2px #eee;
+    z-index:22;
+
+   h5{  
+       padding-bottom: .5rem;
+       padding-left: 1rem;
+       border-bottom: 1px solid #ebebeb;
+}
+
+.Hu-folder-box{    
+    width: 23.5rem;
+    height: 15rem;
+    background: white;
+    border: 1px solid #ccc; 
+    overflow:auto;
+    i{ margin-right:.2rem; }
+  }
+ .btn{
+     padding: .1rem 1rem !important;
+}
+}

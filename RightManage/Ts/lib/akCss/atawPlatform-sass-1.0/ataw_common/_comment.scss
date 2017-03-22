@@ -1,0 +1,67 @@
+﻿    .Hu-content {
+        position:relative;
+        margin-top:1rem;
+        textarea{
+            float: left;
+            height: 1.75rem;
+            border: 1px solid $com-color;
+            border-radius: 0.2rem;
+        }
+        
+    }
+
+    .Hu-publish {
+        position:absolute;
+        top:2rem;
+        margin-left:.5rem;
+        line-height: 2;
+        span{
+            color:$com-color !important;
+            
+        }        
+        .qqFace{
+            border:1px solid #ddd;
+            background:$white;}
+    }
+    .Hu-sub{
+            float:right;
+            color:$white !important;
+            background: $com-color;
+            border: 1px solid $com-color;
+    }
+
+    .Hm-comment-list {
+        margin-top:1rem;
+        a{ color:$com-color;} 
+        .Hu-review{
+            margin-left:1rem;
+            color:#f0ad4e
+        }         
+                
+    }
+
+    .Hm-item {
+        position: relative;
+        padding: 1rem 0 .5rem 0;
+        border-bottom: 1px dashed #bbb;
+
+        .Hu-head-img {
+            position: absolute;
+            top: 1.2rem;
+
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+        }
+
+        .Hu-comment-detail {
+            padding-left: 3rem;            
+            span{ color:#999;}
+            a+span{margin:0 .2rem;}
+            &>div:nth-child(3){
+                a{ color:$com-detail-a-color;}
+            }
+        }
+    }

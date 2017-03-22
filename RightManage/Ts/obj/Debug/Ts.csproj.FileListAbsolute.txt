@@ -1,0 +1,5 @@
+E:\AtawSource\Products\RightManage\Ts\bin\Ts.dll.config
+E:\AtawSource\Products\RightManage\Ts\bin\Ts.dll
+E:\AtawSource\Products\RightManage\Ts\bin\Ts.pdb
+E:\AtawSource\Products\RightManage\Ts\obj\Debug\Ts.dll
+E:\AtawSource\Products\RightManage\Ts\obj\Debug\Ts.pdb

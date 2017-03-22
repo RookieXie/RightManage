@@ -1,0 +1,87 @@
+﻿.Hs-login-bg {  
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.Hm-login-body {
+    .logo {
+        img {
+            z-index: 555;
+            position: absolute;
+            top: 11%;
+            left: 50%;
+            width: 4.375rem;
+            height: 3.75rem;
+            margin-left: -2.5rem;
+        }
+    }
+    .circle {
+        position: absolute !important;
+        top: 5%;
+        left: 50%;
+        width: 7.5rem;
+        height: 7.5rem;
+        margin-left: -3.75rem;
+        background: #fff;
+        border-radius: 50%;
+    }
+    .light-circle {
+        position: absolute !important;
+        top: 7%;
+        left: 50%;
+        width: 6.25rem;
+        height: 6.25rem;
+        margin-left: -3.125rem;
+        border-radius: 50%;
+        background: url(/Areas/EstateManage/Content/images/circle-bg.png) no-repeat center center;
+        -webkit-animation: spin 2s infinite linear;
+        animation: spin 2s infinite linear;
+    }
+    .title {
+        margin: 0;
+        margin-top: 1.5625rem;
+        color: #333;
+        font-size: 1.125rem;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+.ACT-HEADER-BODY {
+    background: #fff !important;
+    .ACT-HEADER-LOGO {
+        display: inline-block;
+        position: relative;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+        padding: .8rem 0 0 0;
+        width: 16.66%;
+        height: 5rem;
+        background: #2c3e50;
+        &:after {
+            content: "华悦物业";
+            position: absolute;
+            left: 6rem;
+            top: .2rem;
+            color: #fff;
+            font-size: 26px;
+        }
+    }
+    .Hm-navbar {
+        width: 83.34%;
+        padding: 0 !important;
+        margin-left: 16.66%;
+        box-shadow: .125rem .125rem .3125rem #ccc;
+    }
+}
+.modal-header.Hu-naiv{
+    .Hu-modals-title{ color:white !important;}
+    .Hu-close{ color:white !important;}
+}
+.modal-footer{
+    text-align:center !important;
+}
+.tabbable .ask-search .Hu-search-label{
+    width: 8rem; 
+    line-height: 2rem;
+    text-align: right !important;
+}

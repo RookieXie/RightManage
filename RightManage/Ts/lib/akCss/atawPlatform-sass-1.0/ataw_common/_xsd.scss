@@ -1,0 +1,36 @@
+﻿.Hm-xsd {
+    $width: 60%;
+    width: $width;
+    padding-right: 1rem !important;
+    margin-bottom: 1rem;
+    border: 1px solid #aaa;
+    border-radius: .1875rem;
+    .Hm-xsd { width: 100%;}
+    .Hu-title {
+        border: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .Hu-note {
+        display: block;
+        margin-left: .5rem;
+        border-top: 1px dotted #bbb;
+        font-size: 1rem;
+        text-indent: 3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;       
+    }
+}
+.Hm-xsd-list {
+    padding: 0;
+    background: #f2f3f3;
+    li {
+        margin: .2rem 0;
+        padding-left: 2rem;
+    }
+}
+.Hu-note-expend {
+    text-overflow: initial !important;
+    white-space: normal !important;
+}

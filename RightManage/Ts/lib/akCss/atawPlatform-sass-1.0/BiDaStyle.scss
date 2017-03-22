@@ -1,0 +1,62 @@
+﻿
+@import "skin/_BiDaskin.scss";
+@import "ataw_common/_animate.scss";
+@import "ataw_common/_login.scss";
+
+.formTypeBtnBar {
+    .btn-group {
+        a { color: #980d43;}
+    }
+}
+.fn-bottom .legend .nav-tabs > li.active > a, .fn-bottom .legend .nav-tabs > li.active > a:hover, .fn-bottom .legend .nav-tabs > li.active > a:focus {
+    border-bottom: 3px solid #76002d !important;
+}
+::-webkit-scrollbar {width: 5px;}
+::-webkit-scrollbar-track {border-radius: 5px;}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(178,178,178,0.5);
+    }
+
+.panel-footer {
+    background-color: transparent;
+    border-top: none;
+}
+
+.ACT-HEADER-BODY {
+    box-shadow: .125rem .125rem .3125rem #ccc;
+}
+
+/** header */
+.Hf-menu-scroll {
+    .inner .nav-item:first-child,.nav-item + .nav-item{
+        margin-left:0;
+    }
+    .navbar-nav {
+        .nav-link {
+            padding: {
+                left: .8rem;
+                right: .8rem;
+            }
+        }
+    }
+}
+.Hm-navbar {
+    .navbar-nav {
+    .nav-link {
+        padding: {
+            left: .5rem;
+            right: .5rem;
+        }
+    }
+}
+}
+.panel-title {
+    color: #555;
+}
+//树形问题
+ul.ztree li span.button.switch{
+    width:1.2rem !important;
+    height:1.5rem !important;
+}
+

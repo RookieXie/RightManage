@@ -1,0 +1,90 @@
+﻿
+.Hg-login-o {
+    width: 100%;
+    height: 41.875rem;
+    
+    &.Hs-login-bg{
+        background:$O-login-bg;
+        background-attachment: $O-bg-attachment;
+        -webkit-animation: $O-bg-animation;
+        -moz-animation: $O-bg-animation;
+        -ms-animation: $O-bg-animation;
+        -o-animation: $O-bg-animation;
+        animation: $O-bg-animation;
+    }
+    .Hm-container {
+        z-index: 9;
+        position: absolute;
+        top: 5rem;
+        left: 50%;
+        margin-left:-10.3125rem;
+        width: $O-container-w;
+        height: $O-container-h;   
+
+       .Hu-login-title{
+            display: block;
+            width: 100%;
+            font-size: 1.375rem;
+            color: $white;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: baseline;
+        }
+    }
+
+    .Hm-login-body {
+        margin-top: $O-login-body-mt;
+        padding-top: $O-login-body-pt;
+        padding-bottom: $O-login-body-pb;
+        background-color:$O-login-body-bg;
+        border-radius: $O-login-body-br;
+
+        form {
+            padding:$O-login-form-padding;
+             .submit{
+                 margin-top:$O-login-submit-mt;
+                 label{ 
+                     color:$O-rember-color;
+                 }
+                 input{
+                     margin-right:.5rem;
+                     margin-bottom: .3rem;
+                     vertical-align: middle;
+                 }
+             }
+        }
+
+        .control-group {
+            margin-bottom: $O-control-group-mb;
+
+            .logo {
+                display: inline-block;
+                padding: 0 1.875rem 1rem 2.5rem;
+                line-height: 2.875rem;
+
+                span {
+                    margin-left: 5px;
+                    vertical-align: top;
+                    color: $O-login-title;
+                    font-size: 1.625rem;
+                }
+            }
+        }
+        .form-control {
+                height: $O-form-control-h!important;
+                font-size: $O-form-control-fsize;
+                border-radius: $O-form-control-br;
+            }
+        .btn{
+            margin-top:$O-login-btn-mt;
+            width:100%;
+            height:$O-form-control-h;
+            background-color: $O-login-btn-bg;
+            border-color: $O-login-btn-border;
+            border-radius:$O-login-btn-br;
+            color:$O-login-btn-color;
+            font-size:$O-login-btn_fsize;
+            line-height:$O-login-btn-lh;
+        }
+    }
+}

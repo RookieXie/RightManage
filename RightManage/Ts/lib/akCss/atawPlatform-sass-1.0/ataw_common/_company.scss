@@ -1,0 +1,224 @@
+﻿.Hm-company {
+    width: 45%;
+
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+    .Hu-name {
+        font-size: 1.2rem;
+    }
+
+    .Hm-message {
+        img {
+            width: 4.375rem;
+        }
+
+        .Hm-content {
+            margin-left: 5rem;
+        }
+    }
+
+    .Hm-info {
+        span:first-child {
+            display: inline-block;
+            width: 3.5rem;
+            text-align: right;
+        }
+
+        span:nth-child(2) {
+            margin-left: 1rem;
+        }
+    }
+
+    .Hm-import {
+        padding: .5rem 0 1.5rem .5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+
+        > div {
+            display: inline-block;
+            padding-right: .5rem;
+            background: #eee;
+
+            i:first-child {
+                padding: .45rem 0;
+                width: 1.625rem;
+                height: 1.625rem;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 3px;
+                background: #72c3f5;
+                color: white;
+                text-align: center;
+            }
+
+            span {
+                margin-left: .5rem;
+            }
+        }
+    }
+
+    .btn-sm {
+        padding: 4px 10px;
+    }
+}
+
+.Hm-export {
+    margin-bottom: 1rem;
+    /*border-bottom: 1px solid #ccc;*/
+    .Hm-import {
+        span {
+            display: inline-block;
+            width: 10rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 1;
+        }
+    }
+
+    .Hm-select {
+        input { 
+            margin-bottom: 0 !important;
+            width:100%;
+        }
+       
+         & > ul { border: 1px solid #ddd;
+           
+              li {
+                line-height: 2;
+                &.active { background: #eee;}
+                div{  
+                    position:relative;
+                    padding-left: 2rem;}
+                .fa-caret-down, .fa-caret-right {
+                    position:absolute;
+                    top:.4rem;
+                    left:1rem;
+                    margin-right:.2rem;
+                }
+                .fa-folder {
+                    margin-right: .2rem;
+                    color: #72c3f5;
+                }
+                & > ul li {                  
+                    background: $white;
+                    div { margin-left:1rem; }
+                    & > ul li div { margin-left: 2rem;}
+                }
+               
+            }
+        }
+    }
+}
+
+.Hm-company-list {
+    ul {
+        li.nav-item {
+            position: relative;
+            margin: 1rem;
+            text-align: center;
+
+            &:hover {
+                i {
+                    display: block;
+                }
+            }
+
+            i {
+                display: none;
+                position: absolute;
+                top: -.55rem;
+                right: -.5rem;
+                color: red;
+            }
+        }
+    }
+}
+
+.Hm-invate {
+    width: 30%;
+    margin: 5rem auto;
+
+    .Hm-btn-group {
+        margin-left: 12.1875rem;
+    }
+}
+
+.Hu-tag {
+    margin-left: 6.25rem;
+
+    b {
+        font-size: 1.2rem;
+    }
+}
+
+.Hm-tag-info {
+    span:first-child {
+        display: inline-block;
+        width: 5.5rem;
+        text-align: right;
+    }
+
+    span:nth-child(2) {
+        margin-left: 1rem;
+    }
+}
+
+.Hm-tag-list {
+    /*& > p {
+        & > div {
+            display: none;
+        }
+        &:hover {
+            & > div {
+                display: inline-block;
+            }
+        }
+    }*/
+    p {
+        position: relative;
+
+        i:first-child {
+            margin-right: .5rem;
+        }
+    }
+
+    .dropdown-menu {
+        right: -1rem;
+
+        &.show {
+            display: block;
+        }
+    }
+}
+
+.Hm-workflow-search {
+    select {
+        display: inline-block;
+        float: left;
+        margin-right: 1rem;
+        width: auto !important;
+    }
+
+    .Hu-search-close {
+        position: absolute;
+        top: .35rem;
+        right: 1rem;
+        color: #bbb;
+        z-index: 3;
+    }
+
+    .btn {
+        padding: 4px 9px;
+        font-size: 12px;
+
+        &.active {
+            background: #72C3F5;
+            color: $white;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+}

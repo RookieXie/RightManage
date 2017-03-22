@@ -1,0 +1,8 @@
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\RightManage.Data.dll
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\RightManage.Data.pdb
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\EntityFramework.dll
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\EntityFramework.xml
+E:\AtawSource\Products\RightManage\RightManage.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\AtawSource\Products\RightManage\RightManage.Data\obj\Debug\RightManage.Data.dll
+E:\AtawSource\Products\RightManage\RightManage.Data\obj\Debug\RightManage.Data.pdb

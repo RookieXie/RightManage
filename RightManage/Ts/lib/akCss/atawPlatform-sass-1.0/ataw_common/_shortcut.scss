@@ -1,0 +1,77 @@
+﻿.Hm-shortcut.Ht-item2{
+    margin-top:.5rem;
+    ul{ 
+        margin:.5rem 0 0 0;
+        padding:0;
+    }
+    li{
+        position:relative;
+        display:inline-block;
+        width:10rem;
+        text-align:center; 
+        span{
+            display:block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }  
+       & > i{
+            position:absolute;
+            top:0;
+            right:2rem;
+            color:#fe6553;
+        }
+       .Hc-edit-span i{
+               position: absolute;
+               right: 0rem;
+               top: 2.5rem;
+       }   
+    }
+    
+}
+.Hm-add-shortcut{
+    position: absolute;
+    left:50%;
+    top: 10rem;
+    margin-left:-10rem;
+    padding: .5rem .5rem 2rem;
+    width: 20rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: #fff;
+    color: #666;
+    z-index: 22;
+    h5{
+       padding-bottom: .5rem;
+       padding-left: 1rem;
+       border-bottom: 1px solid #ebebeb;
+    }
+    .btn{
+        padding: .1rem 1rem !important;
+    }
+}
+.Hm-shortcut.Ht-item1 {
+    li {
+        text-align: center;
+        a { display: inline-block;}
+        p {
+            margin-top: .5rem;
+            color: $shortcut-link-color;
+        }
+        .Hu-news{
+            position: absolute;
+            top: $shortcut-news-top;
+            right: $shortcut-news-right;
+            width: $shortcut-news-width;
+            height: $shortcut-news-height;
+            line-height: $shortcut-news-height;
+            background: $shortcut-news-bg;
+            border-radius: 50%;
+            color: #fff;
+            font-style: normal;
+        }
+        &:hover {
+            p { color: $shortcut-link-hover--color;}
+        }
+    }
+}

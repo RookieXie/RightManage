@@ -1,0 +1,140 @@
+﻿.Hm-timeline {
+    @include position(relative,null,null,null,null);
+    padding-top: $line-padding-top;
+    margin:0 auto;
+    width:$line-width;
+    @media screen and (max-width: 64rem){
+                width:100%;
+    }
+
+    .Hu-line-title {
+        margin-left: $line-title-margin-left;
+        margin-bottom: $line-title-margin-bottom;
+
+        span {
+            margin-left: $line-title-span-margin-left;
+            font-size: $line-title-span-font-size;
+            color: $line-title-span-color;
+        }
+    }
+
+    .Hu-year {
+        margin-left: $line-year-margin-left;
+        margin-top:$line-year-margin-top;
+        font-size: $line-year-font-size;
+        color:$line-year-color ;
+        width: $line-year-width;
+        background: $line-year-bg;
+        border-radius: $border-radius-sm;
+        text-align:center;
+    }
+
+    ul {       
+        width: -webkit-calc(100% - 6rem);
+        width: -moz-calc(100% - 6rem);
+        width: calc(100% - 6rem);
+        margin-left:$line-ul-margin-left;
+    
+      .Hu-date {
+            @include position($line-date-pos,$line-date-top,$line-date-right,$line-date-bottom,$line-date-left);
+            width: $line-date-width;
+            font-size: $line-date-font-size;
+            color:$line-date-color;
+            text-align:right;
+        }
+      &>li {
+            @include position(relative,null,null,null,null);
+            border-left: 2px solid $line-border-color;
+            padding: $line-li-padding-top $line-li-padding-right $line-li-padding-bottom $line-li-padding-left;
+        }
+         .Hu-line-item {
+                width: 100%;
+                border: 1px solid $line-item-border-color;
+                border-radius: $border-radius-sm;
+
+                div:nth-child(2) {
+                    background: url("../images/platform/log-older.png") no-repeat 2px 10px;
+                    padding: $line-div-padding-top $line-div-padding-right $line-div-padding-bottom $line-div-padding-left;
+                    margin-left: $line-div-margin-left;
+                    ol {
+                        border-bottom: 1px solid $line-item-border-color;
+                    }
+                }
+
+                div:nth-child(3) {
+                    background: url("../images/platform/log-new.png") no-repeat 2px 10px;
+                    padding: $line-div-padding-top $line-div-padding-right $line-div-padding-bottom $line-div-padding-left;
+                    margin-left: $line-div-margin-left;
+                }
+
+                .Hu-triangle {
+                    position: $line-triangle-pos;
+                    left: $line-triangle-left;
+                    top: $line-triangle-top;
+                    width: $line-triangle-width;
+                    height: $line-triangle-height;
+                    border: $line-triangle-border-width solid $line-triangle-border-color;
+                    border-top-color:$line-triangle-border-top-color ;
+                    border-left-color: $line-triangle-border-left-color;
+                    border-bottom-color: $line-triangle-border-bottom-color;
+
+                    &:after {
+                        content: '';
+                        position: $line-triangle-pos;
+                        width: $line-triangle-width;
+                        height: $line-triangle-height;
+                        border: $line-triangle-border-width solid $white;
+                        right: $line-triangle-after-right;
+                        top: $line-triangle-after-top;
+                        border-top-color: $line-triangle-border-top-color;
+                        border-left-color: $line-triangle-border-left-color;
+                        border-bottom-color: $line-triangle-border-bottom-color;
+                    }
+                }
+
+               ol{
+                padding-left: $line-padding-left;
+                width: $line-a-width;
+                min-height:$line-a-min-height;
+                font-size: $line-a-font-size;
+                color: $line-font-color;
+                li{ 
+                   padding-bottom:$line-li-padding-bottom;
+               }
+            }
+               
+            }
+         em {
+                display: block;
+                @include position($line-circle-pos,$line-circle-top,$line-circle-right,$line-circle-bottom,$line-circle-left);
+                width: $line-circle-width;
+                height: $line-circle-height;
+                border: $line-circle-border solid $line-circle-border-color;
+                border-radius: $line-circle-border-radius;
+                background: $line-circle-bg;
+            }
+
+         li:first-child {
+            .Hu-date {
+                color: $line-first-date-color;
+            }
+
+            .Hu-line-item {
+                border: 1px solid $line-first-item-border-color !important;
+                box-shadow: $line-item-box-h-shadow $line-item-box-v-shadow $line-item-box-blur $line-item-box-spread $line-item-box-color;
+
+                .Hu-triangle {
+                    border: 10px solid $line-first-border-color;
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    border-bottom-color: transparent;
+                }
+                em {
+                background: $line-first-circle-bg;
+            }
+            }
+
+            
+        } 
+    }
+}

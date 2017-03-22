@@ -1,0 +1,65 @@
+﻿.Hm-pdm {
+    .panel-success {
+        border-color: #d0e9c6 !important;
+    }       
+     .panel-body {
+         li {
+             u,span:not(first-child) {
+                  margin-left: 1rem;
+             }
+             span:first-child {
+                 display: inline-block;
+                 width: 35%;
+             }
+         }
+    }
+    .table {
+        th:first-child,td:first-child { text-align: left !important;}
+    
+        td { 
+            vertical-align: middle;
+            text-align: left;
+        }
+        tbody{
+            tr:first-child:hover {
+                td:first-child { background: #fff;}
+            }
+        }
+    }
+    #updload0 { display: inline-block;}
+    .Hm-list {
+        background: #f2f2f3;
+        li {
+            margin: .8rem 0;
+            padding-left: 1rem;
+            &.active {
+                padding: .2rem;
+                padding-left: 1rem;
+                background: #fff;
+                color: #464646;
+            }
+        }
+
+    }
+    .Hm-css-core {
+        $r: 3px;
+        width: 30%;
+        float: right;
+        .form-control {
+            border-top-left-radius: $r !important;
+            border-bottom-left-radius: $r !important;
+        }
+        .input-group-addon {
+            font-size: .8rem;
+            &:first-child { 
+                background: #fff;
+                border-color: #fff;
+                color: #666;
+            }
+            &:last-child {
+                border-top-right-radius: $r;
+                border-bottom-right-radius: $r;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+﻿.Hm-test-interface {
+    .Hm-detail {
+        label {
+            width: 3rem;
+            margin-right: .5rem;
+            text-align: right;
+        }
+        textarea {
+            width: 90% !important;
+        }
+    }
+
+    textarea { 
+        height: 18.75rem;
+        resize: both;
+        overflow: auto;
+        &:first-child {
+            height: 8rem !important;
+        }
+    }
+
+    .table {
+        tr {
+            td:first-child,th:first-child{ text-align: left;}
+        }
+    }
+    .Hc-tree-naiv {
+        .Hu-item {
+            span[title] {
+                display: inline-block;
+                line-height:1;
+                width: 70%;
+            }
+        }
+    }
+    .Hu-search-close {
+        z-index: 3;
+        position: absolute;
+        top: .35rem;
+        right: 3rem;
+        color: #bbb;
+    }
+}
