@@ -23,18 +23,24 @@ export module xbgTestPage {
 
         public state = new xbgTestPageStates();
         public pSender(): React.ReactElement<any> {
-            return <div><div></div>{this._tDom(this.props.Vm.tableDomObj)}</div>;
+            return <div>
+                <div>
+                    <button type="button" className="btn btn-info" onClick={() => { this.testClick() }}>测试</button>
+                </div>{this._tDom(this.props.Vm.tableDomObj)}</div>;
         }
 
 
 
-
+        public testClick() {
+            this.props.Vm.testClick();
+        }
 
     }
 
     export interface IReactxbgTestPageVm extends basewedPageFile.Web.BaseWebPageVm {
         pageContent: string;
-        tableDomObj: tableDomFile.TableDom.TableDomVm
+        tableDomObj: tableDomFile.TableDom.TableDomVm;
+        testClick();
     }
 
     export interface IxbgTestPageConfig {
@@ -48,17 +54,21 @@ export module xbgTestPage {
         public tableDomObj: tableDomFile.TableDom.TableDomVm;
         public constructor(config?: IxbgTestPageConfig) {
             super();
-           
+
         }
 
         private init(config: IxbgTestPageConfig) {
         }
-
+        public testClick() {
+            urlFile.Core.AkPost("/Home/Test", {}, (res) => {
+                console.table(res);
+            })
+        }
         protected loadPage(callback?: () => any) {
-            urlFile.Core.AkPost("/Common/GetTable", { tableName: "RM_Users" }, (res) => {
+            urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test" }, (res) => {
                 //this.pageContent = res;
                 var btns: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
-                var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName:"RM_Users" }
+                var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" }
 
                 this.tableDomObj = new tableDomFile.TableDom.TableDomVm(_config);
                 // console.log(res);

@@ -1,9 +1,11 @@
 ﻿using RightManage.Api;
 using RightManage.BF;
+using RightManage.Core;
 using RightManage.Data;
 using RightManage.DB;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,26 +17,23 @@ namespace RightManage.Service
     {
         public PageData GetTable(string tableName)
         {
+
             PageData pageData = new PageData();
             DataUtil util = new DataUtil();
             var obj = util.GetClassByName(tableName);
             var properties = obj.GetProperties();
-
             //Type t = obj.GetType();
             List<TableColunm> tableColunmList = new List<TableColunm>();
             foreach (PropertyInfo pi in properties)
             {
                 TableColunm colunm = new TableColunm();
-                string name = pi.Name;//获得属性的名字,后面就可以根据名字判断来进行些自己想要的操作   
-                                      //var attr=pi.GetCustomAttribute; 
-                                      //var attr= pi.Attributes;
-                                      //var info = typeof(pi)
-                                      //获取特性 Attribute
-                var pType = pi.PropertyType.ToString();
-                if (pType.IndexOf("System.String") !=-1)
+                string name = pi.Name;//获得属性的名字
+                var pType = pi.PropertyType.ToString();//类型
+                if (pType.IndexOf("System.String") != -1)
                 {
                     pType = "string";
-                }else if(pType.IndexOf("System.Boolean") != -1)
+                }
+                else if (pType.IndexOf("System.Boolean") != -1)
                 {
                     pType = "bool";
                 }
@@ -57,7 +56,7 @@ namespace RightManage.Service
                     controlType = propertyAttribute.Control;
                     displayName = propertyAttribute.Name;
                     isHidden = propertyAttribute.IsHidden;
-                    isSearch=propertyAttribute.isSearch;
+                    isSearch = propertyAttribute.isSearch;
                     isSearchLike = propertyAttribute.isSearchLike;
                 }
                 colunm.isSearch = isSearch;
@@ -69,13 +68,14 @@ namespace RightManage.Service
                 colunm.pType = pType;
                 tableColunmList.Add(colunm);
 
-            }
+            }         
             pageData.tableColunms = tableColunmList;
 
 
             BFTest bftest = new BFTest();
+            bftest.CreateOrUpdateTable(tableName);
             var dataset = bftest.GetDataByTableName(tableName);
-            if (dataset.Tables.Count > 0)
+            if (dataset!=null &&dataset.Tables.Count > 0)
             {
                 var table = dataset.Tables[0];
                 var rows = table.Rows;
@@ -89,15 +89,7 @@ namespace RightManage.Service
                     {
                         var name = colunm.ToString();
                         var value = rows[i][name].ToString();
-                        //foreach (var item in tableColunmList)
-                        //{
-                        //    if (item.name == name && !item.isHidden)
-                        //    {
-                        //        dic[name] = value;
-                        //    }
-                        //}
                         dic[name] = value;
-                        //var pType = rows[i][name].GetType();
                     }
                     rowData.tableRowData = dic;
                     dic["rowNum"] = i;
@@ -111,9 +103,9 @@ namespace RightManage.Service
             return pageData;
         }
 
-        public List<TableRowData> SearchTable(string tableName,List<SearchData> searchDataList)
+        public List<TableRowData> SearchTable(string tableName, List<SearchData> searchDataList)
         {
-           // List<TableRowData> tableRowsData = new List<TableRowData>();
+            
             BFTest bftest = new BFTest();
             var dataset = bftest.SearchTable(tableName, searchDataList);
             List<TableRowData> tableRowsData = new List<TableRowData>();
@@ -129,16 +121,8 @@ namespace RightManage.Service
                     foreach (var colunm in colunms)
                     {
                         var name = colunm.ToString();
-                        var value = rows[i][name].ToString();
-                        //foreach (var item in tableColunmList)
-                        //{
-                        //    if (item.name == name && !item.isHidden)
-                        //    {
-                        //        dic[name] = value;
-                        //    }
-                        //}
+                        var value = rows[i][name].ToString();                     
                         dic[name] = value;
-                        //var pType = rows[i][name].GetType();
                     }
                     rowData.tableRowData = dic;
                     dic["rowNum"] = i;
@@ -147,6 +131,21 @@ namespace RightManage.Service
                 }
             }
             return tableRowsData;
+        }
+
+
+        public DataTable UpdateModel(string tableName)
+        {
+            DataUtil util = new DataUtil();
+            var obj = util.GetClassByName(tableName);
+            var table = DBUtil.UpdateModel("", tableName);
+            return table;
+        }
+
+        public void CreateOrUpdateTable(string tableName)
+        {
+            BFTest bfTest = new BFTest();
+            bfTest.CreateOrUpdateTable(tableName);
         }
     }
 }

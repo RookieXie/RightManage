@@ -1,0 +1,2 @@
+E:\AtawSource\Products\_output\Web\Ataw.WebSite\ts\01core.js
+E:\AtawSource\Products\_output\Web\Ataw.WebSite\ts\01core.d.ts

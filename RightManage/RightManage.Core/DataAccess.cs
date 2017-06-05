@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -168,7 +169,9 @@ namespace RightManage.Core
             // Methods
             public Repository(BaseDBContext dbContext) : base(dbContext)
             {
+                
             }
+            
             public override void Add(T entity)
             {
                 BaseTableData model = entity as BaseTableData;

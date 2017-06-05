@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,9 +28,15 @@ namespace RightManage.BF
         }
         public DataSet GetDataByTableName(string tableName)
         {
+            //var exsitSql = string.Format("SELECT COUNT(*) FROM sys.objects WHERE object_id =OBJECT_ID(N'[dbo].[{0}]')", tableName);
+            //var count = Convert.ToInt32(UnitOfData.QueryObject(exsitSql));
+            //var dataset = new DataSet();
+            //if (count > 0)
+            //{
             var sql = string.Format("select top 10 * from {0} where FControlUnitID='{1}'", tableName, Singleton.Current.FControlUnitID);
-            var dataset = UnitOfData.QueryDataSet(sql);
-            return dataset;
+            Log4net.LogInfo(sql);
+            //}
+            return UnitOfData.QueryDataSet(sql);
         }
 
         public DataSet SearchTable(string tableName, List<SearchData> searchDataList)
@@ -78,6 +85,88 @@ namespace RightManage.BF
                 return this.GetDataByTableName(tableName);
             }
 
+        }
+
+        public void CreateOrUpdateTable(string tableName)
+        {
+            var exsitSql = string.Format("SELECT COUNT(*) FROM sys.objects WHERE object_id =OBJECT_ID(N'[dbo].[{0}]')", tableName);
+            var count = Convert.ToInt32(UnitOfData.QueryObject(exsitSql));
+            if (count > 0)
+            {
+                DataUtil util = new DataUtil();
+                var obj = util.GetClassByName(tableName);
+                var properties = obj.GetProperties();
+                foreach (PropertyInfo pi in properties)
+                {
+                    TableColunm colunm = new TableColunm();
+                    string name = pi.Name;
+                    var getColumnSql = string.Format("select COUNT(*) from (select  name from syscolumns Where ID=OBJECT_ID(N'[dbo].[{0}]'))t  where t.name='{1}'", tableName, name);
+                    var colNameCount = Convert.ToInt32(UnitOfData.QueryObject(getColumnSql));
+                    if (colNameCount == 0)
+                    {
+                        var pType = pi.PropertyType.ToString();
+                        if (pType.IndexOf("System.String") != -1)
+                        {
+                            pType = "nvarchar(50)";
+                        }
+                        else if (pType.IndexOf("System.Boolean") != -1)
+                        {
+                            pType = "bit";
+                        }
+                        else if (pType.IndexOf("System.Int32") != -1)
+                        {
+                            pType = "int";
+                        }
+                        else if (pType.IndexOf("System.DateTime") != -1)
+                        {
+                            pType = "datetime";
+                        }
+                        else
+                        {
+                            pType = "nvarchar(50)";
+                        }
+                        var alterSql = string.Format("alter table {0} add  {1} {2} ;", tableName, name, pType);
+                        UnitOfData.ExecuteSqlCommand(alterSql);
+                    }
+                }
+
+            }
+            else
+            {
+                DataUtil util = new DataUtil();
+                var obj = util.GetClassByName(tableName);
+                var properties = obj.GetProperties();
+                var createSql = string.Format("create table {0}( ", tableName);
+                foreach (PropertyInfo pi in properties)
+                {
+                    TableColunm colunm = new TableColunm();
+                    string name = pi.Name;
+                    var pType = pi.PropertyType.ToString();
+                    if (pType.IndexOf("System.String") != -1)
+                    {
+                        pType = "nvarchar(50)";
+                    }
+                    else if (pType.IndexOf("System.Boolean") != -1)
+                    {
+                        pType = "bit";
+                    }
+                    else if (pType.IndexOf("System.Int32") != -1)
+                    {
+                        pType = "int";
+                    }
+                    else if (pType.IndexOf("System.DateTime") != -1)
+                    {
+                        pType = "datetime";
+                    }
+                    else
+                    {
+                        pType = "nvarchar(50)";
+                    }
+                    createSql = string.Format("{0} {1} {2} , ", createSql, name, pType);
+                }
+                createSql = string.Format("{0} )", createSql);
+                UnitOfData.ExecuteSqlCommand(createSql);
+            }
         }
     }
 }

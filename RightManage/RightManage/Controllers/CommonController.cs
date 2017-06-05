@@ -32,5 +32,11 @@ namespace RightManage.Controllers
             //var res = "";
             return ReturnJson(res);
         }
+        public string UpdateModel(string tableName)
+        {
+            CommonService service = new CommonService();
+            var res = service.UpdateModel(tableName);
+            return ReturnJson(res);
+        }
     }
 }

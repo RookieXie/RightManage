@@ -10,7 +10,7 @@ namespace RightManage.Data
     {
         public Type GetClassByName(string className)
         {
-            var obj = Type.GetType("RightManage.Data.RM_Users");
+            var obj = Type.GetType("RightManage.Data."+ className);
             return obj;
         }
     }

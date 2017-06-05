@@ -1,6 +1,5 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
     var Core;
     (function (Core) {
         var Util = (function () {
@@ -72,7 +71,6 @@ define(["require", "exports"], function (require, exports) {
                     else {
                         $("#ACT-Loading").show(0, fun);
                     }
-                    // $("#ACT-Loading").removeClass("hide");
                 }
                 else {
                     if (window["Ataw"] && window["Ataw"]["msgbox"] && window["Ataw"]["msgbox"]["hide"]) {

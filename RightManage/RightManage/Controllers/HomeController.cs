@@ -1,4 +1,5 @@
 ﻿using RightManage.Core;
+using RightManage.DB;
 using RightManage.Service;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace RightManage.Controllers
 
     public class HomeController : BaseController
     {
+        private bool isCreateTable = true;
         [AllowAnonymous]
         // GET: Home
         public ActionResult Index(string id = "1")
         {
+
             var bc = Request.Browser;
             string _bowser = bc.Browser;
             int _version = bc.MajorVersion;
@@ -54,13 +57,13 @@ namespace RightManage.Controllers
             instance.NickName = _user.NickName;
             instance.FControlUnitID = _user.FControlUnitID;
             instance.UserName = _user.LoginName;
-
+            
             return ReturnJson(res);
         }
         public string Test()
         {
-            TestService service = new TestService();
-            //var data = service.GetTest();
+            CommonService service = new CommonService();
+            //service.CreateOrUpdateTable("Test");
             var _data = new
             {
                 Content = "ok",

@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightManage.Core\RightManage.Core.csproj">
-      <Project>{0F72D351-494A-424C-A0B5-18A8580FBBB0}</Project>
+      <Project>{0f72d351-494a-424c-a0b5-18a8580fbbb0}</Project>
       <Name>RightManage.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\RightManage.Data\RightManage.Data.csproj">
@@ -67,6 +67,9 @@
       <Project>{52BFFB91-4848-4C05-A666-EE69365EBC78}</Project>
       <Name>RightManage.DB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

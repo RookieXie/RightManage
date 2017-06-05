@@ -1,16 +1,10 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 define(["require", "exports", "react", "react-dom", "./Event"], function (require, exports, React, ReactDOM, eventFile) {
     "use strict";
-    exports.__esModule = true;
     //import jqueryExtend = require("./JQueryExtend");
     var Core;
     (function (Core) {
@@ -140,8 +134,6 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     }
                 }
                 else {
-                    // this.props.Vm.getEmit("React").removeAllListeners();
-                    // this.props.Vm.dispose();
                 }
             };
             ;
@@ -473,7 +465,6 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 }
                 else {
                     this.pDataValueSet(val);
-                    //return val;
                 }
             };
             DomVm.prototype.dataValue = function (val) {
@@ -482,7 +473,6 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 }
                 else {
                     return this.dataValueSet(val);
-                    //return val;
                 }
             };
             DomVm.prototype.setOriValue = function (val) {
@@ -514,7 +504,6 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 }
                 else {
                     return this.vmDataValueSet(val);
-                    //return val;
                 }
             };
             DomVm.prototype.vmDataValueGet = function () {

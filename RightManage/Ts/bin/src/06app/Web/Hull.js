@@ -1,16 +1,10 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./../../01core/Ioc", "./../../01core/Url", "./../../03page/BaseWebPage", "./../../02tool/Tree/TreeMenu", "./../../02tool/ModalDom/ModalDom", "react"], function (require, exports, domFile, utilFile, iocFile, urlFile, basewedPageFile, TreeMenuFile, ModalDomFile, React) {
     "use strict";
-    exports.__esModule = true;
     var domCore = domFile.Core;
     ModalDomFile;
     var Web;
@@ -173,7 +167,6 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                 urlFile.Core.AkPost("/Home/Test", {}, function (res) {
                     if (res.Content == "ok") {
                         _this.content = res.Data;
-                        //console.log(this.content);
                     }
                     urlFile.Core.AkUrl.Current().refresh();
                     _this.forceUpdate("");

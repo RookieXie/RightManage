@@ -3,7 +3,6 @@
 // https://github.com/Microsoft/TypeScript/wiki/JSX
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
     var AppConfigDefine = {
         JsAmountconvert: "/AtawStatic/lib/03Extend/amount/amountconvert.js"
     };

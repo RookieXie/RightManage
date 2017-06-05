@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,10 @@ namespace RightManage.Core
     {
         private volatile static Singleton _instance = null;
         private static readonly object _lockrobject = new object();
-        private Singleton() { }
+        private Singleton()
+        {
+           
+        }
         public static Singleton CreateInstance()
         {
             if (_instance == null)
@@ -21,6 +25,7 @@ namespace RightManage.Core
                         _instance = new Singleton();
                 }
             }
+
             return _instance;
         }
 
@@ -31,6 +36,28 @@ namespace RightManage.Core
 
         public DateTime BeginTime { get; set; }
         public static Singleton Current => _instance;
+
+        public BaseDBContext CreateDbContext() =>
+     new BaseDBContext("DBConnecionString");
+
+        public IUnitOfData UnitOfData
+        {
+            get
+            {
+                
+                if (UnitOfData == null)
+                {
+                    UnitOfData = this.CreateDbContext();
+                   
+                }
+                return UnitOfData;
+            }
+            set
+            {
+                UnitOfData = value;
+            }
+        }
+
 
 
 

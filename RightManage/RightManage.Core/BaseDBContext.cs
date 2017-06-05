@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,10 +16,9 @@ namespace RightManage.Core
        // private bool IsSaveAtawChanges;
         public BaseDBContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
-          //  this.IsSaveAtawChanges = false;
-
+            
         }
-
+        
         public virtual int ExecuteSqlCommand(string sql, params SqlParameter[] param) =>
 base.Database.ExecuteSqlCommand(sql, param);
 

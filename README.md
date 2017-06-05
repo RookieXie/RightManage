@@ -1,2 +1,2 @@
 # RightManage
-My test
+use vs2017

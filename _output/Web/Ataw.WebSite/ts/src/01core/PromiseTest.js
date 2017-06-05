@@ -1,6 +1,5 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
     var PromiseTest = (function () {
         function PromiseTest() {
             //$.when(this.pFun1("123")).done((a) => this.pFun1("123").then((b) => { this.pFun1("123") }));

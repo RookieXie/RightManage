@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 //将 ComVisible 设置为 false 将使此程序集中的类型
 //对 COM 组件不可见。  如果需要从 COM 访问此程序集中的类型，
 //请将此类型的 ComVisible 特性设置为 true。
@@ -34,3 +33,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Log4net.config", Watch = true)]

@@ -48,12 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTableData.cs" />
-    <Compile Include="ControlAttribute.cs" />
     <Compile Include="DataUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RM_Users.cs" />
     <Compile Include="Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RightManage.Core\RightManage.Core.csproj">
+      <Project>{0f72d351-494a-424c-a0b5-18a8580fbbb0}</Project>
+      <Name>RightManage.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

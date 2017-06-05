@@ -4,6 +4,7 @@ using RightManage.DB.Map;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,18 @@ namespace RightManage.DB
         {
             Database.SetInitializer<RightManageDBContent>(null);
         }
-
+        internal class ReportMigrationsConfiguration:DbMigrationsConfiguration<RightManageDBContent>
+        {
+            public ReportMigrationsConfiguration()
+            {
+                AutomaticMigrationDataLossAllowed = false;
+                AutomaticMigrationsEnabled = true;              
+            }
+            protected override void Seed(RightManageDBContent context)
+            {
+                base.Seed(context);
+            }
+        }
         public IDbSet<Test> Test { get; set; }
 
         public IDbSet<RM_Users> RM_Users { get; set; }
@@ -41,6 +53,8 @@ namespace RightManage.DB
             modelBuilder.Configurations.Add(new RM_UsersMap(schema));
             return modelBuilder;
         }
-        
+       
     }
+
+   
 }

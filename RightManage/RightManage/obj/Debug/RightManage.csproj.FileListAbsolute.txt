@@ -104,3 +104,4 @@ E:\AtawSource\Products\_output\Web\Ataw.WebSite\Area\RightManage\RightManage.pdb
 E:\AtawSource\Products\RightManage\RightManage\obj\Debug\RightManage.csprojResolveAssemblyReference.cache
 E:\AtawSource\Products\RightManage\RightManage\obj\Debug\RightManage.dll
 E:\AtawSource\Products\RightManage\RightManage\obj\Debug\RightManage.pdb
+E:\AtawSource\Products\_output\Web\Ataw.WebSite\Area\RightManage\Log4net.config

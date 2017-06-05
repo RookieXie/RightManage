@@ -29,21 +29,21 @@ export module Core {
         }
         protected pInstall(): void {
             super.pInstall();
-            if (this.props.Vm.LegalObj) {
-                this.props.Vm.LegalObj.ControlObj = this.props.Vm;
-                this.listenEvent("legal", (msg: string) => {
-                    // this.getState().ErrMsg = msg;
-                    // this.getState().LegalResult = false;
-                    this.legal(msg);
+            //if (this.props.Vm.LegalObj) {
+            //    this.props.Vm.LegalObj.ControlObj = this.props.Vm;
+            //    this.listenEvent("legal", (msg: string) => {
+            //        // this.getState().ErrMsg = msg;
+            //        // this.getState().LegalResult = false;
+            //        this.legal(msg);
 
-                });
-                this.listenEvent("cancleLegal", () => {
+            //    });
+            //    this.listenEvent("cancleLegal", () => {
 
-                    // alert($(_dom).html());
-                    this.cancleLegalSender();
-                    //  }
-                });
-            }
+            //        // alert($(_dom).html());
+            //        this.cancleLegalSender();
+            //        //  }
+            //    });
+            //}
         };
 
         public legal(msg: string) {
