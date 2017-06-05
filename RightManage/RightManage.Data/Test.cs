@@ -17,5 +17,7 @@ namespace RightManage.Data
         public int Age { get; set; }
         [Control(Name = "性别", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public string Sex { get; set; }
+        [Control(Name = "fff", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
+        public new  string FID { get; set; }
     }
 }

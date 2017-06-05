@@ -21,22 +21,32 @@ export module TableInsertPage {
 
         public state = new TableInsertPageStates();
         public pSender(): React.ReactElement<any> {
-            return <div>{
-                this.props.Vm.colunmList.map((a, index) => {
-                    if (!a.isHidden) {
-                        return <div key={index}>
-                            <label class="col-sm-1 control-label">{a.displayName}</label>
-                            <div class="col-sm-4">
-                                <input type={a.controlType} />
+            return <div>
+                <div><button type="button" className="btn btn-info" onClick={() => { this.saveClick() }}>保存</button></div>
+                <div>{
+                    this.props.Vm.colunmList.map((a, index) => {
+                        if (!a.isHidden) {
+                            return <div key={index}>
+                                <label class="col-sm-1 control-label">{a.displayName}</label>
+                                <div class="col-sm-4">
+                                    <input type={a.controlType} value={this.props.Vm.rowData[a.name]} onChange={(e) => { this.changeValue(e, a.name) }} />
+                                </div>
                             </div>
-                        </div>
-                    }
-                })
-            }</div>;
+                        }
+                    })
+                }</div>
+                <div><button type="button" className="btn btn-info" onClick={() => { this.saveClick() }}>保存</button></div>
+            </div>;
         }
 
-
-
+        public changeValue(e: React.FormEvent, name: string) {
+            var _val = e.target["value"];
+            this.props.Vm.rowData[name] = _val;
+            this.forceUpdate();
+        }
+        public saveClick() {
+            this.props.Vm.saveClick();
+        }
 
 
 
@@ -44,6 +54,8 @@ export module TableInsertPage {
 
     export interface IReactTableInsertPageVm extends basewedPageFile.Web.BaseWebPageVm {
         colunmList: dataFile.TableData.ITableColunm[];
+        rowData: dataFile.TableData.IRowData;
+        saveClick();
     }
 
     export interface ITableInsertPageConfig {
@@ -52,6 +64,7 @@ export module TableInsertPage {
         public ReactType = TableInsertPageReact;
         public Title: string = "TableInsertPage页面";
         public colunmList: dataFile.TableData.ITableColunm[] = [];
+        public rowData: dataFile.TableData.IRowData = [];
         public constructor(config?: ITableInsertPageConfig) {
             super();
 
@@ -62,9 +75,17 @@ export module TableInsertPage {
 
         protected loadPage(callback?: () => any) {
             this.colunmList = JSON.parse(this.Param1);
+            this.colunmList.map(c => {
+                this.rowData[c.name] = "";
+            })
             if (callback) {
                 callback();
             }
+        }
+        public saveClick() {
+            urlFile.Core.AkPost("/Common/InsertTable", { tableName: "", data: JSON.stringify(this.rowData) }, () => {
+
+            })
         }
 
     }

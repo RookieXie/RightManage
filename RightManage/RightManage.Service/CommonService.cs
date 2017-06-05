@@ -186,5 +186,9 @@ namespace RightManage.Service
             BFTest bfTest = new BFTest();
             bfTest.CreateOrUpdateTable(tableName);
         }
+        public void InsertTable(string tableName, TableRowData data)
+        {
+            
+        }
     }
 }

@@ -23,3 +23,16 @@
 2017-06-05 15:29:02,558 [30] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
 2017-06-05 15:29:47,036 [20] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
 2017-06-05 15:29:47,541 [24] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:14:43,705 [9] INFO  RightManage.Core.Log4net - admin登录成功，时间：17:14
+2017-06-05 17:15:53,952 [9] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:17:36,564 [14] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:19:35,768 [20] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:21:37,585 [21] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:24:27,312 [16] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:25:33,381 [21] INFO  RightManage.Core.Log4net - admin登录成功，时间：17:25
+2017-06-05 17:25:34,225 [20] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:33:31,404 [29] INFO  RightManage.Core.Log4net - admin登录成功，时间：17:33
+2017-06-05 17:33:35,101 [29] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
+2017-06-05 17:49:01,385 [17] INFO  RightManage.Core.Log4net - admin登录成功，时间：17:49
+2017-06-05 17:50:46,391 [45] INFO  RightManage.Core.Log4net - admin登录成功，时间：17:50
+2017-06-05 17:50:53,165 [44] INFO  RightManage.Core.Log4net - select top 15 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=15 
