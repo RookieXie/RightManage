@@ -42,7 +42,6 @@ export module xbgTestPage {
         tableDomObj: tableDomFile.TableDom.TableDomVm;
         testClick();
     }
-
     export interface IxbgTestPageConfig {
 
 
@@ -65,7 +64,8 @@ export module xbgTestPage {
             })
         }
         protected loadPage(callback?: () => any) {
-            urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test" }, (res) => {
+            var _page = { PageIndex: 0, PageSize: 10 };
+            urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test", pager: _page }, (res) => {
                 //this.pageContent = res;
                 var btns: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
                 var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" }

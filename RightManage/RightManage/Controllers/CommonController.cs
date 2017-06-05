@@ -16,19 +16,21 @@ namespace RightManage.Controllers
         {
             return View();
         }
-        public string GetTable(string tableName, int pageSize = 10, int pageNumber = 0)
+        public string GetTable(string tableName, string pager)
         {
+            var _paper = pager.SafeJsonObject<Pagination>();
             CommonService service = new CommonService();
-            var obj = service.GetTable(tableName);
+            var obj = service.GetTable(tableName, _paper);
 
             return ReturnJson(obj);
         }
 
-        public string SearchTable(string tableName, string search, string page)
+        public string SearchTable(string tableName, string search, string pager)
         {
+            var _paper = pager.SafeJsonObject<Pagination>();
             var data = search.SafeJsonObject<List<SearchData>>();
             CommonService service = new CommonService();
-            var res = service.SearchTable(tableName, data);
+            var res = service.SearchTable(tableName, data, _paper);
             //var res = "";
             return ReturnJson(res);
         }

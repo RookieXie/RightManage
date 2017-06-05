@@ -1,4 +1,5 @@
-﻿export namespace TableData {
+﻿import pageFile = require("./../../04col/Pagination");
+export namespace TableData {
     export interface ITableButton {
         name: string;
         text: string;
@@ -33,5 +34,9 @@
     export interface IPageSearch {
         PageSize: number;
         PageIndex: number;
+    }
+    export interface IPanationData {
+        Pager: pageFile.tool.Pagination;
+        ListData: Array<any>;
     }
 }

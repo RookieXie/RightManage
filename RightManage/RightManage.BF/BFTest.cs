@@ -26,24 +26,32 @@ namespace RightManage.BF
             Submit();
             return model;
         }
-        public DataSet GetDataByTableName(string tableName)
+        public DataSet GetDataByTableName(string tableName, Pagination pager, out int total)
         {
             //var exsitSql = string.Format("SELECT COUNT(*) FROM sys.objects WHERE object_id =OBJECT_ID(N'[dbo].[{0}]')", tableName);
             //var count = Convert.ToInt32(UnitOfData.QueryObject(exsitSql));
             //var dataset = new DataSet();
             //if (count > 0)
             //{
-            var sql = string.Format("select top 10 * from {0} where FControlUnitID='{1}'", tableName, Singleton.Current.FControlUnitID);
+            
+            var start = pager.PageSize * pager.PageIndex;
+            var end = pager.PageSize * (pager.PageIndex + 1);
+            var sql = string.Format("select top {0} * from  (select row_number()over(order by FID) rownumber,* from {1} where FControlUnitID='{2}') a where rownumber > {3} and rownumber<={4} ", pager.PageSize, tableName, Singleton.Current.FControlUnitID, start, end);
+            var countSql = string.Format("select COUNT(*) from {0}  where  FControlUnitID='{1}'", tableName, Singleton.Current.FControlUnitID);
             Log4net.LogInfo(sql);
+            total = Convert.ToInt32(UnitOfData.QueryObject(countSql));
             //}
             return UnitOfData.QueryDataSet(sql);
         }
 
-        public DataSet SearchTable(string tableName, List<SearchData> searchDataList)
+        public DataSet SearchTable(string tableName, List<SearchData> searchDataList, Pagination pager, out int total)
         {
             if (searchDataList.Count != 0)
             {
-                var sql = string.Format("select top 10 * from {0} where FControlUnitID='{1}' ", tableName, Singleton.Current.FControlUnitID);
+                var start = pager.PageSize * pager.PageIndex;
+                var end = pager.PageSize * (pager.PageIndex + 1);
+                var sql = string.Format("select top {0} * from  (select row_number()over(order by FID)rownumber,* from {1} where FControlUnitID='{2}') a where rownumber > {3} and rownumber<={4} ", pager.PageSize, tableName, Singleton.Current.FControlUnitID, start, end);
+                var countSql = string.Format("select COUNT(*) from {0}  where  FControlUnitID='{1}'", tableName, Singleton.Current.FControlUnitID);
                 foreach (var item in searchDataList)
                 {
                     var islike = false;
@@ -59,30 +67,39 @@ namespace RightManage.BF
                                 var name = item.name.Substring(0, item.name.IndexOf("_Like"));
                                 var strVal = "%" + item.value + "%";
                                 sql = string.Format("{0} and {1} like '{2}'", sql, name, strVal);
+                                countSql = string.Format("{0} and {1} like '{2}'", countSql, name, strVal);
+
                             }
                             else
+                            {
                                 sql = string.Format("{0} and {1}='{2}'", sql, item.name, item.value);
+                                countSql = string.Format("{0} and {1}='{2}'", countSql, item.name, item.value);
+                            }
                             break;
                         case "int":
                             var intVal = Convert.ToInt32(item.value);
                             sql = string.Format("{0} and {1}={2}", sql, item.name, intVal);
+                            countSql = string.Format("{0} and {1}={2}", countSql, item.name, intVal);
                             break;
                         case "bool":
                             var boolVal = Convert.ToBoolean(item.value);
                             sql = string.Format("{0} and {1}={2}", sql, item.name, boolVal);
+                            countSql = string.Format("{0} and {1}={2}", countSql, item.name, boolVal);
                             break;
                         case "dateTime":
                             var dateTimeVal = Convert.ToDateTime(item.value);
                             sql = string.Format("{0} and {1}={2}", sql, item.name, dateTimeVal);
+                            countSql = string.Format("{0} and {1}={2}", countSql, item.name, dateTimeVal);
                             break;
                     }
                 }
                 var dataset = UnitOfData.QueryDataSet(sql);
+                total = Convert.ToInt32(UnitOfData.QueryObject(countSql));
                 return dataset;
             }
             else
             {
-                return this.GetDataByTableName(tableName);
+                return this.GetDataByTableName(tableName, pager, out total);
             }
 
         }

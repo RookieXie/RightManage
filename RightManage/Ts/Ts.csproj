@@ -47,6 +47,7 @@
     <TypeScriptCompile Include="src\03page\Table\TableInsertPage.tsx" />
     <TypeScriptCompile Include="src\03page\Table\TableRowDom.tsx" />
     <TypeScriptCompile Include="src\04col\baseCol\baseCol.tsx" />
+    <TypeScriptCompile Include="src\04col\Pagination.tsx" />
     <TypeScriptCompile Include="src\06app\Web\Hull.tsx" />
     <TypeScriptCompile Include="src\RightManage\RightManageApp.tsx" />
     <TypeScriptCompile Include="src\RightManage\xbg\Test\xbgTestPage.tsx" />
@@ -95,7 +96,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
     <TypeScriptSourceMap>False</TypeScriptSourceMap>
     <TypeScriptTarget>ES3</TypeScriptTarget>
     <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
@@ -103,7 +104,7 @@
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
     <TypeScriptOutFile />
-    <TypeScriptOutDir>bin</TypeScriptOutDir>
+    <TypeScriptOutDir>..\..\_output\Web\Ataw.WebSite\ts\</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
@@ -117,6 +118,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)bin\*.*" "$(TargetDir)..\..\..\..\Products\_output\Web\Ataw.WebSite\ts" /S  /C /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

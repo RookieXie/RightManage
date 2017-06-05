@@ -15,7 +15,7 @@ namespace RightManage.Service
 {
     public class CommonService
     {
-        public PageData GetTable(string tableName)
+        public PageData GetTable(string tableName, Pagination pager)
         {
 
             PageData pageData = new PageData();
@@ -74,7 +74,22 @@ namespace RightManage.Service
 
             BFTest bftest = new BFTest();
             bftest.CreateOrUpdateTable(tableName);
-            var dataset = bftest.GetDataByTableName(tableName);
+
+            if (pager == null)
+            {
+                pager = new Pagination();
+                pager.IsASC = false;
+                pager.PageIndex = 0;
+                pager.PageSize = 15;
+                pager.TotalCount = 0;
+            }
+
+            if (pager.PageSize == 0)
+            {
+                pager.PageSize = 15;
+            }
+            int total = 0;
+            var dataset = bftest.GetDataByTableName(tableName,pager,out total);
             if (dataset!=null &&dataset.Tables.Count > 0)
             {
                 var table = dataset.Tables[0];
@@ -96,18 +111,37 @@ namespace RightManage.Service
                     tableRowsData.Add(rowData);
 
                 }
-                pageData.tableData = tableRowsData;
+                PagerListData<TableRowData> pageListData = new PagerListData<TableRowData>();
+                pager.TableName = tableName;
+                pager.TotalCount = total;
+                pageListData.Pager = pager;
+                pageListData.ListData = tableRowsData;
+                pageData.tableData = pageListData;
             }
 
 
             return pageData;
         }
 
-        public List<TableRowData> SearchTable(string tableName, List<SearchData> searchDataList)
+        public PagerListData<TableRowData> SearchTable(string tableName, List<SearchData> searchDataList, Pagination pager)
         {
             
             BFTest bftest = new BFTest();
-            var dataset = bftest.SearchTable(tableName, searchDataList);
+            if (pager == null)
+            {
+                pager = new Pagination();
+                pager.IsASC = false;
+                pager.PageIndex = 0;
+                pager.PageSize = 15;
+                pager.TotalCount = 0;
+            }
+
+            if (pager.PageSize == 0)
+            {
+                pager.PageSize = 15;
+            }
+            int total = 0;
+            var dataset = bftest.SearchTable(tableName, searchDataList,pager,out total);
             List<TableRowData> tableRowsData = new List<TableRowData>();
             if (dataset.Tables.Count > 0)
             {
@@ -130,7 +164,12 @@ namespace RightManage.Service
 
                 }
             }
-            return tableRowsData;
+            PagerListData<TableRowData> pageListData = new PagerListData<TableRowData>();
+            pager.TableName = tableName;
+            pager.TotalCount = total;
+            pageListData.Pager = pager;
+            pageListData.ListData = tableRowsData;
+            return pageListData;
         }
 
 

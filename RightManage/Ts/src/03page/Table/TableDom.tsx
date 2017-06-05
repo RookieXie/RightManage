@@ -7,6 +7,7 @@ import rowDomFile = require("./TableRowDom");
 import dataFile = require("./Data");
 import React = require("react");
 import ReactDOM = require("react-dom");
+import pageFile = require("./../../04col/Pagination");
 
 export module TableDom {
     export class TableDomAction extends domCore.DomAction {
@@ -25,6 +26,7 @@ export module TableDom {
                         {this.pHeader()}
                         {this.pBody()}
                     </table>
+                    <div className="bottomPager">{this._tDom(this.props.Vm.PaginationVm)}</div>
                 </div></div>;
         }
         protected pComponentDidMount() {
@@ -100,14 +102,14 @@ export module TableDom {
             this.forceUpdate();
         }
         private searchClick() {
-            this.props.Vm.search();
+            this.props.Vm.search(0);
         }
         private clearClick() {
             this.props.Vm.searchData = [];
             this.props.Vm.colunmList.map(a => {
                 a.searchValue = "";
             })
-            this.props.Vm.search();
+            this.props.Vm.search(0);
         }
     }
 
@@ -117,14 +119,15 @@ export module TableDom {
         tableRowDomList: rowDomFile.TableRowDom.TableRowDomVm[];
         isAllCheck: boolean;
         buttonList: dataFile.TableData.ITableButton[];
-        search();
+        search(PageIndex: number);
         searchData: dataFile.TableData.ITableSearchData[];
         pageSearch: dataFile.TableData.IPageSearch;
-        btnClick(b: dataFile.TableData.ITableButton)
+        btnClick(b: dataFile.TableData.ITableButton);
+        PaginationVm: pageFile.tool.PaginationVm;
     }
     export interface ITableDomConfig {
         tableColunms: dataFile.TableData.ITableColunm[];
-        tableData: dataFile.TableData.ITableData[];
+        tableData: dataFile.TableData.IPanationData;
         tableButtons?: dataFile.TableData.ITableButton[];
         tableName: string;
     }
@@ -138,6 +141,7 @@ export module TableDom {
         public searchData: dataFile.TableData.ITableSearchData[] = [];
         public pageSearch: dataFile.TableData.IPageSearch;
         public tableName: string;
+        public PaginationVm: pageFile.tool.PaginationVm;
         public constructor(config?: ITableDomConfig) {
             super();
             if (config) {
@@ -145,12 +149,7 @@ export module TableDom {
                     this.colunmList = config.tableColunms;
                 }
                 if (config.tableData) {
-                    this.tableDataList = config.tableData;
-                    this.tableDataList.map(a => {
-                        var _config: rowDomFile.TableRowDom.ITableRowDomConfig = { tableRowData: a.tableRowData, columList: this.colunmList };
-                        var rowDom: rowDomFile.TableRowDom.TableRowDomVm = new rowDomFile.TableRowDom.TableRowDomVm(_config);
-                        this.tableRowDomList.push(rowDom);
-                    })
+                    this.initPageData(config.tableData);                   
                 }
                 if (config.tableName)
                     this.tableName = config.tableName;
@@ -180,20 +179,21 @@ export module TableDom {
 
         }
 
-        public search() {
+        public search(PageIndex: number) {
             var search = JSON.stringify(this.searchData);
-            urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, page: "" }, (res) => {
+            var _page = { PageIndex: PageIndex, PageSize: 10 };
+            urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: _page }, (res) => {
                 // this.tableDataList = res;
-
-                this.tableDataList = res;
-                this.tableRowDomList = []
-                this.tableDataList.map(a => {
-                    var _config: rowDomFile.TableRowDom.ITableRowDomConfig = { tableRowData: a.tableRowData, columList: this.colunmList };
-                    var rowDom: rowDomFile.TableRowDom.TableRowDomVm = new rowDomFile.TableRowDom.TableRowDomVm(_config);
-                    rowDom.IsChange = true;
-                    this.tableRowDomList.push(rowDom);
-                })
-                this.forceUpdate("");
+                this.initPageData(res);
+                //this.tableDataList = res;
+                //this.tableRowDomList = []
+                //this.tableDataList.map(a => {
+                //    var _config: rowDomFile.TableRowDom.ITableRowDomConfig = { tableRowData: a.tableRowData, columList: this.colunmList };
+                //    var rowDom: rowDomFile.TableRowDom.TableRowDomVm = new rowDomFile.TableRowDom.TableRowDomVm(_config);
+                //    rowDom.IsChange = true;
+                //    this.tableRowDomList.push(rowDom);
+                //})
+                //this.forceUpdate("");
             })
         }
         public getSelectData(): dataFile.TableData.IRowData[] {
@@ -208,6 +208,26 @@ export module TableDom {
         public btnClick(b: dataFile.TableData.ITableButton) {
             var pageObj = this.getSelectData();
             b.Function(this.colunmList, pageObj);
+        }
+
+        public initPageData(pageConfig: dataFile.TableData.IPanationData) {
+            this.tableRowDomList = [];
+            this.PaginationVm = new pageFile.tool.PaginationVm({ isPartHidden: true, IsPageSizeHidden: true, IsBidaStyle: false });
+            var pager = pageConfig.Pager;
+            this.PaginationVm.PageIndex = pager.PageIndex;
+            this.PaginationVm.PageSize = pager.PageSize;
+            this.PaginationVm.TotalCount = pager.TotalCount;
+
+            this.PaginationVm.PageClickEvent = (pageIndex) => {
+                this.search(pageIndex);
+            }
+            this.tableDataList = pageConfig.ListData
+            this.tableDataList.map(a => {
+                var _config: rowDomFile.TableRowDom.ITableRowDomConfig = { tableRowData: a.tableRowData, columList: this.colunmList };
+                var rowDom: rowDomFile.TableRowDom.TableRowDomVm = new rowDomFile.TableRowDom.TableRowDomVm(_config);
+                this.tableRowDomList.push(rowDom);
+            })
+            this.forceUpdate("");
         }
     }
     export class TableDomStates extends domCore.DomStates {

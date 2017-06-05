@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./TableRowDom", "react"], function (require, exports, domFile, urlFile, rowDomFile, React) {
+define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./TableRowDom", "react", "./../../04col/Pagination"], function (require, exports, domFile, urlFile, rowDomFile, React, pageFile) {
     "use strict";
     var domCore = domFile.Core;
     var TableDom;
@@ -30,7 +30,8 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                         this.pButton(),
                         React.createElement("table", { className: "table table-bordered table-condensed table-hover" },
                             this.pHeader(),
-                            this.pBody())));
+                            this.pBody()),
+                        React.createElement("div", { className: "bottomPager" }, this._tDom(this.props.Vm.PaginationVm))));
             };
             TableDomReact.prototype.pComponentDidMount = function () {
                 _super.prototype.pComponentDidMount.call(this);
@@ -101,14 +102,14 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                 this.forceUpdate();
             };
             TableDomReact.prototype.searchClick = function () {
-                this.props.Vm.search();
+                this.props.Vm.search(0);
             };
             TableDomReact.prototype.clearClick = function () {
                 this.props.Vm.searchData = [];
                 this.props.Vm.colunmList.map(function (a) {
                     a.searchValue = "";
                 });
-                this.props.Vm.search();
+                this.props.Vm.search(0);
             };
             return TableDomReact;
         }(domCore.DomReact));
@@ -129,12 +130,7 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                         _this.colunmList = config.tableColunms;
                     }
                     if (config.tableData) {
-                        _this.tableDataList = config.tableData;
-                        _this.tableDataList.map(function (a) {
-                            var _config = { tableRowData: a.tableRowData, columList: _this.colunmList };
-                            var rowDom = new rowDomFile.TableRowDom.TableRowDomVm(_config);
-                            _this.tableRowDomList.push(rowDom);
-                        });
+                        _this.initPageData(config.tableData);
                     }
                     if (config.tableName)
                         _this.tableName = config.tableName;
@@ -161,20 +157,22 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                 }
                 return _this;
             }
-            TableDomVm.prototype.search = function () {
+            TableDomVm.prototype.search = function (PageIndex) {
                 var _this = this;
                 var search = JSON.stringify(this.searchData);
-                urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, page: "" }, function (res) {
+                var _page = { PageIndex: PageIndex, PageSize: 10 };
+                urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: _page }, function (res) {
                     // this.tableDataList = res;
-                    _this.tableDataList = res;
-                    _this.tableRowDomList = [];
-                    _this.tableDataList.map(function (a) {
-                        var _config = { tableRowData: a.tableRowData, columList: _this.colunmList };
-                        var rowDom = new rowDomFile.TableRowDom.TableRowDomVm(_config);
-                        rowDom.IsChange = true;
-                        _this.tableRowDomList.push(rowDom);
-                    });
-                    _this.forceUpdate("");
+                    _this.initPageData(res);
+                    //this.tableDataList = res;
+                    //this.tableRowDomList = []
+                    //this.tableDataList.map(a => {
+                    //    var _config: rowDomFile.TableRowDom.ITableRowDomConfig = { tableRowData: a.tableRowData, columList: this.colunmList };
+                    //    var rowDom: rowDomFile.TableRowDom.TableRowDomVm = new rowDomFile.TableRowDom.TableRowDomVm(_config);
+                    //    rowDom.IsChange = true;
+                    //    this.tableRowDomList.push(rowDom);
+                    //})
+                    //this.forceUpdate("");
                 });
             };
             TableDomVm.prototype.getSelectData = function () {
@@ -189,6 +187,25 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
             TableDomVm.prototype.btnClick = function (b) {
                 var pageObj = this.getSelectData();
                 b.Function(this.colunmList, pageObj);
+            };
+            TableDomVm.prototype.initPageData = function (pageConfig) {
+                var _this = this;
+                this.tableRowDomList = [];
+                this.PaginationVm = new pageFile.tool.PaginationVm({ isPartHidden: true, IsPageSizeHidden: true, IsBidaStyle: false });
+                var pager = pageConfig.Pager;
+                this.PaginationVm.PageIndex = pager.PageIndex;
+                this.PaginationVm.PageSize = pager.PageSize;
+                this.PaginationVm.TotalCount = pager.TotalCount;
+                this.PaginationVm.PageClickEvent = function (pageIndex) {
+                    _this.search(pageIndex);
+                };
+                this.tableDataList = pageConfig.ListData;
+                this.tableDataList.map(function (a) {
+                    var _config = { tableRowData: a.tableRowData, columList: _this.colunmList };
+                    var rowDom = new rowDomFile.TableRowDom.TableRowDomVm(_config);
+                    _this.tableRowDomList.push(rowDom);
+                });
+                this.forceUpdate("");
             };
             return TableDomVm;
         }(domCore.DomVm));

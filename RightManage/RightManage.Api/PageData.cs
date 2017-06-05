@@ -11,6 +11,6 @@ namespace RightManage.Api
         public string tableName { get; set; }
         public string pageTitle { get; set; }
         public List<TableColunm> tableColunms { get; set; }
-        public List<TableRowData> tableData { get; set; }
+        public PagerListData<TableRowData> tableData { get; set; }
     }
 }

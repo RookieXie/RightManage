@@ -38,7 +38,6 @@ E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\EntityFramewor
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\SocketIoClientDotNet.dll
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\Newtonsoft.Json.dll
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\EngineIoClientDotNet.dll
-E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\Microsoft.Web.Infrastructure.dll
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\WebSocket4Net.dll
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\RightManage.Api.pdb
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\RightManage.BF.pdb
@@ -54,7 +53,6 @@ E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\RightManage.DA
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\System.Web.Mvc.xml
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\EntityFramework.xml
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\Newtonsoft.Json.xml
-E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\Microsoft.Web.Infrastructure.xml
 E:\git\test\RightManage\RightManage\RightManage.Service\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 E:\git\test\RightManage\RightManage\RightManage.Service\obj\Debug\RightManage.Service.csprojResolveAssemblyReference.cache
 E:\git\test\RightManage\RightManage\RightManage.Service\obj\Debug\RightManage.Service.dll
