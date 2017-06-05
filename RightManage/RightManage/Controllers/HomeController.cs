@@ -57,7 +57,7 @@ namespace RightManage.Controllers
             instance.NickName = _user.NickName;
             instance.FControlUnitID = _user.FControlUnitID;
             instance.UserName = _user.LoginName;
-            
+            Log4net.LogInfo(instance.UserName+"登录成功，时间："+DateTime.Now.ToShortTimeString());
             return ReturnJson(res);
         }
         public string Test()

@@ -1,2 +1,5 @@
 2017-05-17 17:34:13,771 [10] INFO  RightManage.Core.Log4net - select top 10 * from Test where FControlUnitID=''
 2017-05-17 17:34:26,464 [20] INFO  RightManage.Core.Log4net - select top 10 * from Test where FControlUnitID=''
+2017-06-05 10:50:29,587 [5] INFO  RightManage.Core.Log4net - select top 10 * from Test where FControlUnitID='1'
+2017-06-05 10:50:31,038 [6] INFO  RightManage.Core.Log4net - select top 10 * from Test where FControlUnitID='1'
+2017-06-05 10:50:31,068 [5] INFO  RightManage.Core.Log4net - select top 10 * from Test where FControlUnitID='1'

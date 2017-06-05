@@ -4,3 +4,10 @@ E:\AtawSource\Products\RightManage\RightManage.Api\bin\Debug\EntityFramework.dll
 E:\AtawSource\Products\RightManage\RightManage.Api\bin\Debug\EntityFramework.xml
 E:\AtawSource\Products\RightManage\RightManage.Api\obj\Debug\RightManage.Api.dll
 E:\AtawSource\Products\RightManage\RightManage.Api\obj\Debug\RightManage.Api.pdb
+E:\git\test\RightManage\RightManage\RightManage.Api\bin\Debug\RightManage.Api.dll
+E:\git\test\RightManage\RightManage\RightManage.Api\bin\Debug\RightManage.Api.pdb
+E:\git\test\RightManage\RightManage\RightManage.Api\bin\Debug\EntityFramework.dll
+E:\git\test\RightManage\RightManage\RightManage.Api\bin\Debug\EntityFramework.xml
+E:\git\test\RightManage\RightManage\RightManage.Api\obj\Debug\RightManage.Api.csprojResolveAssemblyReference.cache
+E:\git\test\RightManage\RightManage\RightManage.Api\obj\Debug\RightManage.Api.dll
+E:\git\test\RightManage\RightManage\RightManage.Api\obj\Debug\RightManage.Api.pdb
