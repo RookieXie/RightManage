@@ -54,7 +54,7 @@ define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", 
             xbgTestPageVm.prototype.loadPage = function (callback) {
                 var _this = this;
                 var _page = { PageIndex: 0, PageSize: 10 };
-                urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test", pager: _page }, function (res) {
+                urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page) }, function (res) {
                     //this.pageContent = res;
                     var btns = { name: "Insert", text: "新增", isbatch: false, Function: function () { alert("Insert"); } };
                     var _config = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" };

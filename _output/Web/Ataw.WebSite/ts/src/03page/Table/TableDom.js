@@ -161,7 +161,7 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                 var _this = this;
                 var search = JSON.stringify(this.searchData);
                 var _page = { PageIndex: PageIndex, PageSize: 10 };
-                urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: _page }, function (res) {
+                urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: JSON.stringify(_page) }, function (res) {
                     // this.tableDataList = res;
                     _this.initPageData(res);
                     //this.tableDataList = res;

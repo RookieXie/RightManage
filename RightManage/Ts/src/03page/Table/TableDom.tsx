@@ -181,7 +181,7 @@ export module TableDom {
         public search(PageIndex: number) {
             var search = JSON.stringify(this.searchData);
             var _page = { PageIndex: PageIndex, PageSize: 10 };
-            urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: _page }, (res) => {
+            urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: JSON.stringify(_page) }, (res) => {
                 // this.tableDataList = res;
                 this.initPageData(res);
                 //this.tableDataList = res;
