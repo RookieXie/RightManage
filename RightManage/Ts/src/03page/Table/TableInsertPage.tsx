@@ -64,7 +64,7 @@ export module TableInsertPage {
         public ReactType = TableInsertPageReact;
         public Title: string = "TableInsertPage页面";
         public colunmList: dataFile.TableData.ITableColunm[] = [];
-        public rowData: dataFile.TableData.IRowData = [];
+        public rowData: dataFile.TableData.IRowData = {};
         public constructor(config?: ITableInsertPageConfig) {
             super();
 
@@ -83,7 +83,7 @@ export module TableInsertPage {
             }
         }
         public saveClick() {
-            urlFile.Core.AkPost("/Common/InsertTable", { tableName: "", data: JSON.stringify(this.rowData) }, () => {
+            urlFile.Core.AkPost("/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, () => {
 
             })
         }

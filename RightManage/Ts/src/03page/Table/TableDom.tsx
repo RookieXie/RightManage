@@ -158,8 +158,8 @@ export module TableDom {
                 } else {
                     //默认的按钮
                     var inserBtn: dataFile.TableData.ITableButton = {
-                        name: "Insert", text: "新增", isbatch: false, Function: (colunmObj, pageObj) => { 
-                            urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj), true);
+                        name: "Insert", text: "新增", isbatch: false, Function: (colunmObj, pageObj) => {
+                            urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj) + "$" + this.tableName, true);
                         }
                     };
                     var updateBtn: dataFile.TableData.ITableButton = { name: "Update", text: "修改", isbatch: true, Function: (colunmObj, pageObj) => { } };

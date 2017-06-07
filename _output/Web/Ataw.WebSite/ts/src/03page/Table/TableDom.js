@@ -141,7 +141,7 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                         //默认的按钮
                         var inserBtn = {
                             name: "Insert", text: "新增", isbatch: false, Function: function (colunmObj, pageObj) {
-                                urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj), true);
+                                urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj) + "$" + _this.tableName, true);
                             }
                         };
                         var updateBtn = { name: "Update", text: "修改", isbatch: true, Function: function (colunmObj, pageObj) { } };

@@ -14,7 +14,7 @@ namespace RightManage.Data
         [Control(Name = "内容", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public string Content { get; set; }
         [Control(Name = "年龄", Control = "text", IsHidden = false, isSearch = true, isSearchLike = false)]
-        public int Age { get; set; }
+        public int? Age { get; set; }
         [Control(Name = "性别", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public string Sex { get; set; }
         [Control(Name = "fff", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]

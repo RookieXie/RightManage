@@ -56,7 +56,7 @@ define(["require", "exports", "./../../01core/Ioc", "./../../01core/Url", "./../
                 _this.ReactType = TableInsertPageReact;
                 _this.Title = "TableInsertPage页面";
                 _this.colunmList = [];
-                _this.rowData = [];
+                _this.rowData = {};
                 return _this;
             }
             TableInsertPageVm.prototype.init = function (config) {
@@ -72,7 +72,7 @@ define(["require", "exports", "./../../01core/Ioc", "./../../01core/Url", "./../
                 }
             };
             TableInsertPageVm.prototype.saveClick = function () {
-                urlFile.Core.AkPost("/Common/InsertTable", { tableName: "", data: JSON.stringify(this.rowData) }, function () {
+                urlFile.Core.AkPost("/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, function () {
                 });
             };
             return TableInsertPageVm;

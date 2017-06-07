@@ -27,10 +27,14 @@ namespace RightManage
             //).DataTokens.Add("Area", "RightManage");
 
             routes.MapRoute(
-            name: "Default",
+            name: "Default_Login",
             url: "{controller}/{action}/{id}",
             defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+             name: "Default",
+             url: "{controller}/{action}/{id}"
+           );
 
 
         }

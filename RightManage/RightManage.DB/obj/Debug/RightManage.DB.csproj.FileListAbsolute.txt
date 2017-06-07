@@ -26,10 +26,7 @@ E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\RightManage.Core.dl
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\RightManage.Data.dll
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\log4net.dll
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\System.Web.Mvc.dll
-E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\SocketIoClientDotNet.dll
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\Newtonsoft.Json.dll
-E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\EngineIoClientDotNet.dll
-E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\WebSocket4Net.dll
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\RightManage.Core.pdb
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\RightManage.Core.dll.config
 E:\git\test\RightManage\RightManage\RightManage.DB\bin\Debug\RightManage.Data.pdb

@@ -40,11 +40,16 @@ namespace RightManage.Controllers
             var res = service.UpdateModel(tableName);
             return ReturnJson(res);
         }
-        public string InsertTable(string tableName,string data)
+        public string InsertTable(string tableName,string data,string columns)
         {
-            var _data = data.SafeJsonObject<TableRowData>();
+            var _data = data.SafeJsonObject<Dictionary<string, object>>();
+            var _columns = columns.SafeJsonObject<List<TableColunm>>();
             CommonService service = new CommonService();
-            service.InsertTable(tableName, _data);
+            service.InsertTable(tableName, _data,_columns);
+            return ReturnJson(true);
+        }
+        public string WebSocket()
+        {
             return ReturnJson(true);
         }
     }

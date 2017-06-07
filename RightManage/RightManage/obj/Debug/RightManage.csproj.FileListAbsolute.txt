@@ -136,3 +136,4 @@ E:\git\test\RightManage\_output\Web\Ataw.WebSite\Area\RightManage\RightManage.pd
 E:\git\test\RightManage\RightManage\RightManage\obj\Debug\RightManage.csprojResolveAssemblyReference.cache
 E:\git\test\RightManage\RightManage\RightManage\obj\Debug\RightManage.dll
 E:\git\test\RightManage\RightManage\RightManage\obj\Debug\RightManage.pdb
+E:\git\test\RightManage\_output\Web\Ataw.WebSite\Area\RightManage\Views\Home\Test.cshtml

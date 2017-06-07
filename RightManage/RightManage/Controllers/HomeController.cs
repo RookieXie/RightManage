@@ -3,6 +3,7 @@ using RightManage.DB;
 using RightManage.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -60,10 +61,10 @@ namespace RightManage.Controllers
             Log4net.LogInfo(instance.UserName+"登录成功，时间："+DateTime.Now.ToShortTimeString());
             return ReturnJson(res);
         }
-        public string Test()
+        public string Test1()
         {
             CommonService service = new CommonService();
-            //service.CreateOrUpdateTable("Test");
+            //service.Test();
             var _data = new
             {
                 Content = "ok",
@@ -71,6 +72,28 @@ namespace RightManage.Controllers
             };
 
             return ReturnJson(_data);
+        }
+        public string Test2()
+        {
+            CommonService service = new CommonService();
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            //耗时巨大的代码  
+            var res = service.Test();
+            sw.Stop();
+            TimeSpan ts2 = sw.Elapsed;
+           // Console.WriteLine("Stopwatch总共花费{0}ms.", ts2.TotalMilliseconds);
+            var _data = new
+            {
+                Content = res,
+                Data = ts2.TotalMilliseconds
+            };
+            return ReturnJson(_data);
+        }
+        public ActionResult Test()
+        {
+            return View();
         }
     }
 }

@@ -185,5 +185,22 @@ namespace RightManage.BF
                 UnitOfData.ExecuteSqlCommand(createSql);
             }
         }
+
+        public void AddModel(Test model)
+        {
+            DATest _da = new DATest(UnitOfData);
+            _da.Add(model);
+        }
+        public IQueryable<Test> GetQuery()
+        {
+            DATest _da = new DATest(UnitOfData);
+            return _da.QueryDefault(a=>1==1);
+        }
+        public List<Test> GetList()
+        {
+            DATest _da = new DATest(UnitOfData);
+            return _da.QueryDefault(a => 1 == 1).ToList();
+        }
+        
     }
 }

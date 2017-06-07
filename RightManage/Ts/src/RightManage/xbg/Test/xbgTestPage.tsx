@@ -59,7 +59,7 @@ export module xbgTestPage {
         private init(config: IxbgTestPageConfig) {
         }
         public testClick() {
-            urlFile.Core.AkPost("/Home/Test", {}, (res) => {
+            urlFile.Core.AkPost("/Home/Test1", {}, (res) => {
                 console.table(res);
             })
         }

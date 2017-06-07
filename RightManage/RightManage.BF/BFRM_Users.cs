@@ -16,7 +16,7 @@ namespace RightManage.BF
             RM_Users _user = null;
             var _pass = RightManageUtil.EncryptString3Des(password, keyUtil.Secretkey);
             DARM_Users _da = new DARM_Users(UnitOfData);
-            var userlist = _da.QueryDefault(a => a.UserName == name && a.Password == _pass && a.FControlUnitID == orgid).ToList();
+            var userlist = _da.QueryDefault(a => a.UserName == name && a.Password == _pass && a.FControlUnitID == orgid).ToList();           
             if (userlist.Count > 0)
             {
                 var isable = false;

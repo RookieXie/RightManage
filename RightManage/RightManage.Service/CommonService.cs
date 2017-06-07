@@ -68,7 +68,7 @@ namespace RightManage.Service
                 colunm.pType = pType;
                 tableColunmList.Add(colunm);
 
-            }         
+            }
             pageData.tableColunms = tableColunmList;
 
 
@@ -89,8 +89,8 @@ namespace RightManage.Service
                 pager.PageSize = 15;
             }
             int total = 0;
-            var dataset = bftest.GetDataByTableName(tableName,pager,out total);
-            if (dataset!=null &&dataset.Tables.Count > 0)
+            var dataset = bftest.GetDataByTableName(tableName, pager, out total);
+            if (dataset != null && dataset.Tables.Count > 0)
             {
                 var table = dataset.Tables[0];
                 var rows = table.Rows;
@@ -125,7 +125,7 @@ namespace RightManage.Service
 
         public PagerListData<TableRowData> SearchTable(string tableName, List<SearchData> searchDataList, Pagination pager)
         {
-            
+
             BFTest bftest = new BFTest();
             if (pager == null)
             {
@@ -141,7 +141,7 @@ namespace RightManage.Service
                 pager.PageSize = 15;
             }
             int total = 0;
-            var dataset = bftest.SearchTable(tableName, searchDataList,pager,out total);
+            var dataset = bftest.SearchTable(tableName, searchDataList, pager, out total);
             List<TableRowData> tableRowsData = new List<TableRowData>();
             if (dataset.Tables.Count > 0)
             {
@@ -155,7 +155,7 @@ namespace RightManage.Service
                     foreach (var colunm in colunms)
                     {
                         var name = colunm.ToString();
-                        var value = rows[i][name].ToString();                     
+                        var value = rows[i][name].ToString();
                         dic[name] = value;
                     }
                     rowData.tableRowData = dic;
@@ -186,9 +186,198 @@ namespace RightManage.Service
             BFTest bfTest = new BFTest();
             bfTest.CreateOrUpdateTable(tableName);
         }
-        public void InsertTable(string tableName, TableRowData data)
+        public void InsertTable(string tableName, Dictionary<string, object> data, List<TableColunm> columns)
         {
-            
+            var db = new RightManageDBContent();
+            var colunms = "";
+            var values = "";
+
+            foreach (var item in data)
+            {
+
+                var column = columns.Where(a => a.name == item.Key).FirstOrDefault(); var pType = column == null ? "string" : column.pType;
+
+                if (colunms == "")
+                {
+                    if (!string.IsNullOrWhiteSpace(item.Value.ToString()) || (item.Key=="FID" || item.Key == "CREATE_ID" || item.Key == "CREATE_TIME" || item.Key == "FControlUnitID" || item.Key == "TIMESSTAMP" || item.Key == "UPDATE_TIME" || item.Key == "UPDATE_ID"))
+                        colunms = string.Format("{0}", item.Key);
+                }
+                else
+                {
+                    if (!string.IsNullOrWhiteSpace(item.Value.ToString()) || (item.Key == "FID" || item.Key == "CREATE_ID" || item.Key == "CREATE_TIME" || item.Key == "FControlUnitID" || item.Key == "TIMESSTAMP" || item.Key == "UPDATE_TIME" || item.Key == "UPDATE_ID"))
+                        colunms = string.Format("{0},{1}", colunms, item.Key);
+                }
+                if (values == "")
+                {
+                    if (item.Key == "FID")
+                    {
+                        values = string.Format("'{0}'", RightManageUtil.UniqueID());
+                    }
+                    if (item.Key == "CREATE_ID")
+                    {
+                        values = string.Format("'{0}'", Singleton.Current.UserID);
+                    }
+                    if (item.Key == "CREATE_TIME")
+                    {
+                        values = string.Format("'{0}'", DateTime.Now);
+                    }
+                    if (item.Key == "FControlUnitID")
+                    {
+                        values = string.Format("'{0}'", Singleton.Current.FControlUnitID);
+                    }
+                    if (item.Key == "TIMESSTAMP")
+                    {
+                        values = string.Format("'{0}'", DateTime.Now.ToShortTimeString());
+                    }
+                    if (item.Key == "UPDATE_TIME")
+                    {
+                        values = string.Format("'{0}'", DateTime.Now);
+                    }
+                    if (item.Key == "UPDATE_ID")
+                    {
+                        values = string.Format("'{0}'", Singleton.Current.UserID);
+                    }
+                    else
+                    {
+                        if (pType == "string")
+                        {
+                            values = string.Format("'{0}'", item.Value);
+                        }
+                        if (pType == "bool")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0}", null);
+                            }
+                        }
+                        if (pType == "int")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0}", Convert.ToInt32(item.Value));
+                            }
+                                
+                        }
+                        if (pType == "dataTime")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("'{0}'", Convert.ToDateTime(item.Value));
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (item.Key == "FID")
+                    {
+                        values = string.Format("{0},'{1}'", values, RightManageUtil.UniqueID());
+                    }
+                    if (item.Key == "CREATE_ID")
+                    {
+                        values = string.Format("{0},'{1}'", values, Singleton.Current.UserID);
+                    }
+                    if (item.Key == "CREATE_TIME")
+                    {
+                        values = string.Format("{0},'{1}'", values, DateTime.Now);
+                    }
+                    if (item.Key == "FControlUnitID")
+                    {
+                        values = string.Format("{0},'{1}'", values, Singleton.Current.FControlUnitID);
+                    }
+                    if (item.Key == "TIMESSTAMP")
+                    {
+                        values = string.Format("{0},'{1}'", values, DateTime.Now.ToShortTimeString());
+                    }
+                    if (item.Key == "UPDATE_TIME")
+                    {
+                        values = string.Format("{0},'{1}'", values, DateTime.Now);
+                    }
+                    if (item.Key == "UPDATE_ID")
+                    {
+                        values = string.Format("{0},'{1}'", values, Singleton.Current.UserID);
+                    }
+                    else
+                    {
+                        if (pType == "string")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0},'{1}'", values, item.Value);
+                            }                              
+                        }
+                        if (pType == "bool")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0},{1}", values, Convert.ToBoolean(item.Value));
+                            }
+                                
+                        }
+                        if (pType == "int")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0},{1}", values, Convert.ToInt32(item.Value));
+                            }
+                           
+                        }
+                        if (pType == "dataTime")
+                        {
+                            if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
+                            {
+                                values = string.Format("{0},'{1}'", values, Convert.ToDateTime(item.Value));
+                            }
+                                
+                        }
+
+                    }
+
+                }
+            }
+
+            var sql = string.Format("insert into {0} ({1}) values ({2})", tableName, colunms, values);
+            Log4net.LogInfo(sql);
+            var res = db.ExecuteSqlCommand(sql);
+            Log4net.LogInfo(res.ToString());
+        }
+
+        ///测试
+        ///
+        public IEnumerable<string> Test()
+        {
+            var db = new RightManageDBContent();
+            BFTest bf = new BFTest();
+            var query = bf.GetQuery();
+            var _query = query.Where(a => a.Age >= 500).Select(b => b.Content);
+            //foreach (var item in _query)
+            //{
+
+            //}
+            //foreach (var item in _query)
+            //{
+
+            //}
+            //_query = _query.Where(a => a.Age >= 500);
+
+            //_query = _query.Where(a => a.Age >= 600);
+            //_query = _query.Where(a => a.Age >= 700);
+            //foreach (var item in _query)
+            //{
+
+            //}
+            //var list= _query.ToList();
+            //bf.SetUnitOfData(db);
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    Test test = new Test();
+            //    test.FID = RightManageUtil.UniqueID();
+            //    test.Content = "哈哈" + i;
+            //    test.Age = i;
+            //    bf.AddModel(test);
+            //}
+            // db.Submit();
+            return _query;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RightManage.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,8 @@ namespace RightManage
         }
         protected void Application_Start()
         {
+            //MySuperSocket socket=new MySuperSocket();
+            //socket.Start();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

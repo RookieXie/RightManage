@@ -47,7 +47,7 @@ define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", 
             xbgTestPageVm.prototype.init = function (config) {
             };
             xbgTestPageVm.prototype.testClick = function () {
-                urlFile.Core.AkPost("/Home/Test", {}, function (res) {
+                urlFile.Core.AkPost("/Home/Test1", {}, function (res) {
                     console.table(res);
                 });
             };

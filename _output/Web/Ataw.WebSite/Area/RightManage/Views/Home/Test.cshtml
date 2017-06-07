@@ -1,0 +1,13 @@
+﻿<script src="~/Content/jquery.js"></script>
+<script>
+    var t = Date.now;
+    $.post('/Home/Test2', {}, function (res) {
+        if (res) {
+            var t2 = Date.now;
+            var template = t2 - t1;
+            $("#test").val(template);
+        }
+    })
+</script>
+<h2 id="test">Test</h2>
+

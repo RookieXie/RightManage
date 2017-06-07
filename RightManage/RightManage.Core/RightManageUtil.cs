@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace RightManage.Core
 {
@@ -68,7 +69,62 @@ namespace RightManage.Core
             }
             return s.PadRight(len, b);
         }
+        /// <summary>
+        /// 获取md5散列值
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static string GetStringMD5(string val)
+        {
+            byte[] btval = Encoding.Default.GetBytes(val);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] vals = md5.ComputeHash(btval);
+            string res = BitConverter.ToString(vals);
+            return res;
+        }
 
+        /// <summary>
+        /// 反序列化Json
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jsonStr"></param>
+        /// <returns></returns>
+        public static List<T> JsonToList<T>(string jsonStr)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            List<T> objs = serializer.Deserialize<List<T>>(jsonStr);
+            return objs;
+        }
+
+        /// <summary>
+        /// 获得Json
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetJson(object obj)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            string jsonData = jss.Serialize(obj);
+            return jsonData;
+        }
+
+        /// <summary>
+        /// 获取唯一的guid值
+        /// </summary>
+        /// <returns></returns>
+        public static string UniqueID()
+        {
+            string guid = Guid.NewGuid().ToString();
+            string[] resguid = guid.Split('-');
+            string res = "";
+            for (int i = 0; i < resguid.Length; i++)
+            {
+                res += resguid[i];
+            }
+            DateTime datetime = DateTime.Now;
+            res = datetime.ToString("yyyyMMddhhmmss") + res;
+            return res.ToUpper();
+        }
 
 
     }
