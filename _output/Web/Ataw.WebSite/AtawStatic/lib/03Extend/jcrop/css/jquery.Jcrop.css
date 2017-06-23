@@ -1,0 +1,129 @@
+/* Fixes issue here http://code.google.com/p/jcrop/issues/detail?id=1 */
+.jcrop-holder { text-align: left; }
+
+.jcrop-vline, .jcrop-hline
+{
+	font-size: 0;
+	position: absolute;
+	background: white url('Jcrop.gif') top left repeat;
+}
+.jcrop-vline { height: 100%; width: 1px !important; }
+.jcrop-hline { width: 100%; height: 1px !important; }
+.jcrop-handle {
+	font-size: 1px;
+	width: 7px !important;
+	height: 7px !important;
+	border: 1px #eee solid;
+	background-color: #333;
+	*width: 9px;
+	*height: 9px;
+}
+.jcrop-handle.ord-n {
+     left: 50%;
+     margin-left: -4px;
+     margin-top: -4px;
+     top: 0px;
+}
+
+.jcrop-handle.ord-s {
+     bottom: 0px;
+     left: 50%;
+     margin-bottom: -4px;
+     margin-left: -4px;
+}
+
+.jcrop-handle.ord-e {
+     margin-right: -4px;
+     margin-top: -4px;
+     right: 0px;
+     top: 50%;
+}
+
+.jcrop-handle.ord-w {
+     left: 0px;
+     margin-left: -4px;
+     margin-top: -4px;
+     top: 50%;
+}
+
+.jcrop-handle.ord-nw {
+     left: 0px;
+     margin-left: -4px;
+     margin-top: -4px;
+     top: 0px;
+}
+
+.jcrop-handle.ord-ne {
+     margin-right: -4px;
+     margin-top: -4px;
+     right: 0px;
+     top: 0px;
+}
+
+.jcrop-handle.ord-se {
+     bottom: 0px;
+     margin-bottom: -4px;
+     margin-right: -4px;
+     right: 0px;
+}
+
+.jcrop-handle.ord-sw {
+     bottom: 0px;
+     left: 0px;
+     margin-bottom: -4px;
+     margin-left: -4px;
+}
+
+.jcrop-dragbar.ord-n, .jcrop-dragbar.ord-s {
+     height: 7px;
+     width: 100%;
+}
+
+.jcrop-dragbar.ord-e, .jcrop-dragbar.ord-w {
+     height: 100%;
+     width: 7px;
+}
+
+.jcrop-dragbar.ord-n {
+     margin-top: -4px;
+}
+
+.jcrop-dragbar.ord-s {
+     bottom: 0px;
+     margin-bottom: -4px;
+}
+
+.jcrop-dragbar.ord-e {
+     margin-right: -4px;
+     right: 0px;
+}
+
+.jcrop-dragbar.ord-w {
+     margin-left: -4px;
+}
+
+.jcrop-tracker { width: 100%; height: 100%; }
+
+.custom .jcrop-vline,
+.custom .jcrop-hline
+{
+	background: yellow;
+}
+.custom .jcrop-handle
+{
+	border-color: black;
+	background-color: #C7BB00;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.cut-image{width:600px;max-height:500px;}
+.left-image,.right-image{float:left;margin-left:10px;}
+.right-image{overflow: hidden;}
+.sure-cut{ color: Gray; display: inline-block;float: none;margin-right: 10px;margin-top: 20px; margin-left: 12px; font-weight:bold;font-size:12px;text-decoration:none;}
+.upload-result{}
+.upload-result a{font-size:12px;text-decoration:none;margin-left:10px;}
+.imgSize 
+{
+    display:block;
+    margin: 0 0 0 12px;
+}

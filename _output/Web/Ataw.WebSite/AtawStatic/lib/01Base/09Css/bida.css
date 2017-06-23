@@ -1,0 +1,108 @@
+body {
+    color: #878787 !important;
+}
+.acs-header-img {
+  max-width: 5rem;
+  margin-right: .5rem;
+}
+.navbar-inverse .navbar-nav > li > a,.navbar-right a,.pagination > li > a, .pagination > li > span { color: #980d43;}
+.ACT-BOX ul li a { color: #878787;}
+.ask-navbar-nav .active a { 
+    background: #980d43 !important;
+    -webkit-box-shadow: none;
+}
+.ask-sider-left .active,.right-1 .ask-mytab-heading{ background-color: #76002d !important;}
+.btn-primary {
+    background: #76002d !important;
+    border-color: #76002d !important;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background: #980d43 !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: #76002d !important;
+  border-color: #76002d !important;
+}
+.ACT-HEADER { background: #98653f !important;}
+.btn-warning {
+    background: #98653f !important;
+    border-color: #98653f !important;
+}
+.panel-green { border-color: #76002d;}
+.btn-success {
+    background: #a40240;
+    border-color: #a40240;
+    color: #fff;
+}
+.btn-success:hover{
+    background: #a40240;
+    border-color: #a40240;
+}
+.input-border {
+  border-bottom: none;
+}
+.aks-grid-control {
+  margin-top: .4rem;
+  padding-top: .3rem;
+}
+.acs-normal-form:first-child span {
+  /*display: inline-block;*/
+  margin-top: .2rem;
+}
+.btn-group a {
+    color: #980d43;
+}
+.search-box button {
+    height: 1.95rem;
+}
+.ask-bus-panel .publisher-box .blue,.ask-bus-panel .publisher-box .purple { background: #980d43 !important;}
+.navbar-inverse .ask-navbar-nav li a:hover, .navbar-inverse .ask-navbar-nav li .dropdown-menu li a:hover, .acs-menu li a:hover, .ask-navbar-nav-2 li a:hover {
+    background: #980d43 !important;
+}
+.panel-warning > .panel-heading { background: #9D6A41 !important;}
+.panel-warning { border-color: #9D6A41 !important;}
+.panel-primary { border-color: #869095;}
+.panel-primary > .panel-heading { background: #869095 !important;}
+.panel-green > .panel-heading {
+  background: #76002d !important;
+}
+/*==========日历=======================*/
+.runcode { background: url(../15Images/iconDate_1.gif) center right no-repeat #f7f7f7 !important;}
+.acs-btn-disabled {
+  background: rgba(102,102,102,0.45) !important;
+  border-color: transparent !important;
+  text-shadow: none;
+  color: #fff;
+}
+/*分页*/
+.bd-pagination .current > a {
+    background-color:#76002d !important;
+}
+
+.ask-logo { text-align: center;}
+    .ask-logo span { font-size: 1.6rem;}
+.ask-top-menu { position: relative;}
+    .ask-top-menu .dropdown-menu { right: -160px;}
+.breadcrumb { 
+    position: relative;
+    margin-bottom: 0;
+    background-color: transparent;}
+.breadcrumb li a { color: #878787;}
+.navbar-light .navbar-nav .nav-link {
+    padding: .8rem;
+    color: #980d43;
+}
+    .navbar-light .navbar-nav .nav-link.active,.navbar-light .navbar-nav .nav-link.active:hover,.navbar-light .navbar-nav .nav-link:hover,.navbar-light .navbar-nav .nav-link:focus {
+        background: #980d43;
+        color: #fff;
+    }
+.ACT-BT-Delete:hover .icon-white{
+    color: #333;
+}
+.formTypeBtnBar .dropdown-menu a { font-size: .875rem;}
+a { color: #980d43;}
+a:hover { color: #8A073A;}
+
+.qing_main .icon-caret-left { color: #980d43 !important;}

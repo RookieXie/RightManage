@@ -1,0 +1,16 @@
+﻿
+.Hm-dev-form {
+    padding: 10px;
+}
+
+    .Hm-dev-form .aspNetHidden {
+        display: none;
+    }
+
+    .Hm-dev-form > div {
+        padding: 5px 0;
+    }
+
+        .Hm-dev-form > div > input,textarea,select {
+            margin-top: 8px;
+        }

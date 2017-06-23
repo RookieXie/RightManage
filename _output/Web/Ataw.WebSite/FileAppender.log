@@ -155,3 +155,6 @@
 2017-06-09 11:26:16,263 [31] INFO  RightManage.Core.Log4net - select top 10 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='') a where rownumber > 0 and rownumber<=10 
 2017-06-09 11:28:14,658 [24] INFO  RightManage.Core.Log4net - admin登录成功，时间：11:28
 2017-06-09 11:28:15,285 [40] INFO  RightManage.Core.Log4net - select top 10 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=10 
+2017-06-23 15:05:26,822 [16] INFO  RightManage.Core.Log4net - admin登录成功，时间：15:05
+2017-06-23 15:05:29,009 [18] INFO  RightManage.Core.Log4net - select top 10 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=10 
+2017-06-23 15:10:31,588 [24] INFO  RightManage.Core.Log4net - select top 10 * from  (select row_number()over(order by FID) rownumber,* from Test where FControlUnitID='1') a where rownumber > 0 and rownumber<=10 

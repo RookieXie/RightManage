@@ -1,0 +1,50 @@
+﻿.autocomplete{border: 1px solid #EDEDED;display: none;z-index: 2147483647;background: #fff;position:absolute; height:300px; overflow:auto;}
+.autocomplete span{display: block;padding-left: 10px;color: #00449a;cursor: pointer; text-align:center;}
+.autocomplete span: hover{background-color: #03439D;color: #fff;}
+.ACT-DATA-CONTAINER dl,.ACT-DATA-CONTAINER dt,.ACT-DATA-CONTAINER dd{margin: 0;background: #fff5fa;font-size: 14px;}
+.ACT-DATA-CONTAINER dl{margin: 0 auto;border: 1px solid #EDEDED;border-bottom: none;}
+.ACT-DATA-CONTAINER dt{font-weight: 800;background: #ff99cc;color: #fff;}
+.ACT-DATA-CONTAINER dt,.ACT-DATA-CONTAINER dd{border-bottom: 1px solid #EDEDED;overflow: hidden;}
+.ACT-DATA-CONTAINER dd{text-indent: 3em;}
+.bg{background: #fff;}
+.ACT-DATA-CONTAINER dt span,.ACT-DATA-CONTAINER dd span{display: block;float: left;font-size: 14px;border-left: 1px solid #EDEDED;text-indent: 0em;width: 100%;text-align: center;cursor:pointer;}
+.ACT-DATA-CONTAINER dd span:hover{background-color:#03439D;color:#fff;}
+.select-item{text-decoration:none;font-size:12px;color:#03439D;}
+/**input Demo**/
+.inputAutoBox
+{
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    position: relative;
+}
+.inputAutoCon{width:80%;   height:20px; line-height:20px; padding:0; margin:0 auto; border:none;border-bottom:1px solid #00449a}
+.inputAutoBtn{ display:inline-block; text-align:center;cursor:pointer; position:absolute; top:7px;left: 120px;}
+.SearchButtonList{margin-left:5px;cursor:pointer;}
+.ACT-SELECTBOX-PARENT {display:inline-block;}/*max-width: 200px;*/
+.css{left:50%;/*FF IE7*/
+     top: 50%;/*FF IE7*/
+	_top:expression(eval(document.compatMode &&
+		document.compatMode=='CSS1Compat') ?
+		documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/
+		document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);/*IE5 IE5.5*/
+}
+
+/** 多选控件 **/
+
+.clearfix:after {visibility: hidden;display: block;font-size: 0;content: ".";clear: both;height: 0;}
+*html .clearfix { height: 1%; }
+.clearfix{zoom:1}
+.diaLog{ border:1px solid #ccc; padding:5px; background:#fff; margin:10px; height:400px;}
+.chooes_User, .pickOn_User{ margin-left:5px; height:24px; line-height:24px;}
+.choose{ float:left;}
+.pickOn{ float:left; margin-left:10px;}
+.choose_UserCon, .pickOn_UserCon{ width:198px; border:1px solid #D2D2D2; height:300px; padding:5px 0; overflow-x:hidden; overflow-y:auto;
+ -mox-border-radius:5px;
+ -webkit-border-radius:5px;
+border-radius:5px;}
+.choose_UserCon ul, .pickOn_UserCon ul{ border-top:1px solid #DFDFDF; list-style:none;}
+.diaLog_User, .pickOn_diaLog_User{ height:22px; line-height:22px; border-bottom:1px solid #DFDFDF; position:relative;}
+.diaLog_User a, .pickOn_diaLog_User a{ display:block;padding-left:15px;}
+.diaLog_User a:hover, .pickOn_diaLog_User a:hover{ background:#DCEFFE;}
+.diaLog_User img, .pickOn_diaLog_User img{ position:absolute; right:10px; top:3px; cursor:pointer;}

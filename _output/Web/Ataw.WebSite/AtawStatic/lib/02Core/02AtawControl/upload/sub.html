@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<METANAME="GENERATOR"Content="oscar999">
+    <style>
+        .acs-picture-panel {
+            width: 100%;
+        }
+
+        .acs-picture {
+            width: 100%;
+        }
+
+        .acs-picture-btn {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+        }
+
+            .acs-picture-btn button {
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,.5);
+                border: none;
+                color: #fff;
+            }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+    <link href="/AtawStatic/lib/01Base/05Font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="/AtawStatic/lib/01Base/02Jquery/jquery.js"></script>
+    <script src="/AtawStatic/lib/03Extend/rotate/jquery.rotate.js"></script>
+    <script src="/AtawStatic/lib/01Base/13Url/jquery.url.js"></script>
+</HEAD>
+<script>
+    $(function () {
+
+        var hash = location.hash;
+        // alert(hash);
+        if (hash.length >= 2 && hash.substring(0, 1) == "#")
+        {
+            //alert(hash.substring(1,hash.length));
+            var _url = hash.substring(1, hash.length);
+
+            //alert(123);
+            var _$pic = $("#DvPic");
+            _$pic.find("img").data("raval", 0).attr("src",_url);
+
+            $("#ACT-BT").off("click").on("click", function () {
+                var _ra = _$pic.find("img").data("raval");
+
+                if ($(this).attr("isleft") != "0") {
+                    _$pic.css('rotate', _ra + 90);
+                    _$pic.find("img").data("raval", _ra + 90);
+                }
+                else {
+                    _$pic.css('rotate', _ra - 90);
+                    _$pic.find("img").data("raval", _ra - 90);
+                }
+            });
+
+        }
+
+        $(window).resize(function () {
+            var _h = $(window).height();
+            if (_h < 500) {
+                $(".acs-picture-btn").addClass("hide").removeClass("show");
+            } else {
+                $(".acs-picture-btn").addClass("show").removeClass("hide");
+            }
+        });
+        });
+</script>
+<BODY>
+<!-- <INPUT id="button1" type="button" value="returnandclose" name="button1" onclick="returnMain()"> -->
+<div  id="DvPic" class="acs-picture-panel"><img id="ACT-IMAGE" src="images/22.jpg" class="acs-picture"/></div>
+<div class="acs-picture-btn"><button class="icon-repeat" id="ACT-BT"></button></div>
+</BODY>
+</HTML>

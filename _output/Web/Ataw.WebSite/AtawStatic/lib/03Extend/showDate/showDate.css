@@ -1,0 +1,10 @@
+﻿.showDate_date {
+    font-size: .875rem;
+}
+.showDate_time {
+    font-size: .875rem;
+}
+.showDate_week {
+    float: right;
+    font-size: 2.5rem;
+}
