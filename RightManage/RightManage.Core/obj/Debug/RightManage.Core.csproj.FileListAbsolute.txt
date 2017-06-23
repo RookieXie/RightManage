@@ -39,3 +39,4 @@ E:\git\test\RightManage\RightManage\RightManage.Core\bin\Debug\System.Web.Mvc.xm
 E:\git\test\RightManage\RightManage\RightManage.Core\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 E:\git\test\RightManage\RightManage\RightManage.Core\obj\Debug\RightManage.Core.dll
 E:\git\test\RightManage\RightManage\RightManage.Core\obj\Debug\RightManage.Core.pdb
+E:\git\test\RightManage\RightManage\RightManage.Core\obj\Debug\RightManage.Core.csprojResolveAssemblyReference.cache

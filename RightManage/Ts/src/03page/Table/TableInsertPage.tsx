@@ -83,8 +83,8 @@ export module TableInsertPage {
             }
         }
         public saveClick() {
-            urlFile.Core.AkPost("/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, () => {
-
+            urlFile.Core.AkPost("/RightManage/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, () => {
+                
             })
         }
 

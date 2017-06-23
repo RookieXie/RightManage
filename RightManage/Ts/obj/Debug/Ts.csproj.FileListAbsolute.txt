@@ -8,3 +8,4 @@ E:\git\test\RightManage\RightManage\Ts\bin\Ts.dll
 E:\git\test\RightManage\RightManage\Ts\bin\Ts.pdb
 E:\git\test\RightManage\RightManage\Ts\obj\Debug\Ts.dll
 E:\git\test\RightManage\RightManage\Ts\obj\Debug\Ts.pdb
+E:\git\test\RightManage\RightManage\Ts\obj\Debug\Ts.csprojResolveAssemblyReference.cache

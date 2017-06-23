@@ -1,10 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./TableRowDom", "react", "./../../04col/Pagination"], function (require, exports, domFile, urlFile, rowDomFile, React, pageFile) {
     "use strict";
+    exports.__esModule = true;
     var domCore = domFile.Core;
     var TableDom;
     (function (TableDom) {
@@ -161,7 +167,7 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Url", "./Ta
                 var _this = this;
                 var search = JSON.stringify(this.searchData);
                 var _page = { PageIndex: PageIndex, PageSize: 10 };
-                urlFile.Core.AkPost("/Common/SearchTable", { tableName: this.tableName, search: search, pager: JSON.stringify(_page) }, function (res) {
+                urlFile.Core.AkPost("/RightManage/Common/SearchTable", { tableName: this.tableName, search: search, pager: JSON.stringify(_page) }, function (res) {
                     // this.tableDataList = res;
                     _this.initPageData(res);
                     //this.tableDataList = res;

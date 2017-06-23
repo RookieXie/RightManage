@@ -102,7 +102,7 @@ export module Core {
             return    opt.ReactType;
         }
 
-      public static AsyncJs(strs: Array<string>, fun: Function):void
+      public static AsyncJs(strs: Array<string>, fun: Function, errorFun?: Function):void
       {
           strs.forEach((url,i) => {
               var _len = url.length;
@@ -114,7 +114,7 @@ export module Core {
               }
 
           })
-          require(strs, fun);
+          require(strs, fun, errorFun);
       }
 
       public static HexToString(str: string):string

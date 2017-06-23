@@ -1,5 +1,6 @@
 define(["require", "exports", "react-dom", "./src/06app/Web/Hull", "./src/RightManage/RightManageApp", "./src/03page/PageApp"], function (require, exports, ReactDOM, hullFile, RightManageApp, PageApp) {
     "use strict";
+    exports.__esModule = true;
     RightManageApp;
     PageApp;
     $(function () {

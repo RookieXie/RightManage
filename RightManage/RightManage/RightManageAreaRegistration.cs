@@ -19,11 +19,16 @@ namespace RightManage
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
+             "RightManage_Default_home",
+             "ts/html/x",
+            new { controller = "Home", action = "Home" },
+              new[] { "RightManage.Controllers" }
+            );
+            context.MapRoute(
                "RightManage_Defalut",
                "RightManage/{controller}/{action}/{id}",
               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                  new[] { "RightManage.Controllers" }
-
            );
 
         }

@@ -26,6 +26,8 @@ E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\03page\Table\Data.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\03page\Table\TableRowDom.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\03page\Table\TableDom.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\03page\Table\TableInsertPage.js
+E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\04col\01single\Date.js
+E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\04col\01single\Text.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\src\RightManage\xbg\Test\xbgTestPage.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\Typings\antd\rc-button.d.js
 E:\git\test\RightManage\_output\Web\Ataw.WebSite\ts\Typings\antd\rc-table.d.js

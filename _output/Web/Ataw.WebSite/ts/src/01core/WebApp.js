@@ -1,5 +1,6 @@
 define(["require", "exports", "./Url", "./Util"], function (require, exports, urlFile, utilFile) {
     "use strict";
+    exports.__esModule = true;
     var WebApp = (function () {
         function WebApp() {
         }

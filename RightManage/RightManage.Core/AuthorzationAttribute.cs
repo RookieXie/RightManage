@@ -23,7 +23,7 @@ namespace RightManage.Core
         public AuthorzationAttribute()
         {
 
-            string authUrl = ConfigurationManager.AppSettings["AhtuUrl"];
+            string authUrl = ConfigurationManager.AppSettings["AuthUrl"];
             string saveKey = ConfigurationManager.AppSettings["SaveKey"];
             string saveType = ConfigurationManager.AppSettings["SaveType"];
 

@@ -1,10 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", "./../../../03page/BaseWebPage", "./../../../03page/Table/TableDom", "react"], function (require, exports, iocFile, urlFile, basewedPageFile, tableDomFile, React) {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", "./../../../03page/BaseWebPage", "./../../../03page/Table/TableDom", "react", "./../../../04col/01single/Date", "./../../../04col/01single/Text"], function (require, exports, iocFile, urlFile, basewedPageFile, tableDomFile, React, dateFile, textFile) {
     "use strict";
+    exports.__esModule = true;
     var xbgTestPage;
     (function (xbgTestPage) {
         var xbgTestPageAction = (function (_super) {
@@ -26,7 +32,9 @@ define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", 
                 var _this = this;
                 return React.createElement("div", null,
                     React.createElement("div", null,
-                        React.createElement("button", { type: "button", className: "btn btn-info", onClick: function () { _this.testClick(); } }, "\u6D4B\u8BD5")),
+                        React.createElement("button", { type: "button", className: "btn btn-info", onClick: function () { _this.testClick(); } }, "\u6D4B\u8BD5"),
+                        this._tDom(this.props.Vm.dateVmObj),
+                        this._tDom(this.props.Vm.textVmObj)),
                     this._tDom(this.props.Vm.tableDomObj));
             };
             xbgTestPageReact.prototype.testClick = function () {
@@ -42,6 +50,8 @@ define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", 
                 _this.ReactType = xbgTestPageReact;
                 _this.Title = "xbgTestPage页面;";
                 _this.pageContent = "1";
+                _this.dateVmObj = new dateFile.DateCol.DateVm();
+                _this.textVmObj = new textFile.Text.TextVm();
                 return _this;
             }
             xbgTestPageVm.prototype.init = function (config) {
@@ -54,7 +64,7 @@ define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", 
             xbgTestPageVm.prototype.loadPage = function (callback) {
                 var _this = this;
                 var _page = { PageIndex: 0, PageSize: 10 };
-                urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page) }, function (res) {
+                urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page) }, function (res) {
                     //this.pageContent = res;
                     var btns = { name: "Insert", text: "新增", isbatch: false, Function: function () { alert("Insert"); } };
                     var _config = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" };

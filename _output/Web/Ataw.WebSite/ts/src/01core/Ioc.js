@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    exports.__esModule = true;
     var Core;
     (function (Core) {
         var Ioc = (function () {
@@ -72,6 +73,7 @@ define(["require", "exports"], function (require, exports) {
                         if (_isNull) {
                             fun(null);
                         }
+                        // error(null);
                     }
                 }
                 else {

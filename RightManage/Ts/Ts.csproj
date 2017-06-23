@@ -46,6 +46,8 @@
     <TypeScriptCompile Include="src\03page\Table\TableDom.tsx" />
     <TypeScriptCompile Include="src\03page\Table\TableInsertPage.tsx" />
     <TypeScriptCompile Include="src\03page\Table\TableRowDom.tsx" />
+    <TypeScriptCompile Include="src\04col\01single\Date.tsx" />
+    <TypeScriptCompile Include="src\04col\01single\Text.tsx" />
     <TypeScriptCompile Include="src\04col\baseCol\baseCol.tsx" />
     <TypeScriptCompile Include="src\04col\Pagination.tsx" />
     <TypeScriptCompile Include="src\06app\Web\Hull.tsx" />

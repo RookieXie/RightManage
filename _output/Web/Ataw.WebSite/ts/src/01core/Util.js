@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    exports.__esModule = true;
     var Core;
     (function (Core) {
         var Util = (function () {
@@ -71,6 +72,7 @@ define(["require", "exports"], function (require, exports) {
                     else {
                         $("#ACT-Loading").show(0, fun);
                     }
+                    // $("#ACT-Loading").removeClass("hide");
                 }
                 else {
                     if (window["Ataw"] && window["Ataw"]["msgbox"] && window["Ataw"]["msgbox"]["hide"]) {
@@ -82,7 +84,7 @@ define(["require", "exports"], function (require, exports) {
             Util.ReactByOpt = function (opt) {
                 return opt.ReactType;
             };
-            Util.AsyncJs = function (strs, fun) {
+            Util.AsyncJs = function (strs, fun, errorFun) {
                 strs.forEach(function (url, i) {
                     var _len = url.length;
                     if (_len > 3) {
@@ -92,7 +94,7 @@ define(["require", "exports"], function (require, exports) {
                         }
                     }
                 });
-                require(strs, fun);
+                require(strs, fun, errorFun);
             };
             Util.HexToString = function (str) {
                 // var str = this;

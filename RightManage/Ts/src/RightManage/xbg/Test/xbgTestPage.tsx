@@ -11,6 +11,8 @@ import tableDomFile = require("./../../../03page/Table/TableDom");
 import tableDataFile = require("./../../../03page/Table/Data");
 import React = require("react");
 import ReactDOM = require("react-dom");
+import dateFile = require("./../../../04col/01single/Date");
+import textFile = require("./../../../04col/01single/Text");
 
 export module xbgTestPage {
     export class xbgTestPageAction extends basewedPageFile.Web.BaseWebPageStates {
@@ -26,6 +28,8 @@ export module xbgTestPage {
             return <div>
                 <div>
                     <button type="button" className="btn btn-info" onClick={() => { this.testClick() }}>测试</button>
+                    {this._tDom(this.props.Vm.dateVmObj)}
+                    {this._tDom(this.props.Vm.textVmObj)}
                 </div>{this._tDom(this.props.Vm.tableDomObj)}</div>;
         }
 
@@ -41,6 +45,8 @@ export module xbgTestPage {
         pageContent: string;
         tableDomObj: tableDomFile.TableDom.TableDomVm;
         testClick();
+        dateVmObj: dateFile.DateCol.DateVm;
+        textVmObj: textFile.Text.TextVm;
     }
     export interface IxbgTestPageConfig {
 
@@ -51,6 +57,8 @@ export module xbgTestPage {
         public Title: string = "xbgTestPage页面;";
         public pageContent: string = "1";
         public tableDomObj: tableDomFile.TableDom.TableDomVm;
+        public dateVmObj: dateFile.DateCol.DateVm = new dateFile.DateCol.DateVm();
+        public textVmObj: textFile.Text.TextVm = new textFile.Text.TextVm();
         public constructor(config?: IxbgTestPageConfig) {
             super();
 
@@ -65,7 +73,7 @@ export module xbgTestPage {
         }
         protected loadPage(callback?: () => any) {
             var _page = { PageIndex: 0, PageSize: 10 };
-            urlFile.Core.AkPost("/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page)}, (res) => {
+            urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page)}, (res) => {
                 //this.pageContent = res;
                 var btns: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
                 var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" }

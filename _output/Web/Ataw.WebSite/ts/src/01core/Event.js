@@ -1,6 +1,7 @@
 /// <reference path="../../typings/eventemitter2/eventemitter2.d.ts" />
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    exports.__esModule = true;
     var App = (function () {
         function App() {
         }
@@ -35,6 +36,8 @@ define(["require", "exports"], function (require, exports) {
             EventBus.prototype.FetchEmit = function () {
                 if (!this.fEmit) {
                     this.fEmit = $({});
+                    //this.fEmit.setMaxListeners(0);
+                    // this.fEmit.
                 }
                 return this.fEmit;
             };

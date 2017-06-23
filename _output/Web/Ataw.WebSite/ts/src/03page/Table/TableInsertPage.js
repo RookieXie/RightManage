@@ -1,10 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 define(["require", "exports", "./../../01core/Ioc", "./../../01core/Url", "./../../03page/BaseWebPage", "react"], function (require, exports, iocFile, urlFile, basewedPageFile, React) {
     "use strict";
+    exports.__esModule = true;
     var TableInsertPage;
     (function (TableInsertPage) {
         var TableInsertPageAction = (function (_super) {
@@ -72,7 +78,7 @@ define(["require", "exports", "./../../01core/Ioc", "./../../01core/Url", "./../
                 }
             };
             TableInsertPageVm.prototype.saveClick = function () {
-                urlFile.Core.AkPost("/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, function () {
+                urlFile.Core.AkPost("/RightManage/Common/InsertTable", { tableName: this.Param2, data: JSON.stringify(this.rowData), columns: this.Param1 }, function () {
                 });
             };
             return TableInsertPageVm;

@@ -1,5 +1,6 @@
 define(["require", "exports", "./Util", "./Event"], function (require, exports, urlFile, eventFile) {
     "use strict";
+    exports.__esModule = true;
     var Util = urlFile.Core.Util;
     var Core;
     (function (Core) {
@@ -305,6 +306,7 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                     }
                     if (_moduleName == "DEFAULT" && _param1 && _param1.length > 4 && (_param1.lastIndexOf(".xml") == _param1.length - 4)) {
                         _param1 = _param1.replace(".xml", "");
+                        // alert();
                     }
                     return {
                         PanelName: _paneName,

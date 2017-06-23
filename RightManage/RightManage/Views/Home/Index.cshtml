@@ -75,7 +75,7 @@
                     alert("请输入完整信息！")
                 } else {
                     $.post('/Home/Login', { name: $("#inputLoginName").val(), password: $("#inputPass").val(), orgId: $("#hdOrgCode").val() }, function (data) {
-                       // data = JSON.parse(data);
+                        data = JSON.parse(data).Obj;
                         if (data.Content == "ok") {
                             window.location.href = "/ts/html/x?" + window.location.hash;
                         }
