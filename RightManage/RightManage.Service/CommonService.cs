@@ -199,7 +199,7 @@ namespace RightManage.Service
 
                 if (colunms == "")
                 {
-                    if (!string.IsNullOrWhiteSpace(item.Value.ToString()) || (item.Key=="FID" || item.Key == "CREATE_ID" || item.Key == "CREATE_TIME" || item.Key == "FControlUnitID" || item.Key == "TIMESSTAMP" || item.Key == "UPDATE_TIME" || item.Key == "UPDATE_ID"))
+                    if (!string.IsNullOrWhiteSpace(item.Value.ToString()) || (item.Key == "FID" || item.Key == "CREATE_ID" || item.Key == "CREATE_TIME" || item.Key == "FControlUnitID" || item.Key == "TIMESSTAMP" || item.Key == "UPDATE_TIME" || item.Key == "UPDATE_ID"))
                         colunms = string.Format("{0}", item.Key);
                 }
                 else
@@ -256,7 +256,7 @@ namespace RightManage.Service
                             {
                                 values = string.Format("{0}", Convert.ToInt32(item.Value));
                             }
-                                
+
                         }
                         if (pType == "dataTime")
                         {
@@ -273,27 +273,27 @@ namespace RightManage.Service
                     {
                         values = string.Format("{0},'{1}'", values, RightManageUtil.UniqueID());
                     }
-                    if (item.Key == "CREATE_ID")
+                    else if (item.Key == "CREATE_ID")
                     {
                         values = string.Format("{0},'{1}'", values, Singleton.Current.UserID);
                     }
-                    if (item.Key == "CREATE_TIME")
+                    else if (item.Key == "CREATE_TIME")
                     {
                         values = string.Format("{0},'{1}'", values, DateTime.Now);
                     }
-                    if (item.Key == "FControlUnitID")
+                    else if (item.Key == "FControlUnitID")
                     {
                         values = string.Format("{0},'{1}'", values, Singleton.Current.FControlUnitID);
                     }
-                    if (item.Key == "TIMESSTAMP")
+                    else if (item.Key == "TIMESSTAMP")
                     {
                         values = string.Format("{0},'{1}'", values, DateTime.Now.ToShortTimeString());
                     }
-                    if (item.Key == "UPDATE_TIME")
+                    else if (item.Key == "UPDATE_TIME")
                     {
                         values = string.Format("{0},'{1}'", values, DateTime.Now);
                     }
-                    if (item.Key == "UPDATE_ID")
+                    else if (item.Key == "UPDATE_ID")
                     {
                         values = string.Format("{0},'{1}'", values, Singleton.Current.UserID);
                     }
@@ -304,7 +304,7 @@ namespace RightManage.Service
                             if (!string.IsNullOrWhiteSpace(item.Value.ToString()))
                             {
                                 values = string.Format("{0},'{1}'", values, item.Value);
-                            }                              
+                            }
                         }
                         if (pType == "bool")
                         {
@@ -312,7 +312,7 @@ namespace RightManage.Service
                             {
                                 values = string.Format("{0},{1}", values, Convert.ToBoolean(item.Value));
                             }
-                                
+
                         }
                         if (pType == "int")
                         {
@@ -320,7 +320,7 @@ namespace RightManage.Service
                             {
                                 values = string.Format("{0},{1}", values, Convert.ToInt32(item.Value));
                             }
-                           
+
                         }
                         if (pType == "dataTime")
                         {
@@ -328,7 +328,7 @@ namespace RightManage.Service
                             {
                                 values = string.Format("{0},'{1}'", values, Convert.ToDateTime(item.Value));
                             }
-                                
+
                         }
 
                     }

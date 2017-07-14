@@ -1,14 +1,14 @@
 define(["require", "exports", "./Util", "./Event"], function (require, exports, urlFile, eventFile) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Util = urlFile.Core.Util;
     var Core;
     (function (Core) {
         $(function () {
             Util.AsyncJs([
                 "/AtawStatic/lib/03Extend/bbq/jquery.ba-hashchange.min.js"
-            ], function () {
-                $(window).hashchange(function () {
+            ], () => {
+                $(window).hashchange(() => {
                     var hash = location.hash;
                     // alert(1);
                     eventFile.App.GetAppEvent().emit("refeshMarksys");
@@ -41,20 +41,20 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
             //8: "JsAjaxFun"
         })(JsActionType = Core.JsActionType || (Core.JsActionType = {}));
         Core.ActionCommond = {
-            Lock: function (res) {
+            Lock: (res) => {
                 AkUrl.Current().openUrl("$WinAppLockPage$", false, { CanMenuUrl: true });
             },
-            Alert: function (res) {
+            Alert: (res) => {
                 Util.Noty(res.Content);
             },
-            Reload: function (res) {
+            Reload: (res) => {
                 window.location.reload();
                 ;
             },
-            Url: function (res) {
+            Url: (res) => {
                 window.location.href = res.Content;
             },
-            Object: function (res, callback) {
+            Object: (res, callback) => {
                 if (callback) {
                     if (res["BeginTime"] && res["EndTimer"]) {
                         var _begin = Date.parse(res["BeginTime"]);
@@ -65,14 +65,14 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                 }
                 return res.Obj;
             },
-            Noty: function (res) {
+            Noty: (res) => {
                 Util.Noty(res.Content);
                 // alert(res.Content);
             },
-            NoGotoUrl: function (res) {
+            NoGotoUrl: (res) => {
                 AkUrl.Current().openUrl(res.Content);
             },
-            JsonObject: function (res, callback) {
+            JsonObject: (res, callback) => {
                 var _obj = $.parseJSON(res.Obj);
                 if (callback) {
                     if (res["BeginTime"] && res["EndTimer"]) {
@@ -84,7 +84,7 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                 }
                 return _obj;
             },
-            JsAjaxFun: function (aRR, obj_Fun) {
+            JsAjaxFun: (aRR, obj_Fun) => {
                 //  $.HideAjax();
                 Util.ToggleLoading(false);
                 if (aRR.Content && aRR.Content != "") {
@@ -106,7 +106,7 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                     alert("js函数 $.AKjs.JsAjaxFun.名不能为空吧！");
                     throw "js函数 $.AKjs.JsAjaxFun.名不能为空吧！";
                 }
-            }
+            },
         };
         function logTime(end, begin) {
             var _begin = begin;
@@ -222,34 +222,32 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                 },
                 success: function (a) {
                     opt(a);
-                }
+                },
             }, settings);
             // $["jsonp"](_oop);
             return $.ajax(_oop);
         }
         Core.AkPost = AkPost;
-        var AkUrl = (function () {
-            function AkUrl() {
-            }
-            AkUrl.Current = function () {
+        class AkUrl {
+            static Current() {
                 if (this.fAkUrl.fEmit == null) {
                     this.fAkUrl.fEmit = new EventEmitter2();
                 }
                 return this.fAkUrl;
-            };
-            AkUrl.Fetch = function () {
+            }
+            static Fetch() {
                 return this.fAkUrl = new AkUrl();
-            };
-            AkUrl.prototype.refresh = function () {
+            }
+            refresh() {
                 Core.AkUrl.Current().fEmit.emit("hashchange", location.hash);
-            };
-            AkUrl.prototype.getUrlCode = function (m) {
+            }
+            getUrlCode(m) {
                 if (m) {
                     return "$" + m.PanelName + m.ModuleName + "$" + m.Param1 + "$" + m.Param2 + "$" + m.Param3 + "$";
                 }
                 return "";
-            };
-            AkUrl.prototype.getPageUrlModel = function (a) {
+            }
+            getPageUrlModel(a) {
                 if (!a)
                     a = location.hash;
                 var _strs = a.split("$");
@@ -313,27 +311,27 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                         ModuleName: _name,
                         Param1: _param1,
                         Param2: _param2,
-                        Param3: _param3
+                        Param3: _param3,
                     };
                 }
                 else {
                     return null;
                 }
                 //  return null;
-            };
-            AkUrl.prototype.SendToPage = function (config, obj) {
+            }
+            SendToPage(config, obj) {
                 Core.AkUrl.Current().fEmit.emit("sendtopage__" + config.ToPanelName, config, obj);
-            };
-            AkUrl.prototype.closePage = function (pageName) {
+            }
+            closePage(pageName) {
                 Core.AkUrl.Current().fEmit.emit("closePage__" + pageName);
-            };
-            AkUrl.prototype.openUrlByNoMenu = function (url, name) {
+            }
+            openUrlByNoMenu(url, name) {
                 if (!name)
                     name = "$MENU$";
                 var _isMenu = url.length >= name.length && url.toUpperCase().indexOf(name.toUpperCase()) == 0;
                 this.openUrl(url, _isMenu, { CanMenuUrl: true });
-            };
-            AkUrl.prototype.openUrl = function (url, noUrl, urlConfig) {
+            }
+            openUrl(url, noUrl, urlConfig) {
                 if (noUrl) {
                     console.info("url跳转到:  " + url);
                 }
@@ -359,46 +357,45 @@ define(["require", "exports", "./Util", "./Event"], function (require, exports, 
                         }
                     }
                 }
-            };
-            AkUrl.prototype.IsStartNoUrl = function (url, sign) {
+            }
+            IsStartNoUrl(url, sign) {
                 if (url.length > sign.length) {
                     if (url.substr(0, sign.length).toUpperCase() == sign.toUpperCase()) {
                         return true;
                     }
                 }
                 return false;
-            };
-            AkUrl.prototype.bindSendPage = function (panelName, fun) {
+            }
+            bindSendPage(panelName, fun) {
                 if (this.fEmit == null) {
                     this.fEmit = new EventEmitter2();
                 }
                 this.fEmit.removeAllListeners(("sendtopage__" + panelName));
                 this.fEmit.on(("sendtopage__" + panelName), fun);
-            };
-            AkUrl.prototype.bindClosePage = function (panelName, fun) {
+            }
+            bindClosePage(panelName, fun) {
                 this.fEmit.removeAllListeners(("closePage__" + panelName));
                 this.fEmit.on(("closePage__" + panelName), fun);
-            };
-            AkUrl.prototype.ready = function () {
+            }
+            ready() {
                 var hash = location.hash;
                 Core.AkUrl.Current().fEmit.emit("ready", hash);
-            };
-            AkUrl.prototype.bindHashChange = function (urlEvent) {
+            }
+            bindHashChange(urlEvent) {
                 if (this.fEmit == null) {
                     this.fEmit = new EventEmitter2();
                 }
                 this.fEmit.addListener("hashchange", urlEvent);
                 // alert();
-            };
-            AkUrl.prototype.bindReady = function (urlEvent) {
+            }
+            bindReady(urlEvent) {
                 if (this.fEmit == null) {
                     this.fEmit = new EventEmitter2();
                 }
                 this.fEmit.addListener("ready", urlEvent);
                 // alert();
-            };
-            return AkUrl;
-        }());
+            }
+        }
         AkUrl.fAkUrl = new AkUrl();
         Core.AkUrl = AkUrl;
     })(Core = exports.Core || (exports.Core = {}));

@@ -1,12 +1,10 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Core;
     (function (Core) {
-        var Screen = (function () {
-            function Screen() {
-            }
-            Screen.GetHeight = function () {
+        class Screen {
+            static GetHeight() {
                 var xScroll, yScroll;
                 if (window.innerHeight && window["scrollMaxY"]) {
                     xScroll = window.innerWidth + window["scrollMaxX"];
@@ -61,9 +59,8 @@ define(["require", "exports"], function (require, exports) {
                 }
                 arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
                 return arrayPageSize;
-            };
-            return Screen;
-        }());
+            }
+        }
         Core.Screen = Screen;
     })(Core = exports.Core || (exports.Core = {}));
 });

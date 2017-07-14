@@ -1,78 +1,58 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 define(["require", "exports", "./../../01core/0Dom", "react"], function (require, exports, domFile, React) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var TreeMenu;
     (function (TreeMenu) {
-        var TreeMenuAction = (function (_super) {
-            __extends(TreeMenuAction, _super);
-            function TreeMenuAction() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TreeMenuAction;
-        }(domFile.Core.DomAction));
+        class TreeMenuAction extends domFile.Core.DomAction {
+        }
         TreeMenu.TreeMenuAction = TreeMenuAction;
-        var TreeMenuReact = (function (_super) {
-            __extends(TreeMenuReact, _super);
-            function TreeMenuReact() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.state = new TreeMenuStates();
-                return _this;
+        class TreeMenuReact extends domFile.Core.DomReact {
+            constructor() {
+                super(...arguments);
+                this.state = new TreeMenuStates();
             }
-            TreeMenuReact.prototype.pSender = function () {
-                var _this = this;
+            pSender() {
                 return React.createElement("div", { className: "TreeDiv" },
-                    React.createElement("ul", { className: "TreeMenu TreeMenu-pills TreeMenu-stacked" }, this.props.Vm.menuTree.Children.map(function (a) {
-                        _this.props.Vm._arry = [];
-                        _this.props.Vm.Level = 0;
-                        return _this.pMenuTree(a, _this.props.Vm._arry, _this.props.Vm.Level);
+                    React.createElement("ul", { className: "TreeMenu TreeMenu-pills TreeMenu-stacked" }, this.props.Vm.menuTree.Children.map((a) => {
+                        this.props.Vm._arry = [];
+                        this.props.Vm.Level = 0;
+                        return this.pMenuTree(a, this.props.Vm._arry, this.props.Vm.Level);
                     })));
-            };
-            TreeMenuReact.prototype.pMenuTree = function (menuTree, _arry, Level) {
-                var _this = this;
+            }
+            pMenuTree(menuTree, _arry, Level) {
                 if (menuTree.Parent) {
-                    var _arr = React.createElement("li", { className: (menuTree.IsParent ? "TreeParent " : "") + this.getClassName(Level) + (menuTree.Parent.IsOpen ? ((this.isActivity(menuTree) ? " active" : "")) : " hide"), onClick: function () { _this.openOrHideMenu(menuTree); } }, menuTree.Tree_Name);
+                    var _arr = React.createElement("li", { className: (menuTree.IsParent ? "TreeParent " : "") + this.getClassName(Level) + (menuTree.Parent.IsOpen ? ((this.isActivity(menuTree) ? " active" : "")) : " hide"), onClick: () => { this.openOrHideMenu(menuTree); } }, menuTree.Tree_Name);
                     _arry.push(_arr);
                 }
                 else {
-                    var _arr = React.createElement("li", { className: (menuTree.IsParent ? "TreeParent " : "") + (menuTree.IsSelect ? " active" : ""), onClick: function () { _this.openOrHideMenu(menuTree); } }, menuTree.Tree_Name);
+                    var _arr = React.createElement("li", { className: (menuTree.IsParent ? "TreeParent " : "") + (menuTree.IsSelect ? " active" : ""), onClick: () => { this.openOrHideMenu(menuTree); } }, menuTree.Tree_Name);
                     _arry.push(_arr);
                 }
                 Level++;
                 if (menuTree.Children) {
-                    menuTree.Children.map(function (a) {
+                    menuTree.Children.map(a => {
                         a.Parent = menuTree;
-                        _this.pMenuTree(a, _arry, Level);
+                        this.pMenuTree(a, _arry, Level);
                     });
                 }
                 return _arry;
-            };
-            TreeMenuReact.prototype.isActivity = function (a) {
+            }
+            isActivity(a) {
                 var res = false;
-                this.props.Vm.pushNodeObj.map(function (n) {
+                this.props.Vm.pushNodeObj.map(n => {
                     if (n.Tree_Name == a.Tree_Name)
                         res = n.IsSelect;
                 });
                 return res;
-            };
-            TreeMenuReact.prototype.openOrHideMenu = function (a) {
-                var _this = this;
+            }
+            openOrHideMenu(a) {
                 a.IsOpen = !a.IsOpen;
                 if (!a.IsOpen) {
-                    a.Children.map(function (b) {
-                        _this.hideChilMenu(b);
+                    a.Children.map(b => {
+                        this.hideChilMenu(b);
                     });
                 }
-                this.props.Vm.pushNodeObj.map(function (n) {
+                this.props.Vm.pushNodeObj.map(n => {
                     if (n.Tree_Name == a.Tree_Name)
                         n.IsSelect = true;
                     else
@@ -85,36 +65,33 @@ define(["require", "exports", "./../../01core/0Dom", "react"], function (require
                     _vm.getEmit().emit("node_click", _vm);
                 }
                 this.forceUpdate();
-            };
-            TreeMenuReact.prototype.hideChilMenu = function (b) {
-                var _this = this;
+            }
+            hideChilMenu(b) {
                 b.IsOpen = false;
                 if (b.Children) {
-                    b.Children.map(function (c) {
-                        _this.hideChilMenu(c);
+                    b.Children.map(c => {
+                        this.hideChilMenu(c);
                     });
                 }
-            };
-            TreeMenuReact.prototype.getClassName = function (level) {
+            }
+            getClassName(level) {
                 var className = "TreeChildren-" + (level);
                 return className;
-            };
-            TreeMenuReact.prototype.activityNode = function () {
-            };
-            TreeMenuReact.prototype.pComponentDidMount = function () {
-                _super.prototype.pComponentDidMount.call(this);
-            };
-            return TreeMenuReact;
-        }(domFile.Core.DomReact));
+            }
+            activityNode() {
+            }
+            pComponentDidMount() {
+                super.pComponentDidMount();
+            }
+        }
         TreeMenu.TreeMenuReact = TreeMenuReact;
-        var TreeMenuVm = (function (_super) {
-            __extends(TreeMenuVm, _super);
-            function TreeMenuVm(config) {
-                var _this = _super.call(this) || this;
-                _this.ReactType = TreeMenuReact;
-                _this._arry = [];
-                _this.Level = 0;
-                _this.pushNodeObj = [];
+        class TreeMenuVm extends domFile.Core.DomVm {
+            constructor(config) {
+                super();
+                this.ReactType = TreeMenuReact;
+                this._arry = [];
+                this.Level = 0;
+                this.pushNodeObj = [];
                 var s = [{
                         "Tree_Name": "菜单",
                         "Tree_Value": "#",
@@ -169,44 +146,31 @@ define(["require", "exports", "./../../01core/0Dom", "react"], function (require
                             }
                         ]
                     }];
-                _this.menuTree = { Tree_Name: "根", Tree_Value: "0", Children: [] };
-                _this.menuTree.Children = s;
-                _this.menuTree.Children.map(function (a) {
-                    _this.pushNode(a);
+                this.menuTree = { Tree_Name: "根", Tree_Value: "0", Children: [] };
+                this.menuTree.Children = s;
+                this.menuTree.Children.map(a => {
+                    this.pushNode(a);
                 });
-                return _this;
             }
             ;
-            TreeMenuVm.prototype.pushNode = function (a) {
-                var _this = this;
+            pushNode(a) {
                 this.pushNodeObj.push(a);
                 if (a.Children) {
-                    a.Children.map(function (b) {
-                        _this.pushNode(b);
+                    a.Children.map(b => {
+                        this.pushNode(b);
                     });
                 }
-            };
-            TreeMenuVm.prototype.NodeSelectClick = function (fun) {
+            }
+            NodeSelectClick(fun) {
                 this.getEmit().addListener("node_click", fun);
-            };
-            return TreeMenuVm;
-        }(domFile.Core.DomVm));
+            }
+        }
         TreeMenu.TreeMenuVm = TreeMenuVm;
-        var TreeMenuProps = (function (_super) {
-            __extends(TreeMenuProps, _super);
-            function TreeMenuProps() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TreeMenuProps;
-        }(domFile.Core.DomProps));
+        class TreeMenuProps extends domFile.Core.DomProps {
+        }
         TreeMenu.TreeMenuProps = TreeMenuProps;
-        var TreeMenuStates = (function (_super) {
-            __extends(TreeMenuStates, _super);
-            function TreeMenuStates() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return TreeMenuStates;
-        }(domFile.Core.DomStates));
+        class TreeMenuStates extends domFile.Core.DomStates {
+        }
         TreeMenu.TreeMenuStates = TreeMenuStates;
     })(TreeMenu = exports.TreeMenu || (exports.TreeMenu = {}));
 });

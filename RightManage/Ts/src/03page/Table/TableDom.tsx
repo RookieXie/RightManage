@@ -144,35 +144,44 @@ export module TableDom {
         public PaginationVm: pageFile.tool.PaginationVm;
         public constructor(config?: ITableDomConfig) {
             super();
+            //默认的按钮
+            var inserBtn: dataFile.TableData.ITableButton = {
+                name: "Insert", text: "新增", isbatch: false, Function: (colunmObj, pageObj) => {
+                    urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj) + "$" + this.tableName, true);
+                }
+            };
+            var updateBtn: dataFile.TableData.ITableButton = { name: "Update", text: "修改", isbatch: true, Function: (colunmObj, pageObj) => { } };
+            var DelBtn: dataFile.TableData.ITableButton = { name: "Delete", text: "删除", isbatch: true, Function: (pageObj) => { } };
+            var DetailBtn: dataFile.TableData.ITableButton = { name: "Detail", text: "详情", isbatch: true, Function: (colunmObj, pageObj) => { } };
+            var ExcelBtn: dataFile.TableData.ITableButton = { name: "Excel", text: "Excel导出", isbatch: false, Function: (colunmObj, pageObj) => { } };
+            this.buttonList.push(inserBtn);
+            this.buttonList.push(updateBtn);
+            this.buttonList.push(DelBtn);
+            this.buttonList.push(DetailBtn);
+            this.buttonList.push(ExcelBtn);
             if (config) {
                 if (config.tableColunms) {
                     this.colunmList = config.tableColunms;
                 }
                 if (config.tableData) {
-                    this.initPageData(config.tableData);                   
+                    this.initPageData(config.tableData);
                 }
                 if (config.tableName)
                     this.tableName = config.tableName;
                 if (config.tableButtons) {
-                    this.buttonList = config.tableButtons;
-                } else {
-                    //默认的按钮
-                    var inserBtn: dataFile.TableData.ITableButton = {
-                        name: "Insert", text: "新增", isbatch: false, Function: (colunmObj, pageObj) => {
-                            urlFile.Core.AkUrl.Current().openUrl("$panelTableInsertPage$" + JSON.stringify(colunmObj) + "$" + this.tableName, true);
+                    config.tableButtons.map(btn => {
+                        var add = true;
+                        this.buttonList.map(a => {
+                            if (a.name == btn.name) {
+                                add = false;
+                                a.Function = btn.Function;
+                                //{...a,Function:btn.Function} 无效
+                            }
+                        })
+                        if (add) {
+                            this.buttonList.push(btn);
                         }
-                    };
-                    var updateBtn: dataFile.TableData.ITableButton = { name: "Update", text: "修改", isbatch: true, Function: (colunmObj, pageObj) => { } };
-                    var DelBtn: dataFile.TableData.ITableButton = { name: "Delete", text: "删除", isbatch: true, Function: (pageObj) => { } };
-                    var DetailBtn: dataFile.TableData.ITableButton = { name: "Detail", text: "详情", isbatch: true, Function: (colunmObj, pageObj) => { } };
-                    var ExcelBtn: dataFile.TableData.ITableButton = { name: "Excel", text: "Excel导出", isbatch: false, Function: (colunmObj, pageObj) => { } };
-                    this.buttonList.push(inserBtn);
-                    this.buttonList.push(updateBtn);
-                    this.buttonList.push(DelBtn);
-                    this.buttonList.push(DetailBtn);
-                    this.buttonList.push(ExcelBtn);
-
-
+                    })
                 }
             }
 

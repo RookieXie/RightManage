@@ -11,7 +11,7 @@ $(function () {
     if ($("#ACT-DIV-SHELL").length > 0) {
         var _config: hullFile.Web.IHullVmConfig = $.extend(
             {},
-            { HomeUrl: "$FEED$", IsV1: true });
+            { HomeUrl: "$xbgTestPage$", IsV1: true });
         ReactDOM.render(new hullFile.Web.HullVm(_config).intoDom(0), document.getElementById("ACT-DIV-SHELL"));
     }
 }); 

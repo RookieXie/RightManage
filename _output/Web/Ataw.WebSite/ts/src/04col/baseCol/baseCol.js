@@ -1,17 +1,7 @@
 //import akDispatcher = require("./../../01core/AkDispatcher");
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "react-dom"], function (require, exports, utilFile, domFile, ReactDOM) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var DomReact = domFile.Core.DomReact;
     var DomVm = domFile.Core.DomVm;
     var DomProps = domFile.Core.DomProps;
@@ -19,20 +9,16 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
     var DomAction = domFile.Core.DomAction;
     var Core;
     (function (Core) {
-        var BaseColReact = (function (_super) {
-            __extends(BaseColReact, _super);
-            function BaseColReact() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            BaseColReact.prototype.getState = function () {
+        class BaseColReact extends DomReact {
+            getState() {
                 if (this.state == null) {
                     var s = new BaseColStates();
                     this.state = s;
                 }
                 return this.state;
-            };
-            BaseColReact.prototype.pInstall = function () {
-                _super.prototype.pInstall.call(this);
+            }
+            pInstall() {
+                super.pInstall();
                 //if (this.props.Vm.LegalObj) {
                 //    this.props.Vm.LegalObj.ControlObj = this.props.Vm;
                 //    this.listenEvent("legal", (msg: string) => {
@@ -46,15 +32,15 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
                 //        //  }
                 //    });
                 //}
-            };
+            }
             ;
-            BaseColReact.prototype.legal = function (msg) {
+            legal(msg) {
                 //this.forceUpdate();
                 //var _dom = ReactDOM.findDOMNode (this);
                 this.legalSender();
                 this.legalShowMsg(msg);
-            };
-            BaseColReact.prototype.getLegalMsgDom = function () {
+            }
+            getLegalMsgDom() {
                 try {
                     //if(this.isMounted)
                     var _dom = ReactDOM.findDOMNode(this);
@@ -63,8 +49,8 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
                 catch (ee) {
                     return $("<div></div>");
                 }
-            };
-            BaseColReact.prototype.getInputDom = function () {
+            }
+            getInputDom() {
                 try {
                     var _dom = ReactDOM.findDOMNode(this);
                     return $(_dom);
@@ -72,16 +58,15 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
                 catch (ee) {
                     return $("<div></div>");
                 }
-            };
-            BaseColReact.prototype.legalShowMsg = function (msg) {
-                var _this = this;
+            }
+            legalShowMsg(msg) {
                 var _cal = $.fn["calendar"];
                 //autosize
                 var _autosize = $.fn["autosize"];
-                utilFile.Core.Util.AsyncJs(["/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.js", "/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.css"], function () {
+                utilFile.Core.Util.AsyncJs(["/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.js", "/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.css"], () => {
                     $.fn["calendar"] = _cal;
                     $.fn["autosize"] = _autosize;
-                    var _$dom = _this.getLegalMsgDom();
+                    var _$dom = this.getLegalMsgDom();
                     var _$domP = _$dom;
                     if (!_$dom.is("div") && !_$dom.is("span")) {
                         _$domP = _$domP.parent();
@@ -106,30 +91,24 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
                     _$dom.qtip('toggle', true);
                     //  $(_dom).poshytip("show");
                 });
-            };
-            BaseColReact.prototype.legalSender = function () {
+            }
+            legalSender() {
                 this.getInputDom().addClass("Hs-red-border");
-            };
-            BaseColReact.prototype.cancleLegalSender = function () {
-                var _this = this;
+            }
+            cancleLegalSender() {
                 this.getInputDom().removeClass("Hs-red-border");
                 var _cal = $.fn["calendar"];
                 utilFile.Core.Util.AsyncJs([
                     "/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.js", "/AtawStatic/lib/03Extend/qtip/jquery.qtip.min.css"
-                ], function () {
+                ], () => {
                     $.fn["calendar"] = _cal;
-                    _this.getLegalMsgDom().qtip('toggle', false);
-                    _this.getLegalMsgDom().qtip('destroy', true);
+                    this.getLegalMsgDom().qtip('toggle', false);
+                    this.getLegalMsgDom().qtip('destroy', true);
                 });
-            };
-            return BaseColReact;
-        }(DomReact));
-        Core.BaseColReact = BaseColReact;
-        var BaseColVm = (function (_super) {
-            __extends(BaseColVm, _super);
-            function BaseColVm() {
-                return _super !== null && _super.apply(this, arguments) || this;
             }
+        }
+        Core.BaseColReact = BaseColReact;
+        class BaseColVm extends DomVm {
             //public LegalObj: AkBaseLegal.Core.BaseLegal = new AkBaseLegal.Core.BaseLegal();
             //public showLegal() {
             //    if (!this.LegalObj.LegalResult) {
@@ -153,19 +132,19 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
             //    return true;
             //    //this.getEmit().emit("legal",mesg);
             //}
-            BaseColVm.prototype.pOnchange = function (val) {
-                var res = _super.prototype.pOnchange.call(this, val);
+            pOnchange(val) {
+                var res = super.pOnchange(val);
                 //if (this.legal()) {
                 //    this.IsDataValueChange = true;
                 //    this.getEmit().emit("BaseColVm_change", this);
                 //}
                 return res;
-            };
-            BaseColVm.prototype.getChangeValFun = function (changeValFun) {
+            }
+            getChangeValFun(changeValFun) {
                 var _val = this.getChangeVal();
                 changeValFun(_val != null, this.vmDataValueGet(), this);
-            };
-            BaseColVm.prototype.getChangeVal = function () {
+            }
+            getChangeVal() {
                 var _val = this.vmDataValueGet();
                 var _ori = this.getOriValue();
                 if (_val == _ori) {
@@ -174,38 +153,22 @@ define(["require", "exports", "./../../01core/Util", "./../../01core/0Dom", "rea
                 else {
                     return _val;
                 }
-            };
-            BaseColVm.prototype.makerInNavi = function (config) {
+            }
+            makerInNavi(config) {
                 this.pMakerInNavi(config);
-            };
-            BaseColVm.prototype.pMakerInNavi = function (config) {
-            };
-            return BaseColVm;
-        }(DomVm));
+            }
+            pMakerInNavi(config) {
+            }
+        }
         Core.BaseColVm = BaseColVm;
-        var BaseColProps = (function (_super) {
-            __extends(BaseColProps, _super);
-            function BaseColProps() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return BaseColProps;
-        }(DomProps));
+        class BaseColProps extends DomProps {
+        }
         Core.BaseColProps = BaseColProps;
-        var BaseColStates = (function (_super) {
-            __extends(BaseColStates, _super);
-            function BaseColStates() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return BaseColStates;
-        }(DomStates));
+        class BaseColStates extends DomStates {
+        }
         Core.BaseColStates = BaseColStates;
-        var BaseColAction = (function (_super) {
-            __extends(BaseColAction, _super);
-            function BaseColAction() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return BaseColAction;
-        }(DomAction));
+        class BaseColAction extends DomAction {
+        }
         Core.BaseColAction = BaseColAction;
     })(Core = exports.Core || (exports.Core = {}));
 });

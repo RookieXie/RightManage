@@ -1,58 +1,57 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Core;
     (function (Core) {
-        var Ioc = (function () {
-            function Ioc() {
+        class Ioc {
+            constructor() {
                 this.fInstanceClassList = {};
                 this.fInstanceSrcList = {};
             }
-            Ioc.Current = function () {
+            static Current() {
                 return this.fIoc;
-            };
-            Ioc.prototype.IocModel = function () {
+            }
+            IocModel() {
                 return this.fInstanceClassList;
-            };
-            Ioc.prototype.IocSrcModel = function () {
+            }
+            IocSrcModel() {
                 return this.fInstanceSrcList;
-            };
-            Ioc.prototype.RegisterType = function (regName, baseType, instaceType, customData) {
+            }
+            RegisterType(regName, baseType, instaceType, customData) {
                 // var _f = typeof (TTo);
                 // alert(baseType.toString());
                 regName = regName.toUpperCase();
                 var _stre = Ioc.fGetFunName(baseType);
                 var _meta = { RegName: regName, BaseType: baseType, InstanceType: instaceType, customData: customData };
                 this.fInstanceClassList[_stre + "_" + regName] = _meta;
-            };
-            Ioc.prototype.RegisterTypeSrc = function (regName, baseType, src) {
+            }
+            RegisterTypeSrc(regName, baseType, src) {
                 regName = regName.toUpperCase();
                 var _stre = Ioc.fGetFunName(baseType);
                 var _meta = { RegName: regName, BaseType: baseType, InstanceType: src };
                 this.fInstanceSrcList[_stre + "_" + regName] = _meta;
-            };
-            Ioc.prototype.fetchPromise = function (regName, baseType, config) {
+            }
+            fetchPromise(regName, baseType, config) {
                 var _p = $.Deferred();
-                this.fFetchAsyInstance(regName, baseType, function (a) {
+                this.fFetchAsyInstance(regName, baseType, (a) => {
                     _p.resolve(a);
-                }, function () { _p.reject(); }, config);
+                }, () => { _p.reject(); }, config);
                 return _p.promise();
-            };
-            Ioc.prototype.FetchAsyInstance = function (regName, baseType, fun, error, config) {
+            }
+            FetchAsyInstance(regName, baseType, fun, error, config) {
                 this.fFetchAsyInstance(regName, baseType, fun, error, config);
-            };
-            Ioc.prototype.fFetchAsyInstance = function (regName, baseType, fun, error, config) {
-                var _this = this;
+            }
+            fFetchAsyInstance(regName, baseType, fun, error, config) {
                 regName = regName.toUpperCase();
                 var _obj = this.FetchInstance(regName, baseType);
                 if (!_obj) {
                     var _stre = Ioc.fGetFunName(baseType);
                     var _meta = this.fInstanceSrcList[_stre + "_" + regName];
                     if (_meta) {
-                        require([_meta.InstanceType], function (file) {
-                            var obj = _this.fFetchInstance(regName, baseType);
+                        require([_meta.InstanceType], (file) => {
+                            var obj = this.fFetchInstance(regName, baseType);
                             fun(obj);
-                        }, function () {
+                        }, () => {
                             error(_meta.InstanceType);
                         });
                     }
@@ -79,8 +78,8 @@ define(["require", "exports"], function (require, exports) {
                 else {
                     return fun(_obj);
                 }
-            };
-            Ioc.prototype.fFetchInstance = function (regName, baseType) {
+            }
+            fFetchInstance(regName, baseType) {
                 regName = regName.toUpperCase();
                 var _stre = Ioc.fGetFunName(baseType);
                 var _meta = this.fInstanceClassList[_stre + "_" + regName];
@@ -92,12 +91,12 @@ define(["require", "exports"], function (require, exports) {
                     console.log("注册名为: " + regName + "  类型为" + baseType + "没有注册");
                     return null;
                 }
-            };
-            Ioc.prototype.FetchInstance = function (regName, baseType) {
+            }
+            FetchInstance(regName, baseType) {
                 regName = regName.toUpperCase();
                 return this.fFetchInstance(regName, baseType);
-            };
-            Ioc.fGetFunName = function (s) {
+            }
+            static fGetFunName(s) {
                 if (typeof s == "string")
                     return s;
                 //if (s.constructor && s.constructor.name)
@@ -116,8 +115,8 @@ define(["require", "exports"], function (require, exports) {
                 //    return m[1];
                 //else
                 //    return "";
-            };
-            Ioc.prototype.GetTypeList = function (baseType) {
+            }
+            GetTypeList(baseType) {
                 var _list = new Array();
                 var _stre = Ioc.fGetFunName(baseType);
                 for (var _m in this.fInstanceClassList) {
@@ -128,9 +127,8 @@ define(["require", "exports"], function (require, exports) {
                     }
                 }
                 return _list;
-            };
-            return Ioc;
-        }());
+            }
+        }
         Ioc.fIoc = new Ioc();
         Core.Ioc = Ioc;
     })(Core = exports.Core || (exports.Core = {}));

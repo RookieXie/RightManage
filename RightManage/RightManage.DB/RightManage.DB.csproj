@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Map\RM_MenusMap.cs" />
     <Compile Include="Map\RM_UsersMap.cs" />
     <Compile Include="Map\TestMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

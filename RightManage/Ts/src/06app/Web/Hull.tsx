@@ -4,11 +4,12 @@ import utilFile = require("./../../01core/Util");
 import iocFile = require("./../../01core/Ioc");
 import urlFile = require("./../../01core/Url");
 import eventFile = require("./../../01core/Event");
-import basewedPageFile = require("./../../03page/BaseWebPage")
+import basewedPageFile = require("./../../03page/BaseWebPage");
 import TreeMenuFile = require("./../../02tool/Tree/TreeMenu");
 import ModalDomFile = require("./../../02tool/ModalDom/ModalDom"); ModalDomFile;
 import React = require("react");
 import ReactDOM = require("react-dom");
+import NoLoginDomFile = require("./../../03page/NoLoginDom");
 
 export module Web {
 
@@ -46,7 +47,7 @@ export module Web {
                         <ul className="nav navbar-nav navbar-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="/RightManage/Home/Index">退出</a></li>
                             <li><a href="#">Help</a></li>
                         </ul>
                     </div></div>
@@ -60,7 +61,7 @@ export module Web {
                         {this._tDom(this.props.Vm.menuTree)}
                     </div>
                     <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                        {this._tDom(this.props.Vm.MainPageObj)}
+                        {this.props.Vm.NickName == "未知" ? this._tDom(this.props.Vm.NoLoginDomObj):this._tDom(this.props.Vm.MainPageObj)}
                     </div>
                 </div>
             </div>
@@ -133,7 +134,7 @@ export module Web {
                 else {
                     if (_menuUrl == "") {
                         urlFile.Core.AkUrl.Current().openUrl(this.props.Vm.HomeUrl);
-                        urlFile.Core.AkUrl.Current().openUrlByNoMenu(this.props.Vm.HomeUrl);
+                        //urlFile.Core.AkUrl.Current().openUrlByNoMenu(this.props.Vm.HomeUrl);
                     }
                 }
 
@@ -164,9 +165,11 @@ export module Web {
         public menuTree: TreeMenuFile.TreeMenu.TreeMenuVm = new TreeMenuFile.TreeMenu.TreeMenuVm();
         public ModalDomObj: ModalDomFile.ModalDom.ModalDomVm;
         public NickName: string = "未知";
+        public NoLoginDomObj: NoLoginDomFile.NoLoginDom.NoLoginDomVm = new NoLoginDomFile.NoLoginDom.NoLoginDomVm() ;
         public loadPage(config?: IHullVmConfig) {
-
-            urlFile.Core.AkPost("/Home/Test", {}, (res) => {
+           // urlFile.Core.AkUrl.Current().refresh();
+            //this.forceUpdate("");
+            urlFile.Core.AkPost("/RightManage/Home/Test", {}, (res) => {
                 if (res.Content == "ok") {
                     this.content = res.Data;
                     //console.log(this.content);
@@ -183,7 +186,7 @@ export module Web {
             super();
             if (window["RMSysObj"]) {
                 if (window["RMSysObj"]["NickName"]) {
-                    this.NickName = window["RMSysObj"]["NickName"];
+                    this.NickName = window["RMSysObj"]["NickName"];                   
                 }
             }
             this.menuTree.NodeSelectClick(val => {
@@ -197,7 +200,7 @@ export module Web {
                 DomObj: this.WinPageObj
 
             });
-
+            
         }
 
 

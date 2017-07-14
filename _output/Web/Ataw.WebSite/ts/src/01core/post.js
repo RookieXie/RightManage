@@ -1,14 +1,12 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Post;
     (function (Post) {
-        var Util = (function () {
-            function Util() {
+        class Util {
+            static Post($dom) {
             }
-            Util.Post = function ($dom) {
-            };
-            Util.IsEmpty = function (obj) {
+            static IsEmpty(obj) {
                 if (typeof (obj) == "undefined" || obj === null || obj === "" || obj === undefined || Util.IsNull(obj)) {
                     return true;
                 }
@@ -20,8 +18,8 @@ define(["require", "exports"], function (require, exports) {
                         return true;
                 }
                 return false;
-            };
-            Util.IsNull = function (obj) {
+            }
+            static IsNull(obj) {
                 var i = obj.toString();
                 if (i == "{}" || i == "") {
                     return true;
@@ -29,8 +27,8 @@ define(["require", "exports"], function (require, exports) {
                 else {
                     return false;
                 }
-            };
-            Util.CheckDataSet = function (ds) {
+            }
+            static CheckDataSet(ds) {
                 for (var _dtName in ds) {
                     var _dt = ds[_dtName];
                     if (_dt.length > 0) {
@@ -43,10 +41,10 @@ define(["require", "exports"], function (require, exports) {
                     }
                 }
                 return ds;
-            };
-            Util.createDataSet = function (jDomList) {
+            }
+            static createDataSet(jDomList) {
                 var ds = {};
-                jDomList.forEach(function (a) {
+                jDomList.forEach((a) => {
                     var _sign = a.SubmitSign;
                     var cos = _sign.split(".");
                     var _tb = cos[0];
@@ -56,8 +54,8 @@ define(["require", "exports"], function (require, exports) {
                 });
                 ds = Util.CheckDataSet(ds);
                 return ds;
-            };
-            Util.joinDataSet = function (ds, tableName, rowNumber, colName, val) {
+            }
+            static joinDataSet(ds, tableName, rowNumber, colName, val) {
                 var f = ds[tableName];
                 if (typeof (f) == "undefined") {
                     ds[tableName] = [];
@@ -71,9 +69,8 @@ define(["require", "exports"], function (require, exports) {
                 }
                 ds[tableName][rowNumber][colName] = val;
                 return ds;
-            };
-            return Util;
-        }());
+            }
+        }
         Post.Util = Util;
     })(Post = exports.Post || (exports.Post = {}));
 });

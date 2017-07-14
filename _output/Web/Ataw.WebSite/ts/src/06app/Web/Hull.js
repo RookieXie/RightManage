@@ -1,43 +1,26 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./../../01core/Ioc", "./../../01core/Url", "./../../03page/BaseWebPage", "./../../02tool/Tree/TreeMenu", "./../../02tool/ModalDom/ModalDom", "react"], function (require, exports, domFile, utilFile, iocFile, urlFile, basewedPageFile, TreeMenuFile, ModalDomFile, React) {
+define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./../../01core/Ioc", "./../../01core/Url", "./../../03page/BaseWebPage", "./../../02tool/Tree/TreeMenu", "./../../02tool/ModalDom/ModalDom", "react", "./../../03page/NoLoginDom"], function (require, exports, domFile, utilFile, iocFile, urlFile, basewedPageFile, TreeMenuFile, ModalDomFile, React, NoLoginDomFile) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var domCore = domFile.Core;
     ModalDomFile;
     var Web;
     (function (Web) {
-        var HullAction = (function (_super) {
-            __extends(HullAction, _super);
-            function HullAction() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return HullAction;
-        }(domCore.DomAction));
+        class HullAction extends domCore.DomAction {
+        }
         Web.HullAction = HullAction;
-        var HullReact = (function (_super) {
-            __extends(HullReact, _super);
-            function HullReact() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.state = new HullStates();
-                return _this;
+        class HullReact extends domCore.DomReact {
+            constructor() {
+                super(...arguments);
+                this.state = new HullStates();
             }
-            HullReact.prototype.pSender = function () {
+            pSender() {
                 return React.createElement("div", null,
                     this._creatModal(),
                     this.pHeader(),
                     this.props.Vm.PanelPageObj ? this._createPanel() : null,
                     this.pBody());
-            };
-            HullReact.prototype.pHeader = function () {
+            }
+            pHeader() {
                 return React.createElement("nav", { className: "navbar navbar-inverse navbar-fixed-top" },
                     React.createElement("div", { className: "container-fluid" },
                         React.createElement("div", { className: "navbar-header" },
@@ -54,53 +37,50 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                                 React.createElement("li", null,
                                     React.createElement("a", { href: "#" }, "Settings")),
                                 React.createElement("li", null,
-                                    React.createElement("a", { href: "#" }, "Profile")),
+                                    React.createElement("a", { href: "/RightManage/Home/Index" }, "\u9000\u51FA")),
                                 React.createElement("li", null,
                                     React.createElement("a", { href: "#" }, "Help"))))));
-            };
-            HullReact.prototype.pBody = function () {
+            }
+            pBody() {
                 return React.createElement("div", { className: "container-fluid" },
                     React.createElement("div", { className: "row" },
                         React.createElement("div", { className: "col-sm-3 col-md-2 sidebar" }, this._tDom(this.props.Vm.menuTree)),
-                        React.createElement("div", { className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" }, this._tDom(this.props.Vm.MainPageObj))));
-            };
-            HullReact.prototype._creatModal = function () {
-                var _this = this;
+                        React.createElement("div", { className: "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" }, this.props.Vm.NickName == "未知" ? this._tDom(this.props.Vm.NoLoginDomObj) : this._tDom(this.props.Vm.MainPageObj))));
+            }
+            _creatModal() {
                 if (this.props.Vm.WinPageObj) {
                     // alert();
                     this.props.Vm.ModalDomObj = new ModalDomFile.ModalDom.ModalDomVm({
                         DomObj: this.props.Vm.WinPageObj,
                         Title: this.props.Vm.WinPageObj.Title,
                         IsModalShow: true,
-                        ModalCloseFun: function (modal, fun) {
-                            _this.props.Vm.WinPageObj.dispose();
-                            _this.props.Vm.WinPageObj = null;
-                        }
+                        ModalCloseFun: (modal, fun) => {
+                            this.props.Vm.WinPageObj.dispose();
+                            this.props.Vm.WinPageObj = null;
+                        },
                     });
                     return this.props.Vm.ModalDomObj.intoDom();
                 }
                 return null;
-            };
-            HullReact.prototype._createPanel = function () {
-                var _this = this;
+            }
+            _createPanel() {
                 var _reactPanel = (React.createElement("div", { className: "panel" },
                     React.createElement("div", { className: "slider" },
                         React.createElement("div", null,
                             React.createElement("h3", { className: "panelTile" }, this.props.Vm.PanelPageObj.Title),
-                            React.createElement("a", { className: "btn btn-default", onClick: function () { _this.fun_closePanel(); } }, "Close Me")),
+                            React.createElement("a", { className: "btn btn-default", onClick: () => { this.fun_closePanel(); } }, "Close Me")),
                         this._tDom(this.props.Vm.PanelPageObj))));
                 return _reactPanel;
-            };
-            HullReact.prototype.fun_closePanel = function () {
+            }
+            fun_closePanel() {
                 this.props.Vm.PanelPageObj.dispose();
                 this.props.Vm.PanelPageObj = null;
                 this.forceUpdate();
-            };
-            HullReact.prototype.pComponentDidMount = function () {
-                var _this = this;
-                _super.prototype.pComponentDidMount.call(this);
+            }
+            pComponentDidMount() {
+                super.pComponentDidMount();
                 this.props.Vm.loadPage();
-                urlFile.Core.AkUrl.Current().bindHashChange(function (a, afterFun, isUrl) {
+                urlFile.Core.AkUrl.Current().bindHashChange((a, afterFun, isUrl) => {
                     //utilFile.Core.Util.ToggleLoading(true);
                     var _urls = a.split("#");
                     var _url = "";
@@ -128,85 +108,83 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                     }
                     if (_url != "") {
                         // alert("调用bindPage");
-                        _this.props.Vm.bindPage(_url, afterFun);
+                        this.props.Vm.bindPage(_url, afterFun);
                     }
                     else {
                         if (_menuUrl == "") {
-                            urlFile.Core.AkUrl.Current().openUrl(_this.props.Vm.HomeUrl);
-                            urlFile.Core.AkUrl.Current().openUrlByNoMenu(_this.props.Vm.HomeUrl);
+                            urlFile.Core.AkUrl.Current().openUrl(this.props.Vm.HomeUrl);
+                            //urlFile.Core.AkUrl.Current().openUrlByNoMenu(this.props.Vm.HomeUrl);
                         }
                     }
                 });
-            };
-            return HullReact;
-        }(domCore.DomReact));
+            }
+        }
         Web.HullReact = HullReact;
-        var HullVm = (function (_super) {
-            __extends(HullVm, _super);
-            function HullVm(config) {
-                var _this = _super.call(this) || this;
-                _this.ReactType = HullReact;
+        class HullVm extends domCore.DomVm {
+            constructor(config) {
+                super();
+                this.ReactType = HullReact;
                 //public TableObj: tableFile.Web.TableDemoVm;
-                _this.content = "haha";
-                _this.HomeUrl = "$xbgTestPage$";
-                _this.menuTree = new TreeMenuFile.TreeMenu.TreeMenuVm();
-                _this.NickName = "未知";
+                this.content = "haha";
+                this.HomeUrl = "$xbgTestPage$";
+                this.menuTree = new TreeMenuFile.TreeMenu.TreeMenuVm();
+                this.NickName = "未知";
+                this.NoLoginDomObj = new NoLoginDomFile.NoLoginDom.NoLoginDomVm();
                 if (window["RMSysObj"]) {
                     if (window["RMSysObj"]["NickName"]) {
-                        _this.NickName = window["RMSysObj"]["NickName"];
+                        this.NickName = window["RMSysObj"]["NickName"];
                     }
                 }
-                _this.menuTree.NodeSelectClick(function (val) {
+                this.menuTree.NodeSelectClick(val => {
                     urlFile.Core.AkUrl.Current().openUrlByNoMenu(val.dataValueGet());
                     urlFile.Core.AkUrl.Current().openUrlByNoMenu(val.dataValueGet());
                     //this.bindPage(val)
                     return true;
                 });
-                _this.ModalDomObj = new ModalDomFile.ModalDom.ModalDomVm({
+                this.ModalDomObj = new ModalDomFile.ModalDom.ModalDomVm({
                     IsDebug: true,
-                    DomObj: _this.WinPageObj
+                    DomObj: this.WinPageObj
                 });
-                return _this;
             }
-            HullVm.prototype.loadPage = function (config) {
-                var _this = this;
-                urlFile.Core.AkPost("/Home/Test", {}, function (res) {
+            loadPage(config) {
+                // urlFile.Core.AkUrl.Current().refresh();
+                //this.forceUpdate("");
+                urlFile.Core.AkPost("/RightManage/Home/Test", {}, (res) => {
                     if (res.Content == "ok") {
-                        _this.content = res.Data;
+                        this.content = res.Data;
                         //console.log(this.content);
                     }
                     urlFile.Core.AkUrl.Current().refresh();
-                    _this.forceUpdate("");
+                    this.forceUpdate("");
                 });
-            };
-            HullVm.prototype.showPage = function (_name, panelName, param, p1, p2, p3, afterFun) {
-                var _this = this;
-                iocFile.Core.Ioc.Current().FetchAsyInstance(_name, basewedPageFile.Web.BaseWebPageVm, function (a) {
-                    _this.fpageShow(a, _name, panelName, param, p1, p2, p3, afterFun);
-                }, function (a) {
+            }
+            showPage(_name, panelName, param, p1, p2, p3, afterFun) {
+                iocFile.Core.Ioc.Current().FetchAsyInstance(_name, basewedPageFile.Web.BaseWebPageVm, (a) => {
+                    this.fpageShow(a, _name, panelName, param, p1, p2, p3, afterFun);
+                }, (a) => {
                     switch (panelName) {
                         case "win":
-                            if (_this.WinPageObj) {
-                                _this.WinPageObj.dispose();
+                            if (this.WinPageObj) {
+                                this.WinPageObj.dispose();
                             }
-                            _this.WinPageObj = null;
+                            this.WinPageObj = null;
                             break;
                         case "panel":
-                            if (_this.PanelPageObj) {
-                                _this.PanelPageObj.dispose();
+                            if (this.PanelPageObj) {
+                                this.PanelPageObj.dispose();
                             }
-                            _this.PanelPageObj = null;
+                            this.PanelPageObj = null;
                             break;
                         default:
-                            if (_this.MainPageObj) {
-                                _this.MainPageObj.dispose();
+                            if (this.MainPageObj) {
+                                this.MainPageObj.dispose();
                             }
-                            _this.MainPageObj = null;
-                            _this.ShowTip = "路由名称为 " + _name + " 的页面,脚本文件" + a + "载入失败....";
+                            this.MainPageObj = null;
+                            this.ShowTip = "路由名称为 " + _name + " 的页面,脚本文件" + a + "载入失败....";
                             break;
                     }
                     try {
-                        _this.forceUpdate("", function () {
+                        this.forceUpdate("", () => {
                             //  this.
                             utilFile.Core.Util.ToggleLoading(false);
                             if (afterFun) {
@@ -215,25 +193,24 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                         });
                     }
                     catch (ex) {
-                        if (_this.WinPageObj) {
-                            _this.WinPageObj.dispose();
+                        if (this.WinPageObj) {
+                            this.WinPageObj.dispose();
                         }
-                        if (_this.PanelPageObj) {
-                            _this.PanelPageObj.dispose();
+                        if (this.PanelPageObj) {
+                            this.PanelPageObj.dispose();
                         }
-                        if (_this.MainPageObj) {
-                            _this.MainPageObj.dispose();
+                        if (this.MainPageObj) {
+                            this.MainPageObj.dispose();
                         }
-                        _this.ShowTip = ex;
-                        _this.forceUpdate("", function () {
+                        this.ShowTip = ex;
+                        this.forceUpdate("", () => {
                             //  this.
                             utilFile.Core.Util.ToggleLoading(false);
                         });
                     }
                 });
-            };
-            HullVm.prototype.fpageShow = function (_page, _name, panelName, param, p1, p2, p3, afterFun) {
-                var _this = this;
+            }
+            fpageShow(_page, _name, panelName, param, p1, p2, p3, afterFun) {
                 if (_page) {
                     //this.state.IsPanel ? this.state.NoRoute1 = false : this.state.NoRoute = false;
                     _page.Reset(p1, p2, p3);
@@ -242,71 +219,71 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                     var isPanel = false;
                     // alert("页面调用");
                     _page.sys_MenuToggle();
-                    _page.sysPage_load(function (a) {
-                        var _panelName = _page.getForcePagePanelName();
+                    _page.sysPage_load((a) => {
+                        let _panelName = _page.getForcePagePanelName();
                         if (_panelName != "") {
                             panelName = _panelName;
                         }
                         //_page.PanelName = panelName;
                         switch (panelName) {
                             case "win":
-                                if (_this.PanelPageObj)
-                                    _this.PanelPageObj.IsChange = false;
-                                if (_this.MainPageObj)
-                                    _this.MainPageObj.IsChange = false;
-                                _this.WinPageObj = _page;
-                                _this.ModalDomObj.Title = _page.Title;
+                                if (this.PanelPageObj)
+                                    this.PanelPageObj.IsChange = false;
+                                if (this.MainPageObj)
+                                    this.MainPageObj.IsChange = false;
+                                this.WinPageObj = _page;
+                                this.ModalDomObj.Title = _page.Title;
                                 break;
                             case "panel":
-                                if (_this.WinPageObj) {
-                                    _this.WinPageObj.dispose();
-                                    _this.WinPageObj = null;
-                                    _this.ModalDomObj.Title = null;
+                                if (this.WinPageObj) {
+                                    this.WinPageObj.dispose();
+                                    this.WinPageObj = null;
+                                    this.ModalDomObj.Title = null;
                                 }
-                                if (_this.MainPageObj) {
-                                    _this.MainPageObj.IsChange = false;
+                                if (this.MainPageObj) {
+                                    this.MainPageObj.IsChange = false;
                                 }
-                                _this.PanelPageObj = _page;
+                                this.PanelPageObj = _page;
                                 break;
                             default:
-                                if (_this.WinPageObj) {
-                                    _this.WinPageObj.dispose();
-                                    _this.WinPageObj = null;
-                                    _this.ModalDomObj.Title = null;
+                                if (this.WinPageObj) {
+                                    this.WinPageObj.dispose();
+                                    this.WinPageObj = null;
+                                    this.ModalDomObj.Title = null;
                                 }
-                                if (_this.PanelPageObj && param == "") {
-                                    _this.PanelPageObj.dispose();
-                                    _this.PanelPageObj = null;
+                                if (this.PanelPageObj && param == "") {
+                                    this.PanelPageObj.dispose();
+                                    this.PanelPageObj = null;
                                 }
-                                if (_this.MainPageObj) {
-                                    _this.MainPageObj.dispose();
+                                if (this.MainPageObj) {
+                                    this.MainPageObj.dispose();
                                 }
-                                _this.MainPageObj = _page;
+                                this.MainPageObj = _page;
                                 break;
                         }
-                        urlFile.Core.AkUrl.Current().bindSendPage(panelName, function (p, obj) {
+                        urlFile.Core.AkUrl.Current().bindSendPage(panelName, (p, obj) => {
                             //alert("hull : " + obj);
                             _page.getEmit().emit("sendPage", p, obj);
                         });
-                        urlFile.Core.AkUrl.Current().bindClosePage(panelName, function () {
+                        urlFile.Core.AkUrl.Current().bindClosePage(panelName, () => {
                             //alert("hull : " + obj);
                             switch (panelName) {
                                 case "win":
-                                    _this.WinPageObj.dispose();
-                                    _this.WinPageObj = null;
+                                    this.WinPageObj.dispose();
+                                    this.WinPageObj = null;
                                     break;
                                 case "panel":
-                                    _this.PanelPageObj.dispose();
-                                    _this.PanelPageObj = null;
+                                    this.PanelPageObj.dispose();
+                                    this.PanelPageObj = null;
                                     break;
                                 default:
                                     break;
                             }
-                            _this.forceUpdate("", function () {
+                            this.forceUpdate("", () => {
                                 utilFile.Core.Util.ToggleLoading(false);
                             });
                         });
-                        _this.forceUpdate("", function () {
+                        this.forceUpdate("", () => {
                             if (a)
                                 a();
                             utilFile.Core.Util.ToggleLoading(false);
@@ -354,16 +331,16 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                             break;
                     }
                     if (_isDirect) {
-                        this.forceUpdate("", function () {
+                        this.forceUpdate("", () => {
                             if (_page) {
                                 _page.EndTime = new Date();
-                                _this.emitAppEvent("/06app/web/Header/HeaderLinkActive.listenHeadWidth", "sys");
+                                this.emitAppEvent("/06app/web/Header/HeaderLinkActive.listenHeadWidth", "sys");
                             }
                             utilFile.Core.Util.ToggleLoading(false);
                         });
                     }
                 }
-            };
+            }
             //public menuBindHashChange(url: string, afterFun: Function, a: boolean) {
             //    if (!a) {
             //        if (url.toUpperCase() == this.HomeUrl.toUpperCase()) {
@@ -389,7 +366,7 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
             //        }
             //    }
             //}
-            HullVm.prototype.bindPage = function (a, afterFun) {
+            bindPage(a, afterFun) {
                 this.ShowTip = "正在载入数据";
                 var _m = urlFile.Core.AkUrl.Current().getPageUrlModel(a);
                 if (_m) {
@@ -397,32 +374,21 @@ define(["require", "exports", "./../../01core/0Dom", "./../../01core/Util", "./.
                 }
                 else {
                     this.ShowTip = a + " 路由格式错误  " + a;
-                    this.forceUpdate("", function () {
+                    this.forceUpdate("", () => {
                         utilFile.Core.Util.ToggleLoading(false);
                         if (afterFun) {
                             afterFun();
                         }
                     });
                 }
-            };
-            return HullVm;
-        }(domCore.DomVm));
+            }
+        }
         Web.HullVm = HullVm;
-        var HullStates = (function (_super) {
-            __extends(HullStates, _super);
-            function HullStates() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return HullStates;
-        }(domCore.DomStates));
+        class HullStates extends domCore.DomStates {
+        }
         Web.HullStates = HullStates;
-        var HullProps = (function (_super) {
-            __extends(HullProps, _super);
-            function HullProps() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return HullProps;
-        }(domCore.DomProps));
+        class HullProps extends domCore.DomProps {
+        }
         Web.HullProps = HullProps;
     })(Web = exports.Web || (exports.Web = {}));
 });

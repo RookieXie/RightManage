@@ -1,16 +1,14 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Core;
     (function (Core) {
-        var Util = (function () {
-            function Util() {
-            }
-            Util.Cast = function (obj) {
+        class Util {
+            static Cast(obj) {
                 var _t = obj;
                 return _t;
-            };
-            Util.GetClassName = function (obj) {
+            }
+            static GetClassName(obj) {
                 if (obj["constructor"]) {
                     var s = obj["constructor"];
                     var _s = s.toString();
@@ -22,8 +20,8 @@ define(["require", "exports"], function (require, exports) {
                 }
                 else
                     return (typeof obj).toString();
-            };
-            Util.Noty = function (msg, sign) {
+            }
+            static Noty(msg, sign) {
                 var _p = "info"; //warning success error
                 if (sign) {
                     _p = sign;
@@ -32,7 +30,7 @@ define(["require", "exports"], function (require, exports) {
                 Core.Util.AsyncJs([
                     "/AtawStatic/lib/03Extend/toastr/toastr.min.js",
                     "/AtawStatic/lib/03Extend/toastr/toastr.min.css"
-                ], function (toastr) {
+                ], (toastr) => {
                     //  $.sticky("123");
                     toastr.options = {
                         "closeButton": true,
@@ -58,8 +56,8 @@ define(["require", "exports"], function (require, exports) {
                     }
                     // alert(msg);
                 });
-            };
-            Util.ToggleLoading = function (isS, fun) {
+            }
+            static ToggleLoading(isS, fun) {
                 // alert(isS);
                 if (isS) {
                     if (window["Ataw"] && window["Ataw"]["msgbox"] && window["Ataw"]["msgbox"]["show"]) {
@@ -80,12 +78,12 @@ define(["require", "exports"], function (require, exports) {
                     }
                     $("#ACT-Loading").hide();
                 }
-            };
-            Util.ReactByOpt = function (opt) {
+            }
+            static ReactByOpt(opt) {
                 return opt.ReactType;
-            };
-            Util.AsyncJs = function (strs, fun, errorFun) {
-                strs.forEach(function (url, i) {
+            }
+            static AsyncJs(strs, fun, errorFun) {
+                strs.forEach((url, i) => {
                     var _len = url.length;
                     if (_len > 3) {
                         var _css = url.substring(_len - 3);
@@ -95,8 +93,8 @@ define(["require", "exports"], function (require, exports) {
                     }
                 });
                 require(strs, fun, errorFun);
-            };
-            Util.HexToString = function (str) {
+            }
+            static HexToString(str) {
                 // var str = this;
                 var val = "";
                 var arr = str.split(",");
@@ -104,8 +102,8 @@ define(["require", "exports"], function (require, exports) {
                     val += String.fromCharCode(parseInt(arr[i]));
                 }
                 return val;
-            };
-            Util.StringToHex = function (str) {
+            }
+            static StringToHex(str) {
                 // var str = this;
                 var val = "";
                 for (var i = 0; i < str.length; i++) {
@@ -115,10 +113,10 @@ define(["require", "exports"], function (require, exports) {
                         val += "," + str.charCodeAt(i);
                 }
                 return val.toString();
-            };
+            }
             //'hexToString': function () {
             //},
-            Util.isDate = function (str) {
+            static isDate(str) {
                 var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
                 if (r == null)
                     return false;
@@ -127,8 +125,8 @@ define(["require", "exports"], function (require, exports) {
                 var date = parseInt(r[4]);
                 var d = new Date(year, month - 1, date);
                 return (d.getFullYear() == year && (d.getMonth() + 1) == month && d.getDate() == date);
-            };
-            Util.isDateTime = function (str) {
+            }
+            static isDateTime(str) {
                 var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/;
                 var r = str.match(reg);
                 if (r == null)
@@ -141,8 +139,8 @@ define(["require", "exports"], function (require, exports) {
                 var seconds = parseInt(r[7]);
                 var d = new Date(year, month - 1, date, hours, minutes, seconds);
                 return (d.getFullYear() == year && (d.getMonth() + 1) == month && d.getDate() == date && d.getHours() == hours && d.getMinutes() == minutes && d.getSeconds() == seconds);
-            };
-            Util.parse = function (time) {
+            }
+            static parse(time) {
                 if (typeof (time) == 'string') {
                     if (time.indexOf('GMT') > 0 || time.indexOf('gmt') > 0 || !isNaN(Date.parse(time))) {
                         return this.parseGMT(time);
@@ -155,21 +153,21 @@ define(["require", "exports"], function (require, exports) {
                     }
                 }
                 return new Date();
-            };
-            Util.parseGMT = function (time) {
+            }
+            static parseGMT(time) {
                 return new Date(Date.parse(time));
-            };
-            Util.parseUTC = function (time) {
+            }
+            static parseUTC(time) {
                 return (new Date(time));
-            };
-            Util.parseCommon = function (time) {
+            }
+            static parseCommon(time) {
                 var d = time.split(/ |T/), d1 = d.length > 1 ? d[1].split(/[^\d]/) : [0, 0, 0], d0 = d[0].split(/[^\d]/);
                 return new Date(d0[0] - 0, d0[1] - 1, d0[2] - 0, d1[0] - 0, d1[1] - 0, d1[2] - 0);
-            };
-            Util.isString = function (val) {
+            }
+            static isString(val) {
                 return (typeof (val)) == "string";
-            };
-            Util.intersection = function (a, b) {
+            }
+            static intersection(a, b) {
                 var result = [];
                 for (var i = 0; i < b.length; i++) {
                     var temp = b[i];
@@ -181,8 +179,8 @@ define(["require", "exports"], function (require, exports) {
                     }
                 }
                 return Util.qc(result);
-            };
-            Util.qc = function (a) {
+            }
+            static qc(a) {
                 var r = [];
                 for (var i = 0; i < a.length; i++) {
                     var flag = true;
@@ -198,8 +196,8 @@ define(["require", "exports"], function (require, exports) {
                     }
                 }
                 return r;
-            };
-            Util.DateFormat = function (date, fmt) {
+            }
+            static DateFormat(date, fmt) {
                 var o = {
                     "M+": date.getMonth() + 1,
                     "d+": date.getDate(),
@@ -215,12 +213,11 @@ define(["require", "exports"], function (require, exports) {
                     if (new RegExp("(" + k + ")").test(fmt))
                         fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
                 return fmt;
-            };
-            Util.IsPure = function (value) {
+            }
+            static IsPure(value) {
                 return Object.keys(value).length === 0;
-            };
-            return Util;
-        }());
+            }
+        }
         //-------------------设置http文件名
         Util.AddUrlFileName = function (url, wh) {
             var _index = url.lastIndexOf(".");
@@ -246,12 +243,12 @@ define(["require", "exports"], function (require, exports) {
     })(Core = exports.Core || (exports.Core = {}));
     exports.reqCss = function (strs, fun) {
         if (!fun)
-            fun = function () { };
+            fun = () => { };
         Core.Util.AsyncJs(strs, fun);
     };
     exports.parseJSON = function (strings) {
         try {
-            var _res = $.parseJSON(strings);
+            let _res = $.parseJSON(strings);
             return {
                 Result: _res,
                 IsSucess: true,

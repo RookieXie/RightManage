@@ -29,7 +29,7 @@ export module Text {
         public pSender(): React.ReactElement<any> {
             return <div className="Hc-input">
                 <input type="text" value={this.props.Vm.reactDataValueGet()}
-                    onChange={(e) => { this.pInputOnChange(e); return false; }}
+                    onChange={(e) => { this.pInputOnChange(e); return true; }}
                     className="Hg-width form-control "
                 >
                 </input>

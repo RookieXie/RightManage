@@ -169,9 +169,9 @@ namespace RightManage.Core
             // Methods
             public Repository(BaseDBContext dbContext) : base(dbContext)
             {
-                
+
             }
-            
+
             public override void Add(T entity)
             {
                 BaseTableData model = entity as BaseTableData;

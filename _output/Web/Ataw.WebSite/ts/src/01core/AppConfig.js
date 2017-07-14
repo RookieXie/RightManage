@@ -3,34 +3,32 @@
 // https://github.com/Microsoft/TypeScript/wiki/JSX
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var AppConfigDefine = {
         JsAmountconvert: "/AtawStatic/lib/03Extend/amount/amountconvert.js"
     };
-    var AppContent = (function () {
-        function AppContent() {
-        }
-        AppContent.prototype.AppContent = function () {
+    class AppContent {
+        AppContent() {
             this.AppConfigObj = AppConfigDefine;
-        };
-        AppContent.Current = function () {
+        }
+        static Current() {
             // var f: String;
             return this.fAppContent;
-        };
-        AppContent.prototype.extendAppConfig = function (obj) {
+        }
+        extendAppConfig(obj) {
             this.AppConfigObj = $.extend({}, this.AppConfigObj, obj);
-        };
-        AppContent.prototype.fGetByInterface = function () {
+        }
+        fGetByInterface() {
             return this.AppConfigObj;
-        };
-        AppContent.prototype.getByIApp = function () {
+        }
+        getByIApp() {
             return this.fGetByInterface();
-        };
-        AppContent.prototype.getByInterface = function () {
+        }
+        getByInterface() {
             //new String ("dfdf").AppKv("","");
             return this.fGetByInterface();
-        };
-        AppContent.prototype.appKv = function (key, defaultValue) {
+        }
+        appKv(key, defaultValue) {
             var _val = this.AppConfigObj[key];
             if (_val) {
                 return _val;
@@ -38,9 +36,8 @@ define(["require", "exports"], function (require, exports) {
             else {
                 return defaultValue;
             }
-        };
-        return AppContent;
-    }());
+        }
+    }
     AppContent.fAppContent = new AppContent();
     exports.AppContent = AppContent;
 });

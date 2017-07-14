@@ -67,16 +67,18 @@ export module xbgTestPage {
         private init(config: IxbgTestPageConfig) {
         }
         public testClick() {
-            urlFile.Core.AkPost("/Home/Test1", {}, (res) => {
-                console.table(res);
-            })
+            //urlFile.Core.AkPost("/Home/Test1", {}, (res) => {
+            //    console.table(res);
+            //})
         }
         protected loadPage(callback?: () => any) {
             var _page = { PageIndex: 0, PageSize: 10 };
-            urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page)}, (res) => {
+            urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "RM_Menus", pager: JSON.stringify(_page)}, (res) => {
                 //this.pageContent = res;
-                var btns: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
-                var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" }
+               // var btn: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
+                var btns: tableDataFile.TableData.ITableButton[] = [];
+               // btns.push(btn);
+                var _config: tableDomFile.TableDom.ITableDomConfig = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "RM_Menus", tableButtons: btns }
 
                 this.tableDomObj = new tableDomFile.TableDom.TableDomVm(_config);
                 // console.log(res);

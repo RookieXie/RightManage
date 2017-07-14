@@ -1,38 +1,26 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 define(["require", "exports", "react", "react-dom", "./Event"], function (require, exports, React, ReactDOM, eventFile) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     //import jqueryExtend = require("./JQueryExtend");
     var Core;
     (function (Core) {
-        var DomReact = (function (_super) {
-            __extends(DomReact, _super);
-            function DomReact() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.fIsNoChangeSign = false;
-                _this.pNoNeedUpdate = false;
-                _this.IsFirst = false;
-                _this.pIsSetScreenHeight = false;
-                _this.pIsSetScreenMaxHeight = false;
-                _this.ScreenDomName = "";
-                _this.IsListItem = false;
-                _this.pReactEventDict = {};
-                return _this;
+        class DomReact extends React.Component {
+            constructor() {
+                super(...arguments);
+                this.fIsNoChangeSign = false;
+                this.pNoNeedUpdate = false;
+                this.IsFirst = false;
+                this.pIsSetScreenHeight = false;
+                this.pIsSetScreenMaxHeight = false;
+                this.ScreenDomName = "";
+                this.IsListItem = false;
+                this.pReactEventDict = {};
             }
             //  public setIsLis
-            DomReact.prototype.vM = function () {
+            vM() {
                 return this.props.Vm;
-            };
-            DomReact.prototype.listenEvent = function (event, fun) {
+            }
+            listenEvent(event, fun) {
                 var _fun = this.props.Vm.getEmit("React").addListener(event, fun);
                 if (this.pReactEventDict[event]) {
                     this.pReactEventDict[event].push(_fun);
@@ -40,35 +28,30 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 else {
                     this.pReactEventDict[event] = [_fun];
                 }
-            };
-            DomReact.prototype.removeEvent = function (event) {
-                var _this = this;
+            }
+            removeEvent(event) {
                 if (event || event != "") {
                     if (this.pReactEventDict[event] && this.pReactEventDict[event].length > 0) {
-                        this.pReactEventDict[event].forEach(function (f) {
-                            _this.props.Vm.getEmit("React").removeListener(event, f);
+                        this.pReactEventDict[event].forEach((f) => {
+                            this.props.Vm.getEmit("React").removeListener(event, f);
                         });
                         this.pReactEventDict[event] = null;
                     }
                 }
                 else {
-                    var _loop_1 = function (name_1) {
-                        if (this_1.pReactEventDict[name_1]) {
-                            _events = this_1.pReactEventDict[name_1];
-                            _events.forEach(function (f) {
-                                _this.props.Vm.getEmit("React").removeListener(name_1, f);
+                    for (let name in this.pReactEventDict) {
+                        if (this.pReactEventDict[name]) {
+                            var _events = this.pReactEventDict[name];
+                            _events.forEach((f) => {
+                                this.props.Vm.getEmit("React").removeListener(name, f);
                             });
                         }
-                        this_1.pReactEventDict[name_1] = null;
-                    };
-                    var this_1 = this, _events;
-                    for (var name_1 in this.pReactEventDict) {
-                        _loop_1(name_1);
+                        this.pReactEventDict[name] = null;
                     }
                     this.pReactEventDict = {};
                 }
-            };
-            DomReact.prototype._T_ = function (a, tplName) {
+            }
+            _T_(a, tplName) {
                 if (tplName && tplName != "") {
                     if (this.props.Vm.TplFunDic && this.props.Vm.TplFunDic[tplName]) {
                         return this.props.Vm.TplFunDic[tplName](a, this.props.Vm);
@@ -77,8 +60,8 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 else {
                     return a;
                 }
-            };
-            DomReact.prototype._tDom = function (dom, config) {
+            }
+            _tDom(dom, config) {
                 if (config && config.fun) {
                     return config.fun(dom);
                 }
@@ -97,37 +80,36 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                         }
                     }
                 }
-            };
-            DomReact.prototype.setNoNeedUpdate = function (isNo) {
+            }
+            setNoNeedUpdate(isNo) {
                 this.pNoNeedUpdate = isNo;
-            };
-            DomReact.prototype.componentWillMount = function () {
+            }
+            componentWillMount() {
                 this.pComponentWillMount();
-            };
+            }
             ;
-            DomReact.prototype.componentWillUnmount = function () {
+            componentWillUnmount() {
                 this.pComponentWillUnmount();
-            };
+            }
             ;
-            DomReact.prototype.componentDidMount = function () {
+            componentDidMount() {
                 this.pComponentDidMount();
                 this.IsFirst = true;
-            };
+            }
             ;
-            DomReact.prototype.pInstall = function () {
+            pInstall() {
                 //   if (this.props.Vm.getRegName() == "pick") debugger;
-                var _this = this;
-                this.fEventFun = this.props.Vm.onChangeHandle(function (val, callback) {
-                    _this.pFunForceUpdate(callback);
+                this.fEventFun = this.props.Vm.onChangeHandle((val, callback) => {
+                    this.pFunForceUpdate(callback);
                     return true;
                 });
-                this.listenEvent("setChange", function (a) {
+                this.listenEvent("setChange", (a) => {
                     //  this.props.Vm.IsChange = a;
-                    _this.fIsNoChangeSign = !a;
+                    this.fIsNoChangeSign = !a;
                 });
-            };
+            }
             ;
-            DomReact.prototype.pUnInstall = function (vm) {
+            pUnInstall(vm) {
                 // this.removeEvent();
                 if (vm) {
                     //这样是不行的 没准这个对象还有用呢
@@ -143,12 +125,12 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     // this.props.Vm.getEmit("React").removeAllListeners();
                     // this.props.Vm.dispose();
                 }
-            };
+            }
             ;
-            DomReact.prototype.componentDidUpdate = function (prevProps, prevState, prevContext) {
+            componentDidUpdate(prevProps, prevState, prevContext) {
                 this.pComponentDidUpdate(prevProps, prevState, prevContext);
-            };
-            DomReact.prototype.pComponentDidUpdate = function (prevProps, prevState, prevContext) {
+            }
+            pComponentDidUpdate(prevProps, prevState, prevContext) {
                 //更新后的
                 if (!(prevProps.Vm === this.props.Vm)) {
                     this.pUnInstall(prevProps.Vm);
@@ -156,13 +138,13 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     this.pDomLoad();
                     console.log(this.props.Vm.getRegName() + "重新注册");
                 }
-            };
-            DomReact.prototype.pFunForceUpdate = function (callback) {
+            }
+            pFunForceUpdate(callback) {
                 console.log(this.props.Vm.getRegName() + "调用update");
                 this.forceUpdate(callback);
-            };
+            }
             ;
-            DomReact.prototype.shouldComponentUpdate = function (nextProps, nextState, nextContext) {
+            shouldComponentUpdate(nextProps, nextState, nextContext) {
                 // if (nextProps.Vm["Text"] == "郑瑜琨") debugger;
                 console.log(this.props.Vm.getRegName() + "  判断是否更新" + this.props.Vm.IsChange);
                 if (!nextProps.Vm.IsMulit) {
@@ -177,30 +159,30 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     return true;
                 }
                 // return true;
-            };
-            DomReact.prototype.pDomLoad = function () {
-            };
-            DomReact.prototype.pDispatcher = function (action) {
+            }
+            pDomLoad() {
+            }
+            pDispatcher(action) {
                 //if (this.fDomDispatcher == null) {
                 //    this.fDomDispatcher = AkDispatcher.Current();
                 //}
                 //action.Vm = this.props.Vm;
                 //this.fDomDispatcher.dispatch(action);
                 // utilFile.Core.Util.
-            };
+            }
             ;
-            DomReact.prototype.pComponentWillMount = function () {
+            pComponentWillMount() {
                 this.pInstall();
                 //  var __this = this;
                 console.log(this.props.Vm.getRegName() + "注册");
-            };
+            }
             ;
-            DomReact.prototype.pComponentWillUnmount = function () {
+            pComponentWillUnmount() {
                 // this.props.Vm.offEvent_ChangeEmit(this.fEventFun);
                 this.pUnInstall();
-            };
+            }
             ;
-            DomReact.prototype.pComponentDidMount = function () {
+            pComponentDidMount() {
                 //this.props.Vm.offEvent_ChangeEmit(this.fEventFun);
                 this.pDomLoad();
                 var _msd = this.props.Vm.MetaShowData;
@@ -218,7 +200,7 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                                         $(this).addClass("acs-module-warning");
                                         var _lis = "";
                                         if (_msd.List) {
-                                            _msd.List.forEach(function (l) {
+                                            _msd.List.forEach((l) => {
                                                 _lis += ("<li>" + l + "</li>");
                                             });
                                         }
@@ -272,16 +254,16 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                         _$dom.height(this.props.Vm.Height);
                     }
                 }
-            };
+            }
             ;
-            DomReact.prototype.pSender = function () {
+            pSender() {
                 return React.DOM.div(null, this.props.Vm.getRegName());
-            };
+            }
             ;
-            DomReact.prototype.pGetErrorName = function () {
+            pGetErrorName() {
                 return "【dom】 【" + this.props.Vm.getRegName() + "】 【" + this.props.Vm.Id + "】";
-            };
-            DomReact.prototype.pGetDom = function () {
+            }
+            pGetDom() {
                 try {
                     var _dom = ReactDOM.findDOMNode(this);
                     return _dom;
@@ -289,8 +271,8 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 catch (exxx) {
                     return null;
                 }
-            };
-            DomReact.prototype.render = function () {
+            }
+            render() {
                 //$["r"]["pasend"] = this.props;
                 //   AkDispatcher.SendCount++;
                 // 
@@ -319,12 +301,11 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     var str = this.pGetErrorName() + "   " + ee.toString();
                     return React.DOM.span({ title: str, className: " fa fa-exclamation-triangle Hs-red " });
                 }
-            };
-            return DomReact;
-        }(React.Component));
+            }
+        }
         Core.DomReact = DomReact;
-        var DomVm = (function () {
-            function DomVm() {
+        class DomVm {
+            constructor() {
                 this.IsChange = true;
                 this.fNoFirst = false;
                 this.fOriValue = "";
@@ -346,16 +327,16 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 };
                 this.fEventBus = new eventFile.Core.EventBus();
             }
-            DomVm.prototype.getOriValue = function () {
+            getOriValue() {
                 return this.fOriValue;
-            };
-            DomVm.prototype.toChange = function () {
+            }
+            toChange() {
                 this.IsChange = true;
-            };
-            DomVm.prototype.RegistAppEvent = function (regData) {
+            }
+            RegistAppEvent(regData) {
                 this.listenAppEvent(regData.Name, this.UniId, regData.Fun);
-            };
-            DomVm.prototype.pRegistAppEventByDom = function (regData) {
+            }
+            pRegistAppEventByDom(regData) {
                 // this.RegistAppEvent(regData);
                 if (regData.DomObj.UniId == this.UniId) {
                     regData.DomObj.RegistAppEvent(regData);
@@ -363,31 +344,26 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 else {
                     alert("由于组件的unid不一致 ，导致无法注册 " + regData.Name + "  事件 ");
                 }
-            };
-            DomVm.prototype.onCustomEvent = function (fun, sender) {
+            }
+            onCustomEvent(fun, sender) {
                 this.pRegistAppEventByDom({ DomObj: sender, Fun: fun, Name: "123" });
-            };
-            DomVm.prototype.listenAppEvent = function (name, uniId, fun) {
+            }
+            listenAppEvent(name, uniId, fun) {
                 var _fun = eventFile.App.GetAppEvent().addListener(name + uniId, fun);
                 this.AppEventFunDic[name + uniId] = _fun;
                 //eventFile.App.GetAppEvent().removeListener(name + uniId, fun);
-            };
-            DomVm.prototype.emitAppEvent = function (name, sign) {
-                var args = [];
-                for (var _i = 2; _i < arguments.length; _i++) {
-                    args[_i - 2] = arguments[_i];
-                }
-                (_a = eventFile.App.GetAppEvent()).emit.apply(_a, [name + sign].concat(args));
-                var _a;
-            };
-            DomVm.prototype.getCache = function (key, setFun) {
+            }
+            emitAppEvent(name, sign, ...args) {
+                eventFile.App.GetAppEvent().emit(name + sign, ...args);
+            }
+            getCache(key, setFun) {
                 if (!this["__vmCache_" + key]) {
                     this["__vmCache_" + key] = setFun();
                 }
                 var _t = this["__vmCache_" + key];
                 return _t;
-            };
-            DomVm.prototype.pGetEmit = function (name) {
+            }
+            pGetEmit(name) {
                 // if (this.fEmit == null) {
                 if (this.fEventBus == null) {
                     this.fEventBus = new eventFile.Core.EventBus();
@@ -408,16 +384,16 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 }
                 //  }
                 return this.fEmit;
-            };
-            DomVm.prototype.getEmit = function (name) {
+            }
+            getEmit(name) {
                 return this.pGetEmit(name);
-            };
-            DomVm.prototype.offEvent_ChangeEmit = function (fun) {
+            }
+            offEvent_ChangeEmit(fun) {
                 //if (this.fEmit == null)
                 //    this.fEmit = new EventEmitter2();
                 this.pGetEmit("React").removeAllListeners(DomVm.fEVENT_CHANGE);
-            };
-            DomVm.prototype.onChangeHandle = function (fun) {
+            }
+            onChangeHandle(fun) {
                 //if (this.fEmit == null)
                 //    this.fEmit = new EventEmitter2();
                 var __this = this;
@@ -426,12 +402,8 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 };
                 return this.pGetEmit("React").addListener(DomVm.fEVENT_CHANGE, _fun);
                 //  return _fun;
-            };
-            DomVm.prototype.intoDom = function (key) {
-                var children = [];
-                for (var _i = 1; _i < arguments.length; _i++) {
-                    children[_i - 1] = arguments[_i];
-                }
+            }
+            intoDom(key, ...children) {
                 if (this) {
                     if (key || key === 0) {
                         this.key = key;
@@ -444,30 +416,30 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                 else {
                     return React.DOM.span({ className: "fa fa-exclamation-triangle" }, "（空的元素）");
                 }
-            };
-            DomVm.prototype.intoDomR = function (reactType, key, childrenNode) {
+            }
+            intoDomR(reactType, key, childrenNode) {
                 if (key) {
                     this.key = key;
                 }
                 return React.createElement(reactType, { Vm: this }, childrenNode);
-            };
+            }
             // protected pDataValue: string;
-            DomVm.prototype.initDataValue = function (val) {
+            initDataValue(val) {
                 this.TempDataValue = val;
                 this.pDataValue = val;
-            };
-            DomVm.prototype.pDataValueSet = function (val) {
+            }
+            pDataValueSet(val) {
                 return this.fDataValueSet(val);
-            };
-            DomVm.prototype.forceUpdate = function (val, callback) {
+            }
+            forceUpdate(val, callback) {
                 this.IsChange = true;
                 this.pGetEmit("React").emit(DomVm.fEVENT_CHANGE, val, callback);
-            };
+            }
             //公共接口
-            DomVm.prototype.pDataValueGet = function () {
+            pDataValueGet() {
                 return this.pDataValue;
-            };
-            DomVm.prototype.pdataValue = function (val) {
+            }
+            pdataValue(val) {
                 if (val === undefined) {
                     return this.pDataValueGet();
                 }
@@ -475,8 +447,8 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     this.pDataValueSet(val);
                     //return val;
                 }
-            };
-            DomVm.prototype.dataValue = function (val) {
+            }
+            dataValue(val) {
                 if (val === undefined) {
                     return this.dataValueGet();
                 }
@@ -484,12 +456,12 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     return this.dataValueSet(val);
                     //return val;
                 }
-            };
-            DomVm.prototype.setOriValue = function (val) {
+            }
+            setOriValue(val) {
                 this.fOriValue = val;
                 this.fDataValueSet(val);
-            };
-            DomVm.prototype.fDataValueSet = function (val) {
+            }
+            fDataValueSet(val) {
                 //if (!this.fNoFirst) {
                 //    this.fOriValue = val;
                 //    this.fNoFirst = true;
@@ -504,11 +476,11 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     return _isCheck;
                 }
                 return false;
-            };
-            DomVm.prototype.fDataValueGet = function () {
+            }
+            fDataValueGet() {
                 return this.pDataValueGet();
-            };
-            DomVm.prototype.vmdataValue = function (val) {
+            }
+            vmdataValue(val) {
                 if (val === undefined) {
                     return this.vmDataValueGet();
                 }
@@ -516,23 +488,23 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     return this.vmDataValueSet(val);
                     //return val;
                 }
-            };
-            DomVm.prototype.vmDataValueGet = function () {
+            }
+            vmDataValueGet() {
                 return this.fDataValueGet();
-            };
-            DomVm.prototype.vmDataValueSet = function (val) {
+            }
+            vmDataValueSet(val) {
                 this.fDataValueSet(val);
-            };
-            DomVm.prototype.dataValueGet = function () {
+            }
+            dataValueGet() {
                 return this.fDataValueGet();
-            };
-            DomVm.prototype.dataValueSet = function (val) {
+            }
+            dataValueSet(val) {
                 this.fDataValueSet(val);
-            };
-            DomVm.prototype.reactDataValueGet = function () {
+            }
+            reactDataValueGet() {
                 return this.fDataValueGet();
-            };
-            DomVm.prototype.pOnchange = function (val) {
+            }
+            pOnchange(val) {
                 //$["r"]["ppros"] = this;
                 this.TempDataValue = val;
                 var _isCheck = true;
@@ -540,12 +512,12 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                     _isCheck = this.ChangeEventFun(val, this);
                 }
                 return _isCheck;
-            };
+            }
             //react 组件调用接口
-            DomVm.prototype.reactDataValueSet = function (val) {
+            reactDataValueSet(val) {
                 return this.fDataValueSet(val);
-            };
-            DomVm.prototype.pDispose = function () {
+            }
+            pDispose() {
                 if (!this.ffHasDispose) {
                     this.ffHasDispose = true;
                     if (this.IsDisposeAll) {
@@ -557,7 +529,7 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                             else {
                                 if ($.isArray(_p)) {
                                     var _gg = _p;
-                                    _gg.forEach(function (a) {
+                                    _gg.forEach((a) => {
                                         if (a && a["dispose"] && $.isFunction(a["dispose"])) {
                                             a["dispose"]();
                                         }
@@ -578,34 +550,24 @@ define(["require", "exports", "react", "react-dom", "./Event"], function (requir
                         this.AppEventFunDic = {};
                     }
                 }
-            };
-            DomVm.prototype.dispose = function () {
+            }
+            dispose() {
                 this.pDispose();
-            };
-            return DomVm;
-        }());
+            }
+        }
         DomVm.fEVENT_CHANGE = "event_change";
         Core.DomVm = DomVm;
-        var DomProps = (function () {
-            function DomProps() {
-            }
+        class DomProps {
             // 只是为了可以点出来  
-            DomProps.prototype.children = function () {
-            };
-            return DomProps;
-        }());
+            children() {
+            }
+        }
         Core.DomProps = DomProps;
-        var DomStates = (function () {
-            function DomStates() {
-            }
-            return DomStates;
-        }());
+        class DomStates {
+        }
         Core.DomStates = DomStates;
-        var DomAction = (function () {
-            function DomAction() {
-            }
-            return DomAction;
-        }());
+        class DomAction {
+        }
         Core.DomAction = DomAction;
     })(Core = exports.Core || (exports.Core = {}));
 });

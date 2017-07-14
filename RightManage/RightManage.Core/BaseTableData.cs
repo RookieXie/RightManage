@@ -34,7 +34,7 @@ namespace RightManage.Data
         public string UDVARCHAR2 { get; set; }
         [Control(Name = "修改ID", Control = "Text", IsHidden = false)]
         public string UPDATE_ID { get; set; }
-        [Control(Name = "修改时间", Control = "Text", IsHidden = false)]
+        [Control(Name = "修改时间", Control = "Date", IsHidden = false)]
         public DateTime? UPDATE_TIME { get; set; }
     }
 }

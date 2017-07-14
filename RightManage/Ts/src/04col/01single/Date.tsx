@@ -40,14 +40,14 @@ export module DateCol {
                             btnBar: false,
                             minDate: '%y-%M-%d',
                             noToday: __this.props.Vm.IsInAndAfterToday,
-                            onSetDate: function () { __this.dateChange(this.getDate('dateTime')); }
+                            onSetDate: function () { __this.dateChange(this.getDate('date')); }
                         });
                     }
                     else {
                         _$dom.calendar({
                             format: "yyyy-MM-dd",
                             btnBar: false,
-                            onSetDate: function () { __this.dateChange(this.getDate('dateTime')); }
+                            onSetDate: function () { __this.dateChange(this.getDate('date')); }
                         });
                     }
                 }, (reqError) => { alert("js载入错误"); console.log(reqError) });
@@ -62,18 +62,7 @@ export module DateCol {
 
         private dateChange(dateVal: string) {
             if (dateVal == "" || dateVal == null || utilFile.Core.Util.isDateTime(dateVal) || utilFile.Core.Util.isDate(dateVal)) {
-                //  var _bean: DateVm = new DateVm();
-                //   _bean.dataValueSet(dateVal);
-
-                //   this.DataValue.setValue(dateVal);
-                //   this.triggerChangeEvent();
-
-                var _ac: DateAction = new DateAction();
-                _ac.DataValue = dateVal;
-                _ac.Vm = this.props.Vm;
-                this.pDispatcher(_ac);
-
-                //调用Object的设置
+                
                 this.props.Vm.reactDataValueSet(dateVal);
 
             }

@@ -1,10 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
-    var BaseApp = (function () {
-        function BaseApp() {
-        }
-        return BaseApp;
-    }());
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class BaseApp {
+    }
     exports.BaseApp = BaseApp;
 });

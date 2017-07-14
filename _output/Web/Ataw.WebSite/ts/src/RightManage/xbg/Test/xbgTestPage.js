@@ -1,98 +1,67 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 define(["require", "exports", "./../../../01core/Ioc", "./../../../01core/Url", "./../../../03page/BaseWebPage", "./../../../03page/Table/TableDom", "react", "./../../../04col/01single/Date", "./../../../04col/01single/Text"], function (require, exports, iocFile, urlFile, basewedPageFile, tableDomFile, React, dateFile, textFile) {
     "use strict";
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", { value: true });
     var xbgTestPage;
     (function (xbgTestPage) {
-        var xbgTestPageAction = (function (_super) {
-            __extends(xbgTestPageAction, _super);
-            function xbgTestPageAction() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return xbgTestPageAction;
-        }(basewedPageFile.Web.BaseWebPageStates));
+        class xbgTestPageAction extends basewedPageFile.Web.BaseWebPageStates {
+        }
         xbgTestPage.xbgTestPageAction = xbgTestPageAction;
-        var xbgTestPageReact = (function (_super) {
-            __extends(xbgTestPageReact, _super);
-            function xbgTestPageReact() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.state = new xbgTestPageStates();
-                return _this;
+        class xbgTestPageReact extends basewedPageFile.Web.BaseWebPageReact {
+            constructor() {
+                super(...arguments);
+                this.state = new xbgTestPageStates();
             }
-            xbgTestPageReact.prototype.pSender = function () {
-                var _this = this;
+            pSender() {
                 return React.createElement("div", null,
                     React.createElement("div", null,
-                        React.createElement("button", { type: "button", className: "btn btn-info", onClick: function () { _this.testClick(); } }, "\u6D4B\u8BD5"),
+                        React.createElement("button", { type: "button", className: "btn btn-info", onClick: () => { this.testClick(); } }, "\u6D4B\u8BD5"),
                         this._tDom(this.props.Vm.dateVmObj),
                         this._tDom(this.props.Vm.textVmObj)),
                     this._tDom(this.props.Vm.tableDomObj));
-            };
-            xbgTestPageReact.prototype.testClick = function () {
-                this.props.Vm.testClick();
-            };
-            return xbgTestPageReact;
-        }(basewedPageFile.Web.BaseWebPageReact));
-        xbgTestPage.xbgTestPageReact = xbgTestPageReact;
-        var xbgTestPageVm = (function (_super) {
-            __extends(xbgTestPageVm, _super);
-            function xbgTestPageVm(config) {
-                var _this = _super.call(this) || this;
-                _this.ReactType = xbgTestPageReact;
-                _this.Title = "xbgTestPage页面;";
-                _this.pageContent = "1";
-                _this.dateVmObj = new dateFile.DateCol.DateVm();
-                _this.textVmObj = new textFile.Text.TextVm();
-                return _this;
             }
-            xbgTestPageVm.prototype.init = function (config) {
-            };
-            xbgTestPageVm.prototype.testClick = function () {
-                urlFile.Core.AkPost("/Home/Test1", {}, function (res) {
-                    console.table(res);
-                });
-            };
-            xbgTestPageVm.prototype.loadPage = function (callback) {
-                var _this = this;
+            testClick() {
+                this.props.Vm.testClick();
+            }
+        }
+        xbgTestPage.xbgTestPageReact = xbgTestPageReact;
+        class xbgTestPageVm extends basewedPageFile.Web.BaseWebPageVm {
+            constructor(config) {
+                super();
+                this.ReactType = xbgTestPageReact;
+                this.Title = "xbgTestPage页面;";
+                this.pageContent = "1";
+                this.dateVmObj = new dateFile.DateCol.DateVm();
+                this.textVmObj = new textFile.Text.TextVm();
+            }
+            init(config) {
+            }
+            testClick() {
+                //urlFile.Core.AkPost("/Home/Test1", {}, (res) => {
+                //    console.table(res);
+                //})
+            }
+            loadPage(callback) {
                 var _page = { PageIndex: 0, PageSize: 10 };
-                urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "Test", pager: JSON.stringify(_page) }, function (res) {
+                urlFile.Core.AkPost("/RightManage/Common/GetTable", { tableName: "RM_Menus", pager: JSON.stringify(_page) }, (res) => {
                     //this.pageContent = res;
-                    var btns = { name: "Insert", text: "新增", isbatch: false, Function: function () { alert("Insert"); } };
-                    var _config = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "Test" };
-                    _this.tableDomObj = new tableDomFile.TableDom.TableDomVm(_config);
+                    // var btn: tableDataFile.TableData.ITableButton = { name: "Insert", text: "新增", isbatch: false, Function: () => { alert("Insert"); } }
+                    var btns = [];
+                    // btns.push(btn);
+                    var _config = { tableColunms: res.tableColunms, tableData: res.tableData, tableName: "RM_Menus", tableButtons: btns };
+                    this.tableDomObj = new tableDomFile.TableDom.TableDomVm(_config);
                     // console.log(res);
                     if (callback) {
                         callback();
                     }
                 });
-            };
-            return xbgTestPageVm;
-        }(basewedPageFile.Web.BaseWebPageVm));
+            }
+        }
         xbgTestPage.xbgTestPageVm = xbgTestPageVm;
-        var xbgTestPageStates = (function (_super) {
-            __extends(xbgTestPageStates, _super);
-            function xbgTestPageStates() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return xbgTestPageStates;
-        }(basewedPageFile.Web.BaseWebPageStates));
+        class xbgTestPageStates extends basewedPageFile.Web.BaseWebPageStates {
+        }
         xbgTestPage.xbgTestPageStates = xbgTestPageStates;
-        var xbgTestPageProps = (function (_super) {
-            __extends(xbgTestPageProps, _super);
-            function xbgTestPageProps() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return xbgTestPageProps;
-        }(basewedPageFile.Web.BaseWebPageProps));
+        class xbgTestPageProps extends basewedPageFile.Web.BaseWebPageProps {
+        }
         xbgTestPage.xbgTestPageProps = xbgTestPageProps;
         iocFile.Core.Ioc.Current().RegisterType("XBGTESTPAGE", basewedPageFile.Web.BaseWebPageVm, xbgTestPageVm);
     })(xbgTestPage = exports.xbgTestPage || (exports.xbgTestPage = {}));

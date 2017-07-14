@@ -18,7 +18,6 @@ namespace RightManage.Core
             }
             catch (Exception )
             {
-                //AtawTrace.WriteStringFile("JsonConvert", exception.Message);
                 return default(T);
             }
         }

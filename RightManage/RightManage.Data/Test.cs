@@ -9,15 +9,15 @@ namespace RightManage.Data
     public class Test: BaseTableData
     {
         //public string FID { get; set; }
-        [Control(Name = "名称", Control = "text", IsHidden = false, isSearch = true, isSearchLike = true)]
+        [Control(Name = "名称", Control = "Text", IsHidden = false, isSearch = true, isSearchLike = true)]
         public string Name { get; set; }
-        [Control(Name = "内容", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
+        [Control(Name = "内容", Control = "Text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public string Content { get; set; }
-        [Control(Name = "年龄", Control = "text", IsHidden = false, isSearch = true, isSearchLike = false)]
+        [Control(Name = "年龄", Control = "Text", IsHidden = false, isSearch = true, isSearchLike = false)]
         public int? Age { get; set; }
-        [Control(Name = "性别", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
+        [Control(Name = "性别", Control = "Text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public string Sex { get; set; }
-        [Control(Name = "fff", Control = "text", IsHidden = false, isSearch = false, isSearchLike = false)]
+        [Control(Name = "fff", Control = "Text", IsHidden = false, isSearch = false, isSearchLike = false)]
         public new  string FID { get; set; }
     }
 }

@@ -9,6 +9,7 @@ import basewedPageFile = require("./../../03page/BaseWebPage");
 import dataFile = require("./Data");
 import React = require("react");
 import ReactDOM = require("react-dom");
+import ColumnDomFile = require("./TableColumnDom");
 
 export module TableInsertPage {
     export class TableInsertPageAction extends basewedPageFile.Web.BaseWebPageStates {
@@ -23,27 +24,12 @@ export module TableInsertPage {
         public pSender(): React.ReactElement<any> {
             return <div>
                 <div><button type="button" className="btn btn-info" onClick={() => { this.saveClick() }}>保存</button></div>
-                <div>{
-                    this.props.Vm.colunmList.map((a, index) => {
-                        if (!a.isHidden) {
-                            return <div key={index}>
-                                <label class="col-sm-1 control-label">{a.displayName}</label>
-                                <div class="col-sm-4">
-                                    <input type={a.controlType} value={this.props.Vm.rowData[a.name]} onChange={(e) => { this.changeValue(e, a.name) }} />
-                                </div>
-                            </div>
-                        }
-                    })
-                }</div>
+                <div>{this._tDom(this.props.Vm.ColumnDomObj)}</div>
                 <div><button type="button" className="btn btn-info" onClick={() => { this.saveClick() }}>保存</button></div>
             </div>;
         }
-
-        public changeValue(e: React.FormEvent, name: string) {
-            var _val = e.target["value"];
-            this.props.Vm.rowData[name] = _val;
-            this.forceUpdate();
-        }
+       
+       
         public saveClick() {
             this.props.Vm.saveClick();
         }
@@ -56,6 +42,7 @@ export module TableInsertPage {
         colunmList: dataFile.TableData.ITableColunm[];
         rowData: dataFile.TableData.IRowData;
         saveClick();
+        ColumnDomObj: ColumnDomFile.TableColumnDom.TableColumnDomVm;
     }
 
     export interface ITableInsertPageConfig {
@@ -65,6 +52,7 @@ export module TableInsertPage {
         public Title: string = "TableInsertPage页面";
         public colunmList: dataFile.TableData.ITableColunm[] = [];
         public rowData: dataFile.TableData.IRowData = {};
+        public ColumnDomObj: ColumnDomFile.TableColumnDom.TableColumnDomVm;
         public constructor(config?: ITableInsertPageConfig) {
             super();
 
@@ -78,6 +66,7 @@ export module TableInsertPage {
             this.colunmList.map(c => {
                 this.rowData[c.name] = "";
             })
+            this.ColumnDomObj = new ColumnDomFile.TableColumnDom.TableColumnDomVm({ columnList: this.colunmList, tableRowData: this.rowData })
             if (callback) {
                 callback();
             }
